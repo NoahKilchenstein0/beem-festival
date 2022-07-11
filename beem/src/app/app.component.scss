@@ -1,6 +1,5 @@
 .general {
-  // background-color: rgb(40, 40, 40);
-  // height: 1000px;
+  height: 100vh;
 }
 
 .right-drawer {
@@ -21,4 +20,15 @@
 .menu-buttons{
   display: flex;
   justify-content: center;
+}
+
+.background-image {
+  height: 100vh;
+  background-image: url('../assets/beem-banner2.jpeg');
+  background-size: cover;
+  background-position: center center;
+}
+
+.menu-button {
+  margin: 10px;
 }

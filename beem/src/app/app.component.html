@@ -1,27 +1,36 @@
-<div class="general">
-    <mat-drawer-container class="example-container">
+<div>
+    <mat-drawer-container autosize class="general">
 
-        <mat-drawer class="general" mode="side" opened>
+        <mat-drawer #drawer mode="side" opened>
 
             <img class="logo" src="../assets/logo-transparent.png" alt="beem-banner">
 
             <div class="menu-buttons">
-                <button mat-button>Home</button>
+                <button mat-button routerLink="">Home</button>
             </div>
 
             <div class="menu-buttons">
-                <button mat-button>Programm</button>
+                <button mat-button routerLink="/programm">Programm</button>
             </div>
 
             <div class="menu-buttons">
-                <button mat-button>News</button>
+                <button mat-button routerLink="/news">News</button>
             </div>
 
         </mat-drawer>
         <mat-drawer-content class="right-drawer">
 
-            <img src="../assets/beem-banner2.jpeg" alt="beem-banner" width="850px" height="500px">
+            <div class="menu-button">
+                <button type="button" mat-raised-button (click)="drawer.toggle()">
+                  <mat-icon>menu</mat-icon>
+                </button>
+            </div>
+
+            <div *ngIf="router.url == '/'" class="background-image"></div>       
+            <router-outlet></router-outlet>
+            <!-- <img class="logo" src="../assets/beem-banner2.jpeg" alt="beem-banner" width="1000px" height="700px"> -->
 
         </mat-drawer-content>
       </mat-drawer-container>
     </div>
+    

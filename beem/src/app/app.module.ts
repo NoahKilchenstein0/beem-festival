@@ -9,11 +9,15 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatCardModule} from '@angular/material/card';
+import { ProgrammComponent } from './programm/programm.component';
+import { NewsComponent } from './news/news.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ProgrammComponent,
+    NewsComponent
   ],
   imports: [
     BrowserModule,
