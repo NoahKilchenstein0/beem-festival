@@ -11,13 +11,15 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatCardModule} from '@angular/material/card';
 import { ProgrammComponent } from './programm/programm.component';
 import { NewsComponent } from './news/news.component';
+import { ArtistCardComponent } from './programm/artist/card/artist-card.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ProgrammComponent,
-    NewsComponent
+    NewsComponent,
+    ArtistCardComponent
   ],
   imports: [
     BrowserModule,

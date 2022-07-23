@@ -1,0 +1,15 @@
+<mat-card class="card">
+    <img mat-card-image class="artist-image" src="{{artist.img}}" alt="Photo of {{artist.name}}" (click)="navigateToArtistPage()">
+    <mat-card-content class="rowFlex">
+        <div class="colums">
+            <div class="artist-name">{{artist.name}}</div>
+            <div class="artist-genre">{{artist.genre}}</div>
+        </div>
+        <mat-icon (click)="setFavorite()" *ngIf="!isFavorite">favorite_border</mat-icon>
+        <mat-icon (click)="setFavorite()" *ngIf="isFavorite">favorite</mat-icon>
+    </mat-card-content>
+    <mat-card-actions>
+
+    </mat-card-actions>
+  </mat-card>
+  

@@ -1,1 +1,8 @@
-<p>programm works!</p>
+<div class="container">
+        <artist-card *ngFor="let artist of artists"
+            class="item"
+            [artist]="artist"
+            [isFavorit]="getFavoritState(artist)"
+            (setFavorit)="setFavorite($event)">
+        </artist-card>
+</div>

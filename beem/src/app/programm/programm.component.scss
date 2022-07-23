@@ -1,0 +1,15 @@
+@mixin max-width($width) {
+	@media screen and (max-width: $width) {
+		@content;
+	}
+}
+
+.container{
+    display:flex;
+    align-items: row;
+    flex-wrap: wrap;
+}
+
+.item{
+    flex: 1;
+}
