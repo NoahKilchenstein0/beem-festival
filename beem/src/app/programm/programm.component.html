@@ -1,8 +1,24 @@
-<div class="container">
-        <artist-card *ngFor="let artist of artists"
+<div class="columncontainer">
+    <div class="headerRow"  *ngIf="!isDrillDownActive">
+        <h3>Alle Künstler</h3>
+        <div class="rightSide">
+            <button mat-mini-fab (click)="filterFavorites()"><mat-icon>favorite</mat-icon></button>
+        </div>
+    </div>
+    <div 
+        class="container" 
+        *ngIf="!isDrillDownActive">
+        <artist-card 
+            *ngFor="let artist of filteredArtist"
             class="item"
             [artist]="artist"
             [isFavorit]="getFavoritState(artist)"
-            (setFavorit)="setFavorite($event)">
+            (setFavorit)="setFavorite($event)"
+            (navigateToArtist)="navigateToArtistPage($event)">
         </artist-card>
+    </div>
+    <artist-site
+        *ngIf="isDrillDownActive"
+        [artist]="selectedArtist">
+</artist-site>
 </div>

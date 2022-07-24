@@ -12,6 +12,7 @@ import {MatCardModule} from '@angular/material/card';
 import { ProgrammComponent } from './programm/programm.component';
 import { NewsComponent } from './news/news.component';
 import { ArtistCardComponent } from './programm/artist/card/artist-card.component';
+import { ArtistSiteComponent } from './programm/artist/site/artist-site.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ArtistCardComponent } from './programm/artist/card/artist-card.componen
     AppComponent,
     ProgrammComponent,
     NewsComponent,
-    ArtistCardComponent
+    ArtistCardComponent,
+    ArtistSiteComponent
   ],
   imports: [
     BrowserModule,
