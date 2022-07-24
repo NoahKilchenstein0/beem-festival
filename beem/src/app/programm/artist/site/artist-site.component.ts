@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { Artist } from "src/app/models/artist";
 import * as moment from 'moment';
 import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
+import { UrlbypassPipe } from "src/app/pipes/urlbyass.pipe";
 
 @Component({
     selector: 'artist-site',
@@ -10,17 +11,30 @@ import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
 })
 export class ArtistSiteComponent implements OnInit {
     @Input("artist") artist: Artist = new Artist();
-    public safeSrc: SafeResourceUrl;
-    constructor(private sanitizer: DomSanitizer){
-        this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(this.artist.spotify);
+    @Output("onBack") onBackCall: EventEmitter<void> = new EventEmitter<void>();
+    public embedURI: SafeResourceUrl;
+
+    constructor(public urlbypassPipe: UrlbypassPipe){
     }
 
-    ngOnInit(): void {
-        
+    ngOnInit(): void {       
+        this.embedURI = this.urlbypassPipe.transform(this.artist.spotify);
     }
 
 
     public getEndTime() : string {  
         return moment(this.artist.dayStartTime).add(this.artist.playTime, 'minutes').format("HH:mm").toString();
+    }
+
+    public onFacebook(): void {
+        window.open(this.artist.website, '_blank').focus();
+    }
+
+    public onInstagram(): void {
+        window.open(this.artist.instagramm, '_blank').focus();
+    }
+
+    public onBack(): void {
+        this.onBackCall.emit();
     }
 }

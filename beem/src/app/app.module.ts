@@ -13,6 +13,7 @@ import { ProgrammComponent } from './programm/programm.component';
 import { NewsComponent } from './news/news.component';
 import { ArtistCardComponent } from './programm/artist/card/artist-card.component';
 import { ArtistSiteComponent } from './programm/artist/site/artist-site.component';
+import { UrlbypassPipe } from './pipes/urlbyass.pipe';
 
 
 @NgModule({
@@ -33,7 +34,7 @@ import { ArtistSiteComponent } from './programm/artist/site/artist-site.componen
     MatSidenavModule,
     MatCardModule
   ],
-  providers: [],
+  providers: [UrlbypassPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

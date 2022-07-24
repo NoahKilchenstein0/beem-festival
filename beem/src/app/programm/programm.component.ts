@@ -15,8 +15,12 @@ export class ProgrammComponent implements OnInit {
                               genre:"New-Metal", 
                               description:"Slipknot sind mit ihrem neuem Album 'The End so Far' dieses Jahr zu Besuch auf dem Beem", 
                               img: "https://www.morecore.de/wp-content/uploads/slipknot-promo-01-2021-Credit-Alexandra-Gray-official-press-scaled.jpg",
-                              spotify: "https://open.spotify.com/embed/artist/05fG473iIaoy82BF1aGhL8?utm_source=generator"}
-                              ),
+                              spotify: "https://open.spotify.com/embed/artist/05fG473iIaoy82BF1aGhL8?utm_source=generator",
+                              website: "https://www.facebook.com/slipknot",
+                              instagramm: "https://www.instagram.com/slipknot/?hl=de",
+                              dayStartTime: new Date(2022, 8, 12, 19, 15, 0, 0),
+                              playTime: 120,
+                              stage: "Mainstage"}),
                               new Artist({id:2,
                                 name:"Knochenfabrik", 
                                 genre:"Punk", 
@@ -95,5 +99,9 @@ export class ProgrammComponent implements OnInit {
   navigateToArtistPage(artist:Artist): void{
     this.selectedArtist = artist;
     this.isDrillDownActive = true;
+  }
+
+  onBack(): void {
+    this.isDrillDownActive = false;
   }
 }
