@@ -4,7 +4,7 @@
   </div>
   <div 
       class="container" 
-      *ngIf="!isDrillDownActive">
+      *ngIf="!isDrillDownActive && !isAdmin()">
       <artist-card 
           *ngFor="let artist of filteredArtist"
           class="item"
@@ -13,8 +13,24 @@
       </artist-card>
   </div>
   <artist-site
-      *ngIf="isDrillDownActive"
+      *ngIf="isDrillDownActive && !isAdmin()"
       [artist]="selectedArtist"
       (onBack)="onBack()">
-</artist-site>
+    </artist-site>
+    <div 
+    class="container" 
+    *ngIf="!isDrillDownActive && isAdmin()">
+    <artist-admin-overview
+        [artists]="artists"
+        (selectedArtist)="navigateToEditArtist($event)"
+        (createArtist)="navigateToEditArtist($event)"
+        (deleteArtist)="deleteArtist($event)"
+        >
+    </artist-admin-overview>
+    <artist-admin-edit
+        [artist]="selectedArtist"
+        *ngIf="isDrillDownActive && isAdmin()">
+  </artist-admin-edit>
+</div>
+
 </div>

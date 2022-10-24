@@ -1,0 +1,35 @@
+<div class="container">
+  <mat-form-field appearance="standard">
+    <mat-label>Bandname</mat-label>
+    <input matInput  [formControl]="name">
+  </mat-form-field>
+  <mat-form-field appearance="standard">
+    <mat-label>Genre</mat-label>
+    <input matInput  [formControl]="genre">
+  </mat-form-field>
+  <mat-form-field appearance="standard">
+    <mat-label>Startzeit</mat-label>
+    <input matInput [ngxMatDatetimePicker]="picker" placeholder="Startzeit auswählen" 
+          [formControl]="startTime">
+    <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+    <ngx-mat-datetime-picker #picker [showSpinners]="true" [showSeconds]="false"
+    [stepHour]="1" [stepMinute]="1" [stepSecond]="1"
+    [touchUi]="true" [enableMeridian]="false"
+    [disableMinute]="false" [hideTime]="false">
+    </ngx-mat-datetime-picker>
+  </mat-form-field>
+  <mat-form-field appearance="standard">
+    <mat-label>Spielzeit in Minuten</mat-label>
+    <input matInput type="number"  [formControl]="playTime">
+  </mat-form-field>
+  <mat-form-field appearance="standard">
+    <mat-label>Beschreibung</mat-label>
+    <input matInput [formControl]="description" >
+  </mat-form-field>
+  <mat-form-field appearance="standard">
+    <mat-checkbox [formControl]="isBooked">Ist Gebucht?</mat-checkbox>
+  </mat-form-field>
+  <mat-form-field appearance="standard">
+    <mat-checkbox [formControl]="isActive">Soll angezeigt werden?</mat-checkbox>
+  </mat-form-field>
+</div>

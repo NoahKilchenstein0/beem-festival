@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, TitleStrategy } from '@angular/router';
 import { Artist } from '../models/artist';
+import { Roles } from '../models/user';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-programm',
@@ -57,7 +59,10 @@ export class ProgrammComponent implements OnInit {
   public selectedArtist: Artist = new Artist();
   public isDrillDownActive: boolean = false;
 
-  constructor(public router: Router) {
+  public isEdit: boolean = false;
+
+  constructor(public router: Router,
+              public userService: UserService) {
   
   }
 
@@ -70,8 +75,34 @@ export class ProgrammComponent implements OnInit {
     this.isDrillDownActive = true;
   }
 
+
+
   onBack(): void {
     this.isDrillDownActive = false;
+  }
+
+  isAdmin(): boolean {
+    if(this.userService.user !== null)
+    {
+      return this.userService.user.role === Roles.Admin
+    }
+    return false;
+  }
+
+  navigateToEditArtist(artist:Artist): void {
+    this.isDrillDownActive = true;
+    if(artist !== new Artist){
+      this.isEdit = true;
+    }
+    else {
+      this.isEdit = false;
+    }
+    console.log(this.isEdit);
+    this.selectedArtist = artist;
+  }
+
+  deleteArtist(artist:Artist): void {
+    this.artists.splice(this.artists.findIndex(x => x === artist),1);
   }
 
 }

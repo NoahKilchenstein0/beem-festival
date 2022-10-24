@@ -5,7 +5,7 @@
         <button mat-button routerLink="{{navItem.route}}">{{navItem.name}}</button>
     </div>
   </mat-drawer>
-  <mat-drawer-content>   
+  <mat-drawer-content [class.contentWidth]="!isTopNav">   
     <app-nav-bar  [navItems]="navItems" *ngIf="isTopNav"></app-nav-bar>
     <div *ngIf="router.url == '/'" class="background-image"></div>       
     <router-outlet></router-outlet>
