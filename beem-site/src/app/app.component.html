@@ -1,0 +1,13 @@
+<mat-drawer-container autosize class="general" >
+  <mat-drawer #drawer mode="side" opened *ngIf="!isTopNav">
+      <img class="logo" src="../assets/logo-transparent.png" alt="beem-banner">
+      <div *ngFor="let navItem of navItems" class="menu-buttons">
+        <button mat-button routerLink="{{navItem.route}}">{{navItem.name}}</button>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>   
+    <app-nav-bar  [navItems]="navItems" *ngIf="isTopNav"></app-nav-bar>
+    <div *ngIf="router.url == '/'" class="background-image"></div>       
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

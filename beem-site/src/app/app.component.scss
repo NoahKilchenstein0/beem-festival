@@ -1,0 +1,31 @@
+.background-image {
+    height: 35vh;
+    background-image: url('../assets/beem-banner2.jpeg');
+    background-size: 100% 35vh;
+    background-position: center center;
+  }
+
+  .general {
+    height: 100vh;
+  }
+  
+  .right-drawer {
+    left: 130px;
+    background-color: rgb(40, 40, 40);
+  }
+  
+  .example-spacer {
+      flex: 1 1 auto;
+    }
+  
+  .logo{
+    max-width: 200px;
+    max-height: 200px;
+    margin: 15px;
+  }
+  
+  .menu-buttons{
+    display: flex;
+    justify-content: center;
+  }
+  

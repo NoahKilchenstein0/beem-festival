@@ -1,0 +1,26 @@
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.background-image {
+    height: 40vh;
+}
+
+.artistName{
+    font-size: 3em !important;
+}
+
+.logos{
+    max-width: 24px;
+    max-height: 24px;
+    margin-right: 5px;
+}
+
+.columns{
+    display: flex;
+    flex-direction: column;
+}
+.backButton{
+    bottom: 0;
+}

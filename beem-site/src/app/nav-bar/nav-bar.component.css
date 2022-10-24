@@ -1,0 +1,18 @@
+.topButton{
+    margin: 1rem;
+    height:auto;
+    width: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.navBar {
+    background-color: #303030 !important;
+    height: 5vh !important;
+}
+
+.logo{
+    max-width: 200px;
+    max-height: 5vh;
+    margin: 15px;
+  }

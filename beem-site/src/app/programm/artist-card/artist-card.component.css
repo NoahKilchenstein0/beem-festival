@@ -1,0 +1,31 @@
+.card {
+    max-width: 400px;
+    margin: 1rem;
+  }
+
+  .rowFlex{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;    
+  }
+  .colums{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .artist-name{
+    font-size: 2rem;
+  }
+  .artist-genre{
+    font-size: 1rem;
+  }
+
+  .artist-image{
+    max-width: 400px;
+    max-height: 250px;
+    min-width: 400px;
+    min-height: 250px;
+    padding-left: 1rem;
+    padding-top: 1rem;
+  }

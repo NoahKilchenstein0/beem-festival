@@ -1,0 +1,22 @@
+.columncontainer{
+    display: felx;
+    flex-direction: column;
+}
+
+.headerRow{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;      
+    margin: 1rem; 
+}
+
+.container{
+    display:flex;
+    align-items: row;
+    flex-wrap: wrap;
+}
+
+.item{
+    flex: 1;
+}

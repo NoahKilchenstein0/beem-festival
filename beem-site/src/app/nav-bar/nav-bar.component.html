@@ -1,0 +1,6 @@
+<mat-toolbar class="navbar">
+  <mat-toolbar-row>
+    <img class="logo" src="../assets/logo-transparent.png" alt="beem-banner" (click)="onNavigateHome()">
+    <button mat-button *ngFor="let navItem of navItems" class="topButton" routerLink="{{navItem.route}}">{{navItem.name}}</button>
+  </mat-toolbar-row>
+</mat-toolbar>
