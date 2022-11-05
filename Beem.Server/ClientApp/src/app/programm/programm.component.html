@@ -18,19 +18,22 @@
       (onBack)="onBack()">
     </artist-site>
     <div 
-    class="container" 
-    *ngIf="!isDrillDownActive && isAdmin()">
-    <artist-admin-overview
-        [artists]="artists"
-        (selectedArtist)="navigateToEditArtist($event)"
-        (createArtist)="navigateToEditArtist($event)"
-        (deleteArtist)="deleteArtist($event)"
-        >
-    </artist-admin-overview>
-    <artist-admin-edit
-        [artist]="selectedArtist"
-        *ngIf="isDrillDownActive && isAdmin()">
-  </artist-admin-edit>
-</div>
-
+        class="container"
+        [ngClass]="{'containerNonFlex':isDrillDownActive}" 
+        *ngIf="isAdmin()">
+        <artist-admin-overview
+            [artists]="artists"
+            (selectedArtist)="navigateToEditArtist($event)"
+            (createArtist)="navigateToEditArtist($event)"
+            (deleteArtist)="deleteArtist($event)"
+            *ngIf="!isDrillDownActive"
+            >
+        </artist-admin-overview>
+        <artist-admin-edit
+            [artist]="selectedArtist"
+            (onCreateUpdate)="updateArtist($event)"
+            (onBack)="onBack()"
+            *ngIf="isDrillDownActive">
+        </artist-admin-edit>
+    </div>
 </div>

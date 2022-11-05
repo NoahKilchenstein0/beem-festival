@@ -27,9 +27,23 @@
     <input matInput [formControl]="description" >
   </mat-form-field>
   <mat-form-field appearance="standard">
-    <mat-checkbox [formControl]="isBooked">Ist Gebucht?</mat-checkbox>
+    <mat-label>Bild-Link</mat-label>
+    <input matInput [formControl]="img" >
   </mat-form-field>
-  <mat-form-field appearance="standard">
-    <mat-checkbox [formControl]="isActive">Soll angezeigt werden?</mat-checkbox>
-  </mat-form-field>
+  <mat-checkbox [formControl]="isBooked" class="alignEnd">Ist Gebucht?</mat-checkbox>
+  <mat-checkbox [formControl]="isActive" class="alignEnd">Soll angezeigt werden?</mat-checkbox>
+  <div class="buttonMargin">
+    <button mat-raised-button 
+      class="button"
+      (click)="onSave()"
+    >
+      Speichern
+    </button>
+    <button mat-raised-button 
+      class="button"
+      (click)="onBack()"
+      >
+    Abbrechen
+    </button>
+  </div>
 </div>

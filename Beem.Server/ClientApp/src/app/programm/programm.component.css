@@ -18,6 +18,10 @@
     margin: 1rem;
 }
 
+.containerNonFlex{
+    display: block !important;
+}
+
 .item{
     flex: 1;
 }

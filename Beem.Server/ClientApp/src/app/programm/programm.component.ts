@@ -65,18 +65,36 @@ export class ProgrammComponent implements OnInit {
 
   navigateToEditArtist(artist:Artist): void {
     this.isDrillDownActive = true;
-    if(artist !== new Artist){
+    if(artist.id !== 0){
       this.isEdit = true;
     }
     else {
       this.isEdit = false;
     }
-    console.log(this.isEdit);
     this.selectedArtist = artist;
   }
 
+  updateArtist(artist:Artist){
+    if(this.isEdit){
+      this.artistsService.updateArtist(artist).subscribe(x => {
+        let index = this.artists.findIndex(x => x.id === artist.id);
+        this.artists.splice(index, 1);
+        this.artists.push(x);
+        this.isDrillDownActive = false;
+      });
+    }
+    else {
+      this.artistsService.createArtist(artist).subscribe(x => {
+        this.artists.push(x);
+        this.isDrillDownActive = false;
+      });
+    }
+  }
+
   deleteArtist(artist:Artist): void {
-    this.artists.splice(this.artists.findIndex(x => x === artist),1);
+    this.artistsService.deleteArtist(artist.id).subscribe(x => {
+      this.artists.splice(this.artists.findIndex(x => x === artist),1);
+    });
   }
 
 }

@@ -30,6 +30,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { ArtistService } from './services/artist.service';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
+import { NgxMatMomentModule } from '@angular-material-components/moment-adapter';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
@@ -68,9 +70,11 @@ const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
     MatCardModule,
     MatPaginatorModule,
     MatFormFieldModule,
+    MatCheckboxModule,
     MatInputModule,
     NgxMatDatetimePickerModule,
     NgxMatTimepickerModule,
+    NgxMatMomentModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
