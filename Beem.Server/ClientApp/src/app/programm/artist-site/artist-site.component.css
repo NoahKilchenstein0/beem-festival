@@ -24,3 +24,15 @@
 .backButton{
     bottom: 0;
 }
+
+.card{
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.allignContent { 
+    align-content: center;
+    justify-content: center;
+    align-self: center;
+}

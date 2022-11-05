@@ -27,6 +27,10 @@ export class ArtistSiteComponent implements OnInit {
       return moment(this.artist.dayStartTime).add(this.artist.playTime, 'minutes').format("HH:mm").toString();
   }
 
+  public getStartTime() : string {  
+    return moment(this.artist.dayStartTime).format("HH:mm").toString();
+  }
+
   public onFacebook(): void {
     let facebookLink = this.artist !== null && this.artist?.website !== "" ? this.artist.website : "https://www.facebook.com/";
     window.open(facebookLink, '_blank')?.focus();

@@ -1,0 +1,17 @@
+.columncontainer{
+    display: felx;
+    flex-direction: column;
+    margin: 1rem;
+}
+
+.form-field{
+    margin-left: 0.5rem;
+}
+
+.form-buttons{
+    align-self: flex-end;
+    margin-top: 0.5rem;
+    right: 1rem;
+    display: block;
+    position:absolute;
+}

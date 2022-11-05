@@ -1,19 +1,20 @@
 <div class="container">
-
-  <img class="background-image" src="{{artist.img}}" alt="Photo of {{artist.name}}"/>
-     <h3 class="artistName">{{artist.name}} - {{artist.genre}}</h3>
-     <div *ngIf="artist.dayStartTime" class="columns">
-         <span>Bühne: {{artist.stage}}</span>
-         <span>Tag: {{artist.dayStartTime | date}}</span>
-         <span>Spielzeit: {{artist.dayStartTime | date:'shortTime'}} - {{getEndTime()}}</span>
- </div>
- <div>
-     <img class="logos" src="../../../../assets/f_logo_RGB-Blue_1024.webp" (click)="onFacebook()">
-     <img class="logos" src="../../../../assets/ig-icon.webp" (click)="onInstagram()">
- </div>
-
- <div class="description" [innerHTML]="artist.description"></div>
- <iframe *ngIf="artist.spotify !== ''" [src]="embedURI" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
- 
- <button mat-button (click)="onBack()" class="backButton">Zurück</button>
+    <img class="background-image" src="{{artist.img}}" alt="Photo of {{artist.name}}"/>
+    <mat-card class="card">
+        <mat-card-content class="allignContent">
+            <h3 class="artistName">{{artist.name}} - {{artist.genre}}</h3>
+            <div *ngIf="artist.dayStartTime" class="columns">
+                <span>Bühne: {{artist.stage}}</span>
+                <span>Tag: {{artist.dayStartTime | date}}</span>
+                <span>Spielzeit: {{getStartTime()}} - {{getEndTime()}}</span>
+            </div>
+            <div class="description" [innerHTML]="artist.description"></div>
+            <iframe *ngIf="artist.spotify !== ''" [src]="embedURI" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            <div>
+                <img class="logos" src="../../../../assets/f_logo_RGB-Blue_1024.webp" (click)="onFacebook()">
+                <img class="logos" src="../../../../assets/ig-icon.webp" (click)="onInstagram()">
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <button mat-button (click)="onBack()" class="backButton">Zurück</button>
 </div>

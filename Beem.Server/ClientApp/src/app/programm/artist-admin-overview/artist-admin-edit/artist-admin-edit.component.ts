@@ -21,6 +21,12 @@ export class ArtistAdminEditComponent implements OnInit, OnChanges {
   public img: FormControl = new FormControl({value: this.artist?.img, disabled: false});
   public isBooked: FormControl = new FormControl({value: this.artist?.isBooked, disabled: false});
   public isActive: FormControl = new FormControl({value: this.artist?.isActivated, disabled: false});
+  public spotify: FormControl = new FormControl({value: this.artist?.spotify, disabled: false});
+  public website: FormControl = new FormControl({value: this.artist?.website, disabled: false});
+  public instagram: FormControl = new FormControl({value: this.artist?.instagramm, disabled: false});
+  public stage: FormControl = new FormControl({value: this.artist?.stage, disabled: false});
+
+  public stages = Stages;
 
   constructor() { }
 
@@ -33,7 +39,10 @@ export class ArtistAdminEditComponent implements OnInit, OnChanges {
       this.img.setValue(this.artist?.img);
       this.isBooked.setValue(this.artist?.isBooked);
       this.isActive.setValue(this.artist?.isActivated);
-    
+      this.spotify.setValue(this.artist?.spotify);
+      this.website.setValue(this.artist?.website);
+      this.instagram.setValue(this.artist?.instagramm);
+      this.stage.setValue(this.artist?.stage);
   }
 
   ngOnInit() {
@@ -55,7 +64,13 @@ export class ArtistAdminEditComponent implements OnInit, OnChanges {
     updateArtist.img = this.img.value;
     updateArtist.isBooked = this.isBooked.value;
     updateArtist.isActivated = this.isActive.value;
+    updateArtist.spotify = this.spotify.value;
+    updateArtist.website = this.website.value;
+    updateArtist.instagramm = this.instagram.value;
+    updateArtist.stage = this.stage.value;
     this.onCreateUpdate.emit(updateArtist);
   }
 
 }
+
+export const Stages: string[] = ["Beem Stage", "Träcker Stage"];

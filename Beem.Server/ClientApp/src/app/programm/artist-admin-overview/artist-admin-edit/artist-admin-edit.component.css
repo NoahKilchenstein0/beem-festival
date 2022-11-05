@@ -14,4 +14,9 @@
 
 .button{
     margin-left: 1rem;
-  }
+}
+
+.formMargin{
+    margin-bottom: 1rem;
+    width: 100%;
+}

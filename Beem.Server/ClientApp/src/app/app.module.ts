@@ -33,8 +33,8 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { NgxMatMomentModule } from '@angular-material-components/moment-adapter';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIcon, MatIconModule} from '@angular/material/icon';
-import { QuillModule } from 'ngx-quill'
 import { RichTextEditorModule } from 'src/richtexteditor/richtexteditor.module';
+import {MatSelectModule} from '@angular/material/select';
 
 const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
   parse: {
@@ -83,7 +83,8 @@ const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
     BrowserAnimationsModule,
     MatDatepickerModule,
     MatIconModule,
-    RichTextEditorModule
+    RichTextEditorModule,
+    MatSelectModule
   ],
   providers: [UrlbypassPipe,
               UserService,

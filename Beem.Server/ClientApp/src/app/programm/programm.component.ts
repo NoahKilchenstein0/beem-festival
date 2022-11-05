@@ -21,6 +21,8 @@ export class ProgrammComponent implements OnInit {
   public isDrillDownActive: boolean = false;
   public user: User | null = null;
 
+  public isAdminView: boolean = false;
+
   public isEdit: boolean = false;
 
   constructor(public router: Router,
@@ -32,12 +34,14 @@ export class ProgrammComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.isAdmin()){
+      this.isAdminView = true;
       this.artistsService.getArtists().subscribe(x => {
         this.artists = x;
         this.filteredArtist = this.artists;
       })
     }
     else {
+      this.isAdminView = true;
       this.artistsService.getArtistsActive().subscribe(x => {
         this.artists = x;
         this.filteredArtist = this.artists;
@@ -50,13 +54,29 @@ export class ProgrammComponent implements OnInit {
     this.isDrillDownActive = true;
   }
 
-
+  onSwap(): void {
+    if(this.isAdminView){
+      this.isAdminView = false;
+      this.filteredArtist = this.artists.filter(x => x.isBooked === true);
+    }
+    else {
+      this.isAdminView = true;
+      this.filteredArtist = this.artists;
+    }
+  }
 
   onBack(): void {
     this.isDrillDownActive = false;
   }
 
   isAdmin(): boolean {
+    if(this.user === null){
+      return false;
+    }
+    return this.user.role === Roles.Admin && this.isAdminView;
+  }
+
+  isAdminOnly(): boolean {
     if(this.user === null){
       return false;
     }

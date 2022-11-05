@@ -20,7 +20,7 @@ export class ArtistAdminOverviewComponent implements OnInit, AfterViewInit {
   public filter: FormControl = new FormControl();
 
   public dataSource: MatTableDataSource<Artist> = new MatTableDataSource();  
-  public displayedColumns: string[] = ['id', 'name', 'genre', 'dayStartTime', 'playTime'];
+  public displayedColumns: string[] = ['id', 'name', 'genre', 'dayStartTime', 'playTime', 'isBooked'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

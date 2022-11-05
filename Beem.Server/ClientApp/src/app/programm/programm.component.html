@@ -36,4 +36,12 @@
             *ngIf="isDrillDownActive">
         </artist-admin-edit>
     </div>
+
+    <button mat-raised-button 
+        class="button"
+        (click)="onSwap()"
+        *ngIf="isAdminOnly() && !isDrillDownActive"
+    >
+    Admin ansicht wechseln
+  </button>
 </div>

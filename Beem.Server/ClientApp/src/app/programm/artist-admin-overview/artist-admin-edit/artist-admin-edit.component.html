@@ -1,13 +1,13 @@
 <div class="container">
-  <mat-form-field appearance="standard">
+  <mat-form-field appearance="fill">
     <mat-label>Bandname</mat-label>
     <input matInput  [formControl]="name">
   </mat-form-field>
-  <mat-form-field appearance="standard">
+  <mat-form-field appearance="fill">
     <mat-label>Genre</mat-label>
     <input matInput  [formControl]="genre">
   </mat-form-field>
-  <mat-form-field appearance="standard">
+  <mat-form-field appearance="fill">
     <mat-label>Startzeit</mat-label>
     <input matInput [ngxMatDatetimePicker]="picker" placeholder="Startzeit auswählen" 
           [formControl]="startTime">
@@ -18,16 +18,37 @@
     [disableMinute]="false" [hideTime]="false">
     </ngx-mat-datetime-picker>
   </mat-form-field>
-  <mat-form-field appearance="standard">
+  <mat-form-field appearance="fill">
     <mat-label>Spielzeit in Minuten</mat-label>
     <input matInput type="number"  [formControl]="playTime">
   </mat-form-field>
   <mat-label>Beschreibung</mat-label>
-  <richtexteditor [control]="description"></richtexteditor>
-  <mat-form-field appearance="standard">
+  <richtexteditor [control]="description" class="formMargin"></richtexteditor>
+  <mat-form-field appearance="fill">
     <mat-label>Bild-Link</mat-label>
     <input matInput [formControl]="img" >
+  </mat-form-field> 
+   <mat-form-field appearance="fill">
+    <mat-label>Spotify Link</mat-label>
+    <input matInput [formControl]="spotify" >
   </mat-form-field>
+  <mat-form-field appearance="fill">
+   <mat-label>Webseite/Facebook</mat-label>
+   <input matInput [formControl]="website" >
+ </mat-form-field>
+ <mat-form-field appearance="fill">
+  <mat-label>Instagram</mat-label>
+  <input matInput [formControl]="instagram" >
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Bühne</mat-label>
+  <mat-select [formControl]="stage">
+    <mat-option *ngFor="let st of stages" [value]="st">
+      {{st}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
   <mat-checkbox [formControl]="isBooked" class="alignEnd">Ist Gebucht?</mat-checkbox>
   <mat-checkbox [formControl]="isActive" class="alignEnd">Soll angezeigt werden?</mat-checkbox>
   <div class="buttonMargin">
