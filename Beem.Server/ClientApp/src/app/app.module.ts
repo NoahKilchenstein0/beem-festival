@@ -26,8 +26,10 @@ import { ArtistAdminEditComponent } from './programm/artist-admin-overview/artis
 import { NgxMatDateFormats, NgxMatDatetimePickerModule, NgxMatTimepickerModule, NGX_MAT_DATE_FORMATS } from '@angular-material-components/datetime-picker';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
+import { ArtistService } from './services/artist.service';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
 
 
 const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
@@ -78,7 +80,14 @@ const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
   providers: [UrlbypassPipe,
               UserService,
               AuthService,
-              {provide: NGX_MAT_DATE_FORMATS, useValue: CUSTOM_DATE_FORMATS}
+              ArtistService,
+              {provide: NGX_MAT_DATE_FORMATS, useValue: CUSTOM_DATE_FORMATS},
+              AuthInterceptor,
+              {
+                   provide: HTTP_INTERCEPTORS,
+                   useExisting: AuthInterceptor,
+                   multi: true
+               }
             ],
   bootstrap: [AppComponent]
 })

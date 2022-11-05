@@ -48,10 +48,12 @@ namespace Beem.Server.Controllers
 
                var token = GetToken(authClaims);
 
-                return Ok(new
+                return Ok(new User
                 {
-                    token = new JwtSecurityTokenHandler().WriteToken(token),
-                    expiration = token.ValidTo
+                    UserName = user.UserName,
+                    Role = userRoles.First(),
+                    JwtToken = new JwtSecurityTokenHandler().WriteToken(token),
+                    Expiration = token.ValidTo
                 });
             }
             return Unauthorized();

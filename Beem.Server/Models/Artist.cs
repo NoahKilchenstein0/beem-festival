@@ -2,6 +2,25 @@ namespace Beem.Server.Models
 {
     public class Artist 
     {
+        public Artist() {
+            this.Id = 0;
+            this.Name = "";
+            this.Genre = "";
+            this.Img = "";
+            this.Description = "";
+            this.IsActivated = false;
+            this.IsBooked = false;
+        }
+
+        public Artist(int Id, string Name, string Genre, string Img, string Description, bool IsActivated, bool IsBooked){
+            this.Id = Id;
+            this.Name = Name;
+            this.Genre = Genre;
+            this.Img = Img;
+            this.Description = Description;
+            this.IsActivated = IsActivated;
+            this.IsBooked = IsBooked;
+        }
         public int Id { get; set; }
         public string Name{ get; set; }
         public string Genre { get; set; }

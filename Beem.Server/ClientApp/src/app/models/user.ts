@@ -1,11 +1,12 @@
 export class User {
     public userName: string = "";
     public jwtToken: string = "";
-    public role: Roles = 2;
+    public expiration: Date = new Date();
+    public role: string = Roles.User;
 }
 
 export enum Roles {
-    Admin = 1,
-    User = 2,
+    Admin = "Admin",
+    User = "User",
 }
 
