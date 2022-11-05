@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "zJkxLmK1fTMgjGPkYWGt1ruhDhR5WKPKtR126sE2UDU=",
+  "Source": "Beem.Server",
+  "BasePath": "_content/Beem.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

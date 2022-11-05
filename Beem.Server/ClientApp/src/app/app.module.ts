@@ -27,6 +27,9 @@ import { NgxMatDateFormats, NgxMatDatetimePickerModule, NgxMatTimepickerModule, 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './services/auth.service';
+
+
 const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
   parse: {
     dateInput: "l, LTS"
@@ -74,6 +77,7 @@ const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
   ],
   providers: [UrlbypassPipe,
               UserService,
+              AuthService,
               {provide: NGX_MAT_DATE_FORMATS, useValue: CUSTOM_DATE_FORMATS}
             ],
   bootstrap: [AppComponent]

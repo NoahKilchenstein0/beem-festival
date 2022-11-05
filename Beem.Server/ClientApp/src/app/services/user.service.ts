@@ -6,9 +6,5 @@ import { Roles, User } from '../models/user';
 })
 export class UserService {
   public user: User = new User();
-  constructor() {
-    this.user.userName = "globalAdmin";
-    this.user.role = Roles.Admin;
-  }
 
 }
