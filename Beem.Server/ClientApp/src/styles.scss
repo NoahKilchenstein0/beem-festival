@@ -1,7 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @use '@angular/material' as mat;
+@import '~quill/dist/quill.core.css';
+@import '~quill/dist/quill.snow.css';
 
 @include mat.core();
+
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker

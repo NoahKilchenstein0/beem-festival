@@ -12,7 +12,7 @@
      <img class="logos" src="../../../../assets/ig-icon.webp" (click)="onInstagram()">
  </div>
 
- <div class="description">{{artist.description}}</div>
+ <div class="description" [innerHTML]="artist.description"></div>
  <iframe *ngIf="artist.spotify !== ''" [src]="embedURI" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
  
  <button mat-button (click)="onBack()" class="backButton">Zurück</button>

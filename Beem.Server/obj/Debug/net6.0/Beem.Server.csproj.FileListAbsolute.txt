@@ -42,3 +42,5 @@ E:\git\beem-festival\Beem.Server\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens
 E:\git\beem-festival\Beem.Server\bin\Debug\net6.0\Npgsql.dll
 E:\git\beem-festival\Beem.Server\bin\Debug\net6.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 E:\git\beem-festival\Beem.Server\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+E:\git\beem-festival\Beem.Server\bin\Debug\net6.0\package-lock.json
+E:\git\beem-festival\Beem.Server\bin\Debug\net6.0\package.json

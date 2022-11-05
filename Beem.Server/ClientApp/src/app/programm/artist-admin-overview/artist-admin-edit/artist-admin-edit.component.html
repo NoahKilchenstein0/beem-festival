@@ -22,10 +22,8 @@
     <mat-label>Spielzeit in Minuten</mat-label>
     <input matInput type="number"  [formControl]="playTime">
   </mat-form-field>
-  <mat-form-field appearance="standard">
-    <mat-label>Beschreibung</mat-label>
-    <input matInput [formControl]="description" >
-  </mat-form-field>
+  <mat-label>Beschreibung</mat-label>
+  <richtexteditor [control]="description"></richtexteditor>
   <mat-form-field appearance="standard">
     <mat-label>Bild-Link</mat-label>
     <input matInput [formControl]="img" >

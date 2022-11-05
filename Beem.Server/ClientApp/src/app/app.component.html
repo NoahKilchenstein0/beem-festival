@@ -1,9 +1,10 @@
 <mat-drawer-container autosize class="general" >
   <mat-drawer #drawer mode="side" opened *ngIf="!isTopNav">
-      <img class="logo" src="../assets/logo-transparent.png" alt="beem-banner">
+      <img class="logo" src="../assets/logo-transparent.png" alt="beem-banner" (click)="onNavigateHome()">
       <div *ngFor="let navItem of navItems" class="menu-buttons">
         <button mat-button routerLink="{{navItem.route}}">{{navItem.name}}</button>
-    </div>
+      </div>
+      <button mat-button *ngIf="this.authoritheService.isLoggedIn()" class="logoutButton" (click)="onLogout()"><mat-icon>logout</mat-icon>Ausloggen</button>
   </mat-drawer>
   <mat-drawer-content [class.contentWidth]="!isTopNav">   
     <app-nav-bar  [navItems]="navItems" *ngIf="isTopNav"></app-nav-bar>

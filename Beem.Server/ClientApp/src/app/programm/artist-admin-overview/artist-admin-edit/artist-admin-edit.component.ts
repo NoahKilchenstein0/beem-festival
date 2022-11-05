@@ -49,13 +49,10 @@ export class ArtistAdminEditComponent implements OnInit, OnChanges {
     updateArtist.id = this.artist !== null ? this.artist.id : 0;
     updateArtist.name = this.name.value;
     updateArtist.dayStartTime = this.startTime.value;
-    console.log(this.genre.value);
     updateArtist.genre = this.genre.value;
     updateArtist.playTime = this.playTime.value;
     updateArtist.description = this.description.value;
     updateArtist.img = this.img.value;
-    console.log(this.isBooked.value);
-    console.log(this.isActive.value);
     updateArtist.isBooked = this.isBooked.value;
     updateArtist.isActivated = this.isActive.value;
     this.onCreateUpdate.emit(updateArtist);

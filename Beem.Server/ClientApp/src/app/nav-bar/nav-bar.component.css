@@ -15,4 +15,12 @@
     max-width: 200px;
     max-height: 5vh;
     margin: 15px;
-  }
+}
+
+.logoutButton{
+    margin: 1rem;
+    height:auto;
+    width: auto;
+    align-self: flex-end;
+    justify-content: center;
+}
