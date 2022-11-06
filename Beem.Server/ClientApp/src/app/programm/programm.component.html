@@ -1,4 +1,4 @@
-<div class="columncontainer">
+<div class="columncontainer" [ngClass]="{'topNavMargin':globalsService.isTopNav}">
   <div class="headerRow"  *ngIf="!isDrillDownActive">
       <h1>Alle Künstler</h1>
   </div>

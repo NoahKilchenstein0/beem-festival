@@ -4,6 +4,7 @@ import { Artist } from '../models/artist';
 import { Roles, User } from '../models/user';
 import { ArtistService } from '../services/artist.service';
 import { AuthService } from '../services/auth.service';
+import { GlobalService } from '../services/global.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -28,7 +29,8 @@ export class ProgrammComponent implements OnInit {
   constructor(public router: Router,
               public userService: UserService,
               public artistsService: ArtistService,
-              public authenticationService: AuthService) {
+              public authenticationService: AuthService,
+              public globalsService: GlobalService) {
     this.user = this.authenticationService.userValue;
   }
 
@@ -47,11 +49,14 @@ export class ProgrammComponent implements OnInit {
         this.filteredArtist = this.artists;
       })
     }
+    this.globalsService.isArtistDrillDown.subscribe(x => {
+      this.isDrillDownActive = x;
+    });
   }
 
   navigateToArtistPage(artist:Artist): void{
     this.selectedArtist = artist;
-    this.isDrillDownActive = true;
+    this.globalsService.setArtistDrillDownActive();
   }
 
   onSwap(): void {
@@ -66,7 +71,7 @@ export class ProgrammComponent implements OnInit {
   }
 
   onBack(): void {
-    this.isDrillDownActive = false;
+    this.globalsService.setArtistDrillDownDisabled();
   }
 
   isAdmin(): boolean {
@@ -84,7 +89,7 @@ export class ProgrammComponent implements OnInit {
   }
 
   navigateToEditArtist(artist:Artist): void {
-    this.isDrillDownActive = true;
+    this.globalsService.setArtistDrillDownActive();
     if(artist.id !== 0){
       this.isEdit = true;
     }
@@ -100,13 +105,13 @@ export class ProgrammComponent implements OnInit {
         let index = this.artists.findIndex(x => x.id === artist.id);
         this.artists.splice(index, 1);
         this.artists.push(x);
-        this.isDrillDownActive = false;
+        this.globalsService.setArtistDrillDownActive();
       });
     }
     else {
       this.artistsService.createArtist(artist).subscribe(x => {
         this.artists.push(x);
-        this.isDrillDownActive = false;
+        this.globalsService.setArtistDrillDownActive();
       });
     }
   }

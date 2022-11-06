@@ -1,14 +1,19 @@
 .topButton{
-    margin: 1rem;
-    height:auto;
+    height:5vh;
     width: auto;
     display: flex;
     justify-content: center;
+    line-height: 5vh;
 }
 
 .navBar {
-    background-color: #303030 !important;
     height: 5vh !important;
+}
+
+.mat-toolbar{
+    background-color: #424242 !important;
+    z-index: 999;
+    position: fixed;
 }
 
 .logo{

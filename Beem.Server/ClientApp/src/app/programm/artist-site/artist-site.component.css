@@ -20,6 +20,11 @@
     display: flex;
     flex-direction: column;
 }
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
 .backButton{
     bottom: 1rem;
     right: 1rem;

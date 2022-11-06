@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { ChangeDetectorRef, Injectable } from '@angular/core';
 import { Roles, User } from '../models/user';
 import * as moment from 'moment';
 import { UserService } from './user.service';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { GlobalService } from './global.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +16,15 @@ export class AuthService {
   public userSaved: Observable<User| null> = this.userSubject.asObservable();
        
       constructor(private http: HttpClient, private userService: UserService, 
-        private router: Router) {
+        private router: Router, private globalService: GlobalService) {
           const user = localStorage.getItem('user');
           if(user != null){
             this.userSubject = new BehaviorSubject<User | null>(JSON.parse(user));
             this.userSaved = this.userSubject.asObservable();
+            this.globalService.isLoaded = true;
+          }
+          else {
+            this.globalService.isLoaded = true;
           }
       }
 

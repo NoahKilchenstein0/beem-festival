@@ -36,6 +36,7 @@ import {MatIcon, MatIconModule} from '@angular/material/icon';
 import { RichTextEditorModule } from 'src/richtexteditor/richtexteditor.module';
 import {MatSelectModule} from '@angular/material/select';
 import { ImpressumComponent } from './impressum/impressum.component';
+import { GlobalService } from './services/global.service';
 
 const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
   parse: {
@@ -92,6 +93,7 @@ const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
               UserService,
               AuthService,
               ArtistService,
+              GlobalService,
               {provide: NGX_MAT_DATE_FORMATS, useValue: CUSTOM_DATE_FORMATS},
               AuthInterceptor,
               {

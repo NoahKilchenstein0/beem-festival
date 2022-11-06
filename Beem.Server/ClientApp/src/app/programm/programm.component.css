@@ -3,6 +3,10 @@
     flex-direction: column;
 }
 
+.topNavMargin{
+    margin-top: 5.5vh;
+}
+
 .headerRow{
     display: flex;
     flex-direction: row;

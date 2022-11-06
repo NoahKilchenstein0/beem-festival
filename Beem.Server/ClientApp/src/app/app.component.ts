@@ -1,8 +1,9 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap, NavigationEnd } from '@angular/router';
 import { NavItem } from './models/navItem';
 import { AuthService } from './services/auth.service';
+import { GlobalService } from './services/global.service';
 
 
 @Component({
@@ -18,22 +19,16 @@ export class AppComponent {
     new NavItem("Neuigkeiten", "Alle Neuigkeiten übers Beem Festival","news"), 
     new NavItem("Impressum", "Impressum Beem e.V.","impressum")];
 
-  constructor(breakpointObserver: BreakpointObserver,
+  constructor(public globalService: GlobalService,
     public router: Router,
     public authoritheService: AuthService){
-    breakpointObserver.observe([
-      Breakpoints.Web
-    ]).subscribe(result => {
-      if (result.matches) {
-        this.isTopNav = true;
-      }
-    });
-    breakpointObserver.observe([
-      Breakpoints.Tablet,
-      Breakpoints.Handset
-    ]).subscribe(result => {
-      if(result.matches){
-        this.isTopNav = false;
+      
+    this.router.onSameUrlNavigation = "reload";
+    this.router.events.subscribe(Event => {
+      if(Event instanceof NavigationEnd){
+        if(Event.url === "/programm"){
+          this.globalService.setArtistDrillDownDisabled();
+        }
       }
     });
   }

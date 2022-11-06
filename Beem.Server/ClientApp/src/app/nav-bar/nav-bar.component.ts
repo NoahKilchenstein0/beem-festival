@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap, NavigationEnd } from '@angular/router';
 import { NavItem } from '../models/navItem';
 import { User } from '../models/user';
 import { AuthService } from '../services/auth.service';
+import { GlobalService } from '../services/global.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -14,10 +15,20 @@ export class NavBarComponent implements OnInit {
   @Input("navItems") navItems: NavItem[] = [];
   
   public user: User | null = null;
-
-  constructor(public router: Router,
-              public authoritheService: AuthService) 
+  public name: string = "";
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    public authoritheService: AuthService,
+    public globalsService: GlobalService) 
   {
+    this.router.events.subscribe(Event => {
+      if(Event instanceof NavigationEnd){
+        if(Event.url === "/programm"){
+          this.globalsService.setArtistDrillDownDisabled();
+        }
+      }
+    });
   }
 
   ngOnInit() {
