@@ -6,6 +6,7 @@ export class Artist {
     name: string = "";
     genre: string = "";
     img: string = "";
+    imgHeader: string = "";
     description: string = "";
     spotify: string = "";
     website: string = "";

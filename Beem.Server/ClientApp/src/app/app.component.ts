@@ -14,7 +14,9 @@ export class AppComponent {
   title = 'beem-site';
   
   public isTopNav: boolean = true;
-  public navItems: NavItem[] = [new NavItem ("Künstler", "Künstlerseite","programm"), new NavItem("Neuigkeiten", "Alle Neuigkeiten übers Beem Festival","news")];
+  public navItems: NavItem[] = [new NavItem ("Künstler", "Künstlerseite","programm"), 
+    new NavItem("Neuigkeiten", "Alle Neuigkeiten übers Beem Festival","news"), 
+    new NavItem("Impressum", "Impressum Beem e.V.","impressum")];
 
   constructor(breakpointObserver: BreakpointObserver,
     public router: Router,

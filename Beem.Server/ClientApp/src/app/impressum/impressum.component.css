@@ -13,20 +13,8 @@
 
 .container{
     display:flex;
+    flex-direction: column;
     align-items: row;
     flex-wrap: wrap;
     margin: 1rem;
-}
-
-.containerNonFlex{
-    display: block !important;
-}
-
-.item{
-    flex: 1;
-}
-.buttonMargin{
-    position: absolute;
-    right: 2rem;
-    bottom: 1rem;
 }

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="!isPreview">
   <mat-form-field appearance="fill">
     <mat-label>Bandname</mat-label>
     <input matInput  [formControl]="name">
@@ -25,8 +25,12 @@
   <mat-label>Beschreibung</mat-label>
   <richtexteditor [control]="description" class="formMargin"></richtexteditor>
   <mat-form-field appearance="fill">
-    <mat-label>Bild-Link</mat-label>
+    <mat-label>Vorschaubild</mat-label>
     <input matInput [formControl]="img" >
+  </mat-form-field> 
+  <mat-form-field appearance="fill">
+    <mat-label>Banner Bild</mat-label>
+    <input matInput [formControl]="imgHeader" >
   </mat-form-field> 
    <mat-form-field appearance="fill">
     <mat-label>Spotify Link</mat-label>
@@ -49,20 +53,32 @@
   </mat-select>
 </mat-form-field>
 
-  <mat-checkbox [formControl]="isBooked" class="alignEnd">Ist Gebucht?</mat-checkbox>
-  <mat-checkbox [formControl]="isActive" class="alignEnd">Soll angezeigt werden?</mat-checkbox>
-  <div class="buttonMargin">
-    <button mat-raised-button 
-      class="button"
-      (click)="onSave()"
+<mat-checkbox [formControl]="isBooked" class="alignEnd">Ist Gebucht?</mat-checkbox>
+<mat-checkbox [formControl]="isActive" class="alignEnd">Soll angezeigt werden?</mat-checkbox>
+<div class="buttonMargin">
+  <button mat-raised-button 
+  class="button"
+  (click)="onPreview()"
+>
+  Preview
+</button>
+  <button mat-raised-button 
+    class="button"
+    (click)="onSave()"
+  >
+    Speichern
+  </button>
+  <button mat-raised-button 
+    class="button"
+    (click)="onBack()"
     >
-      Speichern
-    </button>
-    <button mat-raised-button 
-      class="button"
-      (click)="onBack()"
-      >
-    Abbrechen
-    </button>
-  </div>
+  Abbrechen
+  </button>
 </div>
+</div>
+  <artist-site
+  *ngIf="isPreview"
+  [artist]="editedArtist"
+  (onBack)="onEndPrieview()">
+</artist-site>
+

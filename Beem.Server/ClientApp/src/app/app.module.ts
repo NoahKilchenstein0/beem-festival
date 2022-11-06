@@ -35,6 +35,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIcon, MatIconModule} from '@angular/material/icon';
 import { RichTextEditorModule } from 'src/richtexteditor/richtexteditor.module';
 import {MatSelectModule} from '@angular/material/select';
+import { ImpressumComponent } from './impressum/impressum.component';
 
 const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
   parse: {
@@ -49,7 +50,7 @@ const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
 };
 
 @NgModule({
-  declarations: [					
+  declarations: [						
     AppComponent,
     ProgrammComponent,
     NewsComponent,
@@ -58,8 +59,9 @@ const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
     ArtistCardComponent,
     ArtistSiteComponent,
     ArtistAdminOverviewComponent,
-    ArtistAdminEditComponent
-   ],
+    ArtistAdminEditComponent,
+    ImpressumComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

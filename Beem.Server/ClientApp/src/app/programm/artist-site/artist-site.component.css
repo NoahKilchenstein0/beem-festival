@@ -4,7 +4,6 @@
 }
 
 .background-image {
-    height: 40vh;
 }
 
 .artistName{
@@ -22,7 +21,10 @@
     flex-direction: column;
 }
 .backButton{
-    bottom: 0;
+    bottom: 1rem;
+    right: 1rem;
+    width: 10%;
+    position: absolute;
 }
 
 .card{
@@ -31,8 +33,6 @@
     flex-direction: column;
 }
 
-.allignContent { 
-    align-content: center;
-    justify-content: center;
-    align-self: center;
+.marginBottom { 
+    margin-bottom: 1rem;
 }

@@ -12,7 +12,7 @@
           (navigateToArtist)="navigateToArtistPage($event)">
       </artist-card>
   </div>
-  <artist-site
+    <artist-site
       *ngIf="isDrillDownActive && !isAdmin()"
       [artist]="selectedArtist"
       (onBack)="onBack()">
@@ -36,12 +36,13 @@
             *ngIf="isDrillDownActive">
         </artist-admin-edit>
     </div>
-
-    <button mat-raised-button 
-        class="button"
-        (click)="onSwap()"
-        *ngIf="isAdminOnly() && !isDrillDownActive"
-    >
-    Admin ansicht wechseln
-  </button>
+    <div class="buttonMargin">
+        <button mat-raised-button 
+            class="button"
+            (click)="onSwap()"
+            *ngIf="isAdminOnly() && !isDrillDownActive"
+        >
+            Admin ansicht wechseln
+        </button>
+    </div>
 </div>

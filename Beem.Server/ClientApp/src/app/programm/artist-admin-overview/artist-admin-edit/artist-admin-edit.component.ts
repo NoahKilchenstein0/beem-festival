@@ -25,8 +25,12 @@ export class ArtistAdminEditComponent implements OnInit, OnChanges {
   public website: FormControl = new FormControl({value: this.artist?.website, disabled: false});
   public instagram: FormControl = new FormControl({value: this.artist?.instagramm, disabled: false});
   public stage: FormControl = new FormControl({value: this.artist?.stage, disabled: false});
+  public imgHeader: FormControl = new FormControl({value: this.artist?.imgHeader, disabled: false});
 
   public stages = Stages;
+
+  public isPreview: boolean = false;
+  public editedArtist: Artist = new Artist();
 
   constructor() { }
 
@@ -43,10 +47,32 @@ export class ArtistAdminEditComponent implements OnInit, OnChanges {
       this.website.setValue(this.artist?.website);
       this.instagram.setValue(this.artist?.instagramm);
       this.stage.setValue(this.artist?.stage);
+      this.imgHeader.setValue(this.artist?.imgHeader);
   }
 
   ngOnInit() {
 
+  }
+
+  onPreview(): void {
+    this.editedArtist.name = this.name.value;
+    this.editedArtist.dayStartTime = this.startTime.value;
+    this.editedArtist.genre = this.genre.value;
+    this.editedArtist.playTime = this.playTime.value;
+    this.editedArtist.description = this.description.value;
+    this.editedArtist.img = this.img.value;
+    this.editedArtist.isBooked = this.isBooked.value;
+    this.editedArtist.isActivated = this.isActive.value;
+    this.editedArtist.spotify = this.spotify.value;
+    this.editedArtist.website = this.website.value;
+    this.editedArtist.instagramm = this.instagram.value;
+    this.editedArtist.stage = this.stage.value;
+    this.editedArtist.imgHeader = this.imgHeader.value;
+    this.isPreview = true;
+  }
+
+  onEndPrieview(): void {
+    this.isPreview = false;
   }
 
   onBack(): void {
@@ -68,6 +94,7 @@ export class ArtistAdminEditComponent implements OnInit, OnChanges {
     updateArtist.website = this.website.value;
     updateArtist.instagramm = this.instagram.value;
     updateArtist.stage = this.stage.value;
+    updateArtist.imgHeader = this.imgHeader.value;
     this.onCreateUpdate.emit(updateArtist);
   }
 

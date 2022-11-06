@@ -25,6 +25,7 @@ namespace Beem.Server.Models
         public string Name{ get; set; }
         public string Genre { get; set; }
         public string Img { get; set; }
+        public string ImgHeader { get; set; }
         public string Description { get; set; }
         public string? Spotify { get; set; }
         public string? Website { get; set; }

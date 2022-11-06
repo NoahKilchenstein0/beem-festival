@@ -58,6 +58,7 @@ namespace Beem.Server.Controllers
                 artistToUpdate.Name = artist.Name;
                 artistToUpdate.Genre = artist.Genre;
                 artistToUpdate.Img = artist.Img;
+                artistToUpdate.ImgHeader = artist.ImgHeader;
                 artistToUpdate.Description = artist.Description;
                 artistToUpdate.IsActivated = artist.IsActivated;
                 artistToUpdate.IsBooked = artist.IsBooked;
