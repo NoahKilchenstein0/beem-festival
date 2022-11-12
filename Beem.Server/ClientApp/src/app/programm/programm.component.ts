@@ -111,7 +111,7 @@ export class ProgrammComponent implements OnInit {
     else {
       this.artistsService.createArtist(artist).subscribe(x => {
         this.artists.push(x);
-        this.globalsService.setArtistDrillDownActive();
+        this.globalsService.setArtistDrillDownDisabled();
       });
     }
   }
