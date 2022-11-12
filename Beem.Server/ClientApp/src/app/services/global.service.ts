@@ -14,6 +14,10 @@ export class GlobalService {
   private  isArtistDrillDownSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public isArtistDrillDown: Observable<boolean> = this.isArtistDrillDownSubject.asObservable();
 
+  private  isNewsDrillDownSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public isNewsDrillDown: Observable<boolean> = this.isNewsDrillDownSubject.asObservable();
+
+
   constructor(breakpointObserver: BreakpointObserver) {    
     breakpointObserver.observe([
     Breakpoints.Web
@@ -40,4 +44,11 @@ export class GlobalService {
     this.isArtistDrillDownSubject.next(false);
   }
 
+  public setNewsDrillDownActive(): void {
+    this.isNewsDrillDownSubject.next(true);
+  }
+
+  public setNewsDrillDownDisabled(): void {
+    this.isNewsDrillDownSubject.next(false);
+  }
 }

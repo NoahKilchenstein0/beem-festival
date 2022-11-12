@@ -10,7 +10,7 @@ import { GlobalService } from '../services/global.service';
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })
-export class NavBarComponent implements OnInit {
+export class NavBarComponent {
 
   @Input("navItems") navItems: NavItem[] = [];
   
@@ -24,14 +24,10 @@ export class NavBarComponent implements OnInit {
   {
     this.router.events.subscribe(Event => {
       if(Event instanceof NavigationEnd){
-        if(Event.url === "/programm"){
-          this.globalsService.setArtistDrillDownDisabled();
-        }
+        this.globalsService.setArtistDrillDownDisabled();
+        this.globalsService.setNewsDrillDownDisabled();
       }
     });
-  }
-
-  ngOnInit() {
   }
 
   public onNavigateHome(): void  {

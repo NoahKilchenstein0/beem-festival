@@ -1,0 +1,51 @@
+<div class="container" *ngIf="!isPreview">
+  <mat-form-field appearance="fill">
+    <mat-label>News Title</mat-label>
+    <input matInput  [formControl]="title">
+  </mat-form-field>
+  <mat-label>News Inhalt</mat-label>
+  <richtexteditor [control]="newsText" class="formMargin"></richtexteditor>
+  <mat-form-field appearance="fill">
+    <mat-label>Veröffentlichungs Zeitpunkt</mat-label>
+    <input matInput [ngxMatDatetimePicker]="picker" placeholder="Veröffentlichungs Zeitpunkt auswählen" 
+          [formControl]="publicationDateTime">
+    <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+    <ngx-mat-datetime-picker #picker [showSpinners]="true" [showSeconds]="false"
+    [stepHour]="1" [stepMinute]="1" [stepSecond]="1"
+    [touchUi]="true" [enableMeridian]="false"
+    [disableMinute]="false" [hideTime]="false">
+    </ngx-mat-datetime-picker>
+  </mat-form-field>
+  
+  <mat-label>Vorschaubild</mat-label><span *ngIf="news">{{news.img}}</span>
+  <image-upload (onUploadFinished)="uploadImageFinished($event)"></image-upload>
+  <mat-label>Banner Bild</mat-label> <span *ngIf="news">{{news.imgHeader}}</span>
+  <image-upload (onUploadFinished)="uploadHeaderImageFinished($event)"></image-upload>
+
+<div class="buttonMargin">
+  <button mat-raised-button 
+  class="button"
+  (click)="onPreview()"
+>
+  Preview
+</button>
+  <button mat-raised-button 
+    class="button"
+    (click)="onSave()"
+  >
+    Speichern
+  </button>
+  <button mat-raised-button 
+    class="button"
+    (click)="onBack()"
+    >
+  Abbrechen
+  </button>
+</div>
+</div>
+  <news-site
+  *ngIf="isPreview"
+  [news]="editedNews"
+  (onBack)="onEndPrieview()">
+</news-site>
+

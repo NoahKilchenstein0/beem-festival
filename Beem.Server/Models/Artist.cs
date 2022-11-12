@@ -35,5 +35,6 @@ namespace Beem.Server.Models
         public int? PlayTime { get; set; }
         public bool IsActivated { get; set; }
         public bool IsBooked { get; set; }  
+        public bool IsLineUpPlaned {get; set;}
     }
 }

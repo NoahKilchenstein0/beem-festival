@@ -1,3 +1,4 @@
+import { LocationStrategy } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Artist } from 'src/app/models/artist';
 
@@ -11,7 +12,7 @@ export class ArtistCardComponent implements OnInit {
   @Input("artist") artist: Artist = new Artist();
   @Output("navigateToArtist") navigateToArtist: EventEmitter<Artist> = new EventEmitter<Artist>(); 
 
-  constructor(){
+  constructor(private locationStrategy: LocationStrategy){
 
   }
 
@@ -21,6 +22,10 @@ export class ArtistCardComponent implements OnInit {
 
   public navigateToArtistPage(){
       this.navigateToArtist.emit(this.artist);
+  }
+
+  public createImgPath(serverPath: string) {
+    return location.origin + "/" + serverPath; 
   }
 
 }

@@ -1,5 +1,5 @@
 <mat-card class="card">
-  <img mat-card-image class="artist-image" src="{{artist.img}}" alt="Photo of {{artist.name}}" (click)="navigateToArtistPage()">
+  <img mat-card-image class="artist-image" *ngIf="artist.img !== ''" [src]="createImgPath(artist.img)" alt="Photo of {{artist.name}}" (click)="navigateToArtistPage()">
   <mat-card-content class="rowFlex">
       <div class="colums">
           <div class="artist-name">{{artist.name}}</div>

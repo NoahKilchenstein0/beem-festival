@@ -18,14 +18,15 @@ export class ArtistAdminEditComponent implements OnInit, OnChanges {
   public startTime: FormControl = new FormControl({value: this.artist?.dayStartTime, disabled: false});
   public playTime: FormControl = new FormControl({value: this.artist?.playTime, disabled: false});
   public description: FormControl = new FormControl({value: this.artist?.description, disabled: false});
-  public img: FormControl = new FormControl({value: this.artist?.img, disabled: false});
+  public img!: { dbPath: ''; };
   public isBooked: FormControl = new FormControl({value: this.artist?.isBooked, disabled: false});
   public isActive: FormControl = new FormControl({value: this.artist?.isActivated, disabled: false});
+  public isLineUpPlaned: FormControl = new FormControl({value: this.artist?.isLineUpPlaned, disabled: false});
   public spotify: FormControl = new FormControl({value: this.artist?.spotify, disabled: false});
   public website: FormControl = new FormControl({value: this.artist?.website, disabled: false});
   public instagram: FormControl = new FormControl({value: this.artist?.instagramm, disabled: false});
   public stage: FormControl = new FormControl({value: this.artist?.stage, disabled: false});
-  public imgHeader: FormControl = new FormControl({value: this.artist?.imgHeader, disabled: false});
+  public imgHeader!: { dbPath: ''; };
 
   public stages = Stages;
 
@@ -40,14 +41,13 @@ export class ArtistAdminEditComponent implements OnInit, OnChanges {
       this.startTime.setValue(this.artist?.dayStartTime);
       this.playTime.setValue(this.artist?.playTime);
       this.description.setValue(this.artist?.description);
-      this.img.setValue(this.artist?.img);
       this.isBooked.setValue(this.artist?.isBooked);
       this.isActive.setValue(this.artist?.isActivated);
       this.spotify.setValue(this.artist?.spotify);
       this.website.setValue(this.artist?.website);
       this.instagram.setValue(this.artist?.instagramm);
       this.stage.setValue(this.artist?.stage);
-      this.imgHeader.setValue(this.artist?.imgHeader);
+      this.isLineUpPlaned.setValue(this.artist?.isLineUpPlaned);
   }
 
   ngOnInit() {
@@ -60,14 +60,36 @@ export class ArtistAdminEditComponent implements OnInit, OnChanges {
     this.editedArtist.genre = this.genre.value;
     this.editedArtist.playTime = this.playTime.value;
     this.editedArtist.description = this.description.value;
-    this.editedArtist.img = this.img.value;
     this.editedArtist.isBooked = this.isBooked.value;
     this.editedArtist.isActivated = this.isActive.value;
     this.editedArtist.spotify = this.spotify.value;
     this.editedArtist.website = this.website.value;
     this.editedArtist.instagramm = this.instagram.value;
-    this.editedArtist.stage = this.stage.value;
-    this.editedArtist.imgHeader = this.imgHeader.value;
+    this.editedArtist.isLineUpPlaned = this.isLineUpPlaned.value;
+    this.editedArtist.stage = this.stage.value;    if(this.img !== undefined)
+    {
+      this.editedArtist.img = this.img.dbPath
+    }
+    else if(this.artist !== null)
+    {
+      this.editedArtist.img = this.artist.img; 
+    }
+    else 
+    {
+      this.editedArtist.img = "";
+    }
+    if(this.imgHeader !== undefined)
+    {
+      this.editedArtist.imgHeader = this.imgHeader.dbPath
+    }
+    else if(this.artist !== null)
+    {
+      this.editedArtist.imgHeader = this.artist.imgHeader; 
+    }
+    else 
+    {
+      this.editedArtist.imgHeader = "";
+    }
     this.isPreview = true;
   }
 
@@ -87,17 +109,47 @@ export class ArtistAdminEditComponent implements OnInit, OnChanges {
     updateArtist.genre = this.genre.value;
     updateArtist.playTime = this.playTime.value;
     updateArtist.description = this.description.value;
-    updateArtist.img = this.img.value;
     updateArtist.isBooked = this.isBooked.value;
     updateArtist.isActivated = this.isActive.value;
     updateArtist.spotify = this.spotify.value;
     updateArtist.website = this.website.value;
     updateArtist.instagramm = this.instagram.value;
     updateArtist.stage = this.stage.value;
-    updateArtist.imgHeader = this.imgHeader.value;
+    updateArtist.isLineUpPlaned = this.isLineUpPlaned.value;
+    if(this.img !== undefined)
+    {
+      updateArtist.img = this.img.dbPath
+    }
+    else if(this.artist !== null)
+    {
+      updateArtist.img = this.artist.img; 
+    }
+    else 
+    {
+      updateArtist.img = "";
+    }
+    if(this.imgHeader !== undefined)
+    {
+      updateArtist.imgHeader = this.imgHeader.dbPath
+    }
+    else if(this.artist !== null)
+    {
+      updateArtist.imgHeader = this.artist.imgHeader; 
+    }
+    else 
+    {
+      updateArtist.imgHeader = "";
+    }
     this.onCreateUpdate.emit(updateArtist);
   }
 
+  public uploadImageFinished(event: any){
+    this.img = event;
+  }
+
+  public uploadHeaderImageFinished(event: any){
+    this.imgHeader = event;
+  }
 }
 
 export const Stages: string[] = ["Beem Stage", "Träcker Stage"];

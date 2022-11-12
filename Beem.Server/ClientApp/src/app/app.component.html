@@ -8,7 +8,8 @@
   </mat-drawer>
   <mat-drawer-content [class.contentWidth]="!globalService.isTopNav">   
     <app-nav-bar  [navItems]="navItems" *ngIf="globalService.isTopNav"></app-nav-bar>
-    <div *ngIf="router.url == '/'" class="background-image"></div>       
+    <div *ngIf="router.url === '/'" class="background-image" [ngClass]="{'topNavMargin':globalService.isTopNav}"></div>
+    <div *ngIf="router.url === '/'" class="aftermovie"><iframe width="760" height="515" src="https://www.youtube.com/embed/aSv8SSgNe4A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>

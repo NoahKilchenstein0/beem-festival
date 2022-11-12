@@ -3,6 +3,7 @@ import { SafeResourceUrl } from '@angular/platform-browser';
 import { Artist } from 'src/app/models/artist';
 import * as moment from 'moment';
 import { UrlbypassPipe } from 'src/app/pipes/Urlbypass.pipe';
+import { LocationStrategy } from '@angular/common';
 
 @Component({
   selector: 'artist-site',
@@ -15,7 +16,7 @@ export class ArtistSiteComponent implements OnInit {
   @Output("onBack") onBackCall: EventEmitter<void> = new EventEmitter<void>();
   public embedURI!: SafeResourceUrl;
 
-  constructor(public urlbypassPipe: UrlbypassPipe){
+  constructor(public urlbypassPipe: UrlbypassPipe, private locationStrategy: LocationStrategy){
   }
 
   ngOnInit(): void {       
@@ -43,6 +44,10 @@ export class ArtistSiteComponent implements OnInit {
 
   public onBack(): void {
       this.onBackCall.emit();
+  }
+
+  public createImgPath(serverPath: string) {
+    return location.origin + "/" + serverPath; 
   }
 
 }

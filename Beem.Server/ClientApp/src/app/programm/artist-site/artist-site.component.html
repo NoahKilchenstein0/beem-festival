@@ -1,9 +1,9 @@
 <div class="container">
     <mat-card class="card">
-        <img class="background-image" src="{{artist.imgHeader}}" alt="Photo of {{artist.name}}"/>
+        <img class="background-image" *ngIf="artist.imgHeader !== ''" [src]="createImgPath(artist.imgHeader)" alt="Photo of {{artist.name}}"/>
         <mat-card-content class="allignContent">
             <h2 class="artistName">{{artist.name}} - {{artist.genre}}</h2>
-            <div  class="row">
+            <div  class="row" *ngIf="artist.isLineUpPlaned">
                 <h3 *ngIf="artist.stage !== ''">Bühne: {{artist.stage}}</h3> <span>&nbsp;&nbsp;</span>
                 <h3 *ngIf="artist.dayStartTime">Tag: {{artist.dayStartTime | date}}</h3>  <span>&nbsp;&nbsp;</span>
                 <h3 *ngIf="artist.dayStartTime">Spielzeit: {{getStartTime()}} - {{getEndTime()}}</h3>

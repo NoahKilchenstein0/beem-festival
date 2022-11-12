@@ -35,7 +35,7 @@ export class ProgrammComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this.isAdmin()){
+    if(this.isAdminOnly()){
       this.isAdminView = true;
       this.artistsService.getArtists().subscribe(x => {
         this.artists = x;
@@ -43,7 +43,7 @@ export class ProgrammComponent implements OnInit {
       })
     }
     else {
-      this.isAdminView = true;
+      this.isAdminView = false;
       this.artistsService.getArtistsActive().subscribe(x => {
         this.artists = x;
         this.filteredArtist = this.artists;
@@ -105,7 +105,7 @@ export class ProgrammComponent implements OnInit {
         let index = this.artists.findIndex(x => x.id === artist.id);
         this.artists.splice(index, 1);
         this.artists.push(x);
-        this.globalsService.setArtistDrillDownActive();
+        this.globalsService.setArtistDrillDownDisabled();
       });
     }
     else {

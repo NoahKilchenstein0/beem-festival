@@ -26,9 +26,8 @@ export class AppComponent {
     this.router.onSameUrlNavigation = "reload";
     this.router.events.subscribe(Event => {
       if(Event instanceof NavigationEnd){
-        if(Event.url === "/programm"){
-          this.globalService.setArtistDrillDownDisabled();
-        }
+        this.globalService.setArtistDrillDownDisabled();
+        this.globalService.setNewsDrillDownDisabled();
       }
     });
   }

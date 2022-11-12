@@ -1,0 +1,22 @@
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.alignEnd{
+    align-self: flex-end;
+}
+
+.buttonMargin{
+    align-self: flex-end;
+    margin-top: 1rem;
+}
+
+.button{
+    margin-left: 1rem;
+}
+
+.formMargin{
+    margin-bottom: 1rem;
+    width: 100%;
+}

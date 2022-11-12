@@ -37,6 +37,13 @@ import { RichTextEditorModule } from 'src/richtexteditor/richtexteditor.module';
 import {MatSelectModule} from '@angular/material/select';
 import { ImpressumComponent } from './impressum/impressum.component';
 import { GlobalService } from './services/global.service';
+import { ImageUploadModule } from 'src/image-upload/image-upload.module';
+import { NewsService } from './services/news.service';
+import { NewsCardComponent } from './news/news-card/news-card.component';
+import { NewsSiteComponent } from './news/news-site/news-site.component';
+import { NewsAdminOverviewComponent } from './news/news-admin-overview/news-admin-overview.component';
+import { NewsAdminEditComponent } from './news/news-admin-overview/news-admin-edit/news-admin-edit.component';
+import { NewsStartpageComponent } from './news/news-startpage/news-startpage.component';
 
 const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
   parse: {
@@ -61,7 +68,12 @@ const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
     ArtistSiteComponent,
     ArtistAdminOverviewComponent,
     ArtistAdminEditComponent,
-    ImpressumComponent
+    NewsCardComponent,
+    NewsSiteComponent,
+    NewsAdminOverviewComponent,
+    NewsAdminEditComponent,
+    ImpressumComponent,
+    NewsStartpageComponent
   ],
   imports: [
     BrowserModule,
@@ -87,13 +99,15 @@ const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
     MatDatepickerModule,
     MatIconModule,
     RichTextEditorModule,
-    MatSelectModule
+    MatSelectModule,
+    ImageUploadModule
   ],
   providers: [UrlbypassPipe,
               UserService,
               AuthService,
               ArtistService,
               GlobalService,
+              NewsService,
               {provide: NGX_MAT_DATE_FORMATS, useValue: CUSTOM_DATE_FORMATS},
               AuthInterceptor,
               {

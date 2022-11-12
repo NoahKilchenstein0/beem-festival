@@ -1,0 +1,43 @@
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.background-image {
+}
+
+.artistName{
+    font-size: 3em !important;
+}
+
+.logos{
+    max-width: 24px;
+    max-height: 24px;
+    margin-right: 5px;
+}
+
+.columns{
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+.backButton{
+    bottom: 1rem;
+    right: 1rem;
+    width: 10%;
+    position: absolute;
+}
+
+.card{
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.marginBottom { 
+    margin-bottom: 1rem;
+}

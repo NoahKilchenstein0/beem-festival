@@ -58,6 +58,9 @@ namespace Beem.Server.Migrations
                     b.Property<bool>("IsBooked")
                         .HasColumnType("boolean");
 
+                    b.Property<bool>("IsLineUpPlaned")
+                        .HasColumnType("boolean");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -77,6 +80,38 @@ namespace Beem.Server.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Artists");
+                });
+
+            modelBuilder.Entity("Beem.Server.Models.News", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Img")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ImgHeader")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("NewsText")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("PublicationDateTime")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("News");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

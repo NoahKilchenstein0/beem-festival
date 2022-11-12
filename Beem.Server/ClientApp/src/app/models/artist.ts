@@ -16,4 +16,5 @@ export class Artist {
     playTime: number = 0;
     isActivated: boolean = false;
     isBooked: boolean = false;
+    isLineUpPlaned: boolean = false;
 }

@@ -24,14 +24,19 @@
   </mat-form-field>
   <mat-label>Beschreibung</mat-label>
   <richtexteditor [control]="description" class="formMargin"></richtexteditor>
+  
+  <mat-label>Vorschaubild</mat-label><span *ngIf="artist">{{artist.img}}</span>
+  <image-upload (onUploadFinished)="uploadImageFinished($event)"></image-upload>
+  <mat-label>Banner Bild</mat-label> <span *ngIf="artist">{{artist.imgHeader}}</span>
+  <image-upload (onUploadFinished)="uploadHeaderImageFinished($event)"></image-upload>
+  <!--
   <mat-form-field appearance="fill">
-    <mat-label>Vorschaubild</mat-label>
     <input matInput [formControl]="img" >
   </mat-form-field> 
   <mat-form-field appearance="fill">
-    <mat-label>Banner Bild</mat-label>
+
     <input matInput [formControl]="imgHeader" >
-  </mat-form-field> 
+  </mat-form-field>-->
    <mat-form-field appearance="fill">
     <mat-label>Spotify Link</mat-label>
     <input matInput [formControl]="spotify" >
@@ -55,6 +60,7 @@
 
 <mat-checkbox [formControl]="isBooked" class="alignEnd">Ist Gebucht?</mat-checkbox>
 <mat-checkbox [formControl]="isActive" class="alignEnd">Soll angezeigt werden?</mat-checkbox>
+<mat-checkbox [formControl]="isLineUpPlaned" class="alignEnd">Soll die Spielzeit und Bühne angezeigt werden?</mat-checkbox>
 <div class="buttonMargin">
   <button mat-raised-button 
   class="button"

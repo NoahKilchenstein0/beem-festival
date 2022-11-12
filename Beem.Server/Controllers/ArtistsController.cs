@@ -40,6 +40,7 @@ namespace Beem.Server.Controllers
         [HttpPost]
         public IActionResult Post([FromBody]Artist artist)
         {
+            Console.WriteLine(artist);
             if(artist != null){
                 this.dbContext.Artists.Add(artist);
                 this.dbContext.SaveChanges();
@@ -67,6 +68,7 @@ namespace Beem.Server.Controllers
                 artistToUpdate.Stage = artist.Stage != null ? artist.Stage : null;
                 artistToUpdate.Website = artist.Website != null ? artist.Website : null;
                 artistToUpdate.Instagramm = artist.Instagramm != null ? artist.Instagramm : null;
+                artist.IsLineUpPlaned = artist.IsLineUpPlaned;
                 this.dbContext.SaveChanges();
                 return Ok(artistToUpdate);
             }

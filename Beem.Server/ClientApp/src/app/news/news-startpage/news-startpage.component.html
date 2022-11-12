@@ -1,0 +1,15 @@
+<div class="columncontainer" [ngClass]="{'topNavMargin':globalsService.isTopNav}">
+  <div class="headerRow"  *ngIf="!isDrillDownActive">
+    <h1>Aktuelle News</h1>
+  </div>
+  <div 
+      class="container" 
+      *ngIf="!isDrillDownActive">
+      <news-card 
+          *ngFor="let News of filteredNews"
+          class="item"
+          [news]="News"
+          (navigateToNews)="navigateToNewsPage($event)">
+      </news-card>
+  </div>
+</div>

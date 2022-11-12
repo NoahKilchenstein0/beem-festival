@@ -1,3 +1,48 @@
-<p>
-  news works!
-</p>
+<div class="columncontainer" [ngClass]="{'topNavMargin':globalsService.isTopNav}">
+  <div class="headerRow"  *ngIf="!isDrillDownActive">
+      <h1>Alle News</h1>
+  </div>
+  <div 
+      class="container" 
+      *ngIf="!isDrillDownActive && !isAdmin()">
+      <news-card 
+          *ngFor="let News of filteredNews"
+          class="item"
+          [news]="News"
+          (navigateToNews)="navigateToNewsPage($event)">
+      </news-card>
+  </div>
+    <news-site
+      *ngIf="isDrillDownActive && !isAdmin()"
+      [news]="selectedNews"
+      (onBack)="onBack()">
+    </news-site>
+    <div 
+        class="container"
+        [ngClass]="{'containerNonFlex':isDrillDownActive}" 
+        *ngIf="isAdmin()">
+        <news-admin-overview
+            [news]="news"
+            (selectedNews)="navigateToEditNews($event)"
+            (createNews)="navigateToEditNews($event)"
+            (deleteNews)="deleteNews($event)"
+            *ngIf="!isDrillDownActive"
+            >
+        </news-admin-overview>
+        <news-admin-edit
+            [news]="selectedNews"
+            (onCreateUpdate)="updateNews($event)"
+            (onBack)="onBack()"
+            *ngIf="isDrillDownActive">
+        </news-admin-edit>
+    </div>
+    <div class="buttonMargin">
+        <button mat-raised-button 
+            class="button"
+            (click)="onSwap()"
+            *ngIf="isAdminOnly() && !isDrillDownActive"
+        >
+            Admin ansicht wechseln
+        </button>
+    </div>
+</div>

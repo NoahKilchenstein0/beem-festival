@@ -1,9 +1,13 @@
 .background-image {
     height: 35vh;
-    background-image: url('../assets/beem-banner2.jpeg');
+    background-image: url('../assets/beem-banner.jpeg');
     background-size: 100% 35vh;
     background-position: center center;
   }
+
+  .topNavMargin{
+    margin-top: 5.5vh;
+}
 
   .general {
     height: 100vh;
@@ -31,4 +35,9 @@
   
   .button{
     width: 100%;
+  }
+  .aftermovie{
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
   }
