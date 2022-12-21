@@ -1,0 +1,40 @@
+<div class="columncontainer" [ngClass]="{'topNavMargin':globalsService.isTopNav}">
+  <div class="headerRow">
+      <h1>Frequently Asked Questions</h1>
+  </div>
+  <div class="container" *ngIf="!isAdmin()">
+    <mat-expansion-panel *ngFor="let question of questions">
+      <mat-expansion-panel-header> 
+        <mat-panel-title>
+          {{question.title}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>{{question.answer}}</p>
+    </mat-expansion-panel>
+  </div>
+  <div class="container" *ngIf="isAdmin()">
+    <faq-admin-overview
+      [questions]="questions"
+      (selectedQuestion)="navigateToEditQuestion($event)"
+      (createQuestion)="navigateToEditQuestion($event)"
+      (deleteQuestion)="deleteQuestion($event)"
+      *ngIf="!isDrillDownActive"
+    >
+  </faq-admin-overview>
+  <faq-admin-edit
+      [question]="selectedQuestion"
+      (onCreateUpdate)="updateQuestion($event)"
+      (onBack)="onBack()"
+      *ngIf="isDrillDownActive">
+    </faq-admin-edit>    
+  </div> 
+  <div class="buttonMargin">
+    <button mat-raised-button 
+        class="button"
+        (click)="onSwap()"
+        *ngIf="isAdminOnly() && !isDrillDownActive"
+    >
+        Admin ansicht wechseln
+    </button>
+  </div>
+</div>

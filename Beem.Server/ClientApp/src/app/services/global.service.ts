@@ -17,6 +17,9 @@ export class GlobalService {
   private  isNewsDrillDownSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public isNewsDrillDown: Observable<boolean> = this.isNewsDrillDownSubject.asObservable();
 
+  private  isQuestionsDrillDownSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public isQuestionDrillDown: Observable<boolean> = this.isQuestionsDrillDownSubject.asObservable();
+
 
   constructor(breakpointObserver: BreakpointObserver) {    
     breakpointObserver.observe([
@@ -50,5 +53,13 @@ export class GlobalService {
 
   public setNewsDrillDownDisabled(): void {
     this.isNewsDrillDownSubject.next(false);
+  }
+
+  public setQuestionsDrillDownActive(): void {
+    this.isQuestionsDrillDownSubject.next(true);
+  }
+
+  public setQuestionsDrillDownDisabled(): void {
+    this.isQuestionsDrillDownSubject.next(false);
   }
 }

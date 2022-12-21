@@ -9,6 +9,7 @@ namespace Beem.Server.Models
         
         public virtual DbSet<Artist> Artists { get; set; }
         public virtual DbSet<News> News { get; set; }
+        public virtual DbSet<Question> Questions {get; set; }
 
         public BeemDbContext(DbContextOptions<BeemDbContext> options) : base(options)
         {
@@ -21,7 +22,12 @@ namespace Beem.Server.Models
 
             var news = builder.Entity<News>();
             news.HasKey(a => a.Id);
+            
+            var questions = builder.Entity<Question>();
+            questions.HasKey(a => a.Id);
+            
             base.OnModelCreating(builder);
+
         }
     }
 }

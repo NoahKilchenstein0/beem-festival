@@ -32,6 +32,7 @@ import { ArtistService } from './services/artist.service';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { NgxMatMomentModule } from '@angular-material-components/moment-adapter';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatExpansionModule} from '@angular/material/expansion'; 
 import {MatIcon, MatIconModule} from '@angular/material/icon';
 import { RichTextEditorModule } from 'src/richtexteditor/richtexteditor.module';
 import {MatSelectModule} from '@angular/material/select';
@@ -44,6 +45,9 @@ import { NewsSiteComponent } from './news/news-site/news-site.component';
 import { NewsAdminOverviewComponent } from './news/news-admin-overview/news-admin-overview.component';
 import { NewsAdminEditComponent } from './news/news-admin-overview/news-admin-edit/news-admin-edit.component';
 import { NewsStartpageComponent } from './news/news-startpage/news-startpage.component';
+import { FaqComponent } from './faq/faq.component';
+import { FaqAdminEditComponent } from './faq/faq-admin-overview/faq-admin-edit/faq-admin-edit.component';
+import { FaqAdminOverviewComponent } from './faq/faq-admin-overview/faq-admin-overview.component';
 
 const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
   parse: {
@@ -58,7 +62,7 @@ const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
 };
 
 @NgModule({
-  declarations: [						
+  declarations: [									
     AppComponent,
     ProgrammComponent,
     NewsComponent,
@@ -73,7 +77,10 @@ const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
     NewsAdminOverviewComponent,
     NewsAdminEditComponent,
     ImpressumComponent,
-    NewsStartpageComponent
+    NewsStartpageComponent,
+    FaqComponent,
+    FaqAdminEditComponent,
+    FaqAdminOverviewComponent
   ],
   imports: [
     BrowserModule,
@@ -100,7 +107,8 @@ const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
     MatIconModule,
     RichTextEditorModule,
     MatSelectModule,
-    ImageUploadModule
+    ImageUploadModule,
+    MatExpansionModule
   ],
   providers: [UrlbypassPipe,
               UserService,
