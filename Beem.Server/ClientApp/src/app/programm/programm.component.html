@@ -1,47 +1,25 @@
 <div class="columncontainer" [ngClass]="{'topNavMargin':globalsService.isTopNav}">
-  <div class="headerRow"  *ngIf="!isDrillDownActive">
-      <h1>Alle Künstler</h1>
-  </div>
-  <div 
-      class="container" 
-      *ngIf="!isDrillDownActive && !isAdmin()">
-      <artist-card 
-          *ngFor="let artist of filteredArtist"
-          class="item"
-          [artist]="artist"
-          (navigateToArtist)="navigateToArtistPage($event)">
-      </artist-card>
-  </div>
-    <artist-site
-      *ngIf="isDrillDownActive && !isAdmin()"
-      [artist]="selectedArtist"
-      (onBack)="onBack()">
+    <div class="headerRow" *ngIf="!isDrillDownActive">
+        <h1>Alle Künstler</h1>
+    </div>
+    <div class="container artistOverview" *ngIf="!isDrillDownActive && !isAdmin()">
+        <artist-card *ngFor="let artist of filteredArtist" class="item" [artist]="artist"
+            (navigateToArtist)="navigateToArtistPage($event)">
+        </artist-card>
+    </div>
+    <artist-site *ngIf="isDrillDownActive && !isAdmin()" [artist]="selectedArtist" (onBack)="onBack()">
     </artist-site>
-    <div 
-        class="container"
-        [ngClass]="{'containerNonFlex':isDrillDownActive}" 
-        *ngIf="isAdmin()">
-        <artist-admin-overview
-            [artists]="artists"
-            (selectedArtist)="navigateToEditArtist($event)"
-            (createArtist)="navigateToEditArtist($event)"
-            (deleteArtist)="deleteArtist($event)"
-            *ngIf="!isDrillDownActive"
-            >
+    <div class="container" [ngClass]="{'containerNonFlex':isDrillDownActive}" *ngIf="isAdmin()">
+        <artist-admin-overview [artists]="artists" (selectedArtist)="navigateToEditArtist($event)"
+            (createArtist)="navigateToEditArtist($event)" (deleteArtist)="deleteArtist($event)"
+            *ngIf="!isDrillDownActive">
         </artist-admin-overview>
-        <artist-admin-edit
-            [artist]="selectedArtist"
-            (onCreateUpdate)="updateArtist($event)"
-            (onBack)="onBack()"
+        <artist-admin-edit [artist]="selectedArtist" (onCreateUpdate)="updateArtist($event)" (onBack)="onBack()"
             *ngIf="isDrillDownActive">
         </artist-admin-edit>
     </div>
     <div class="buttonMargin">
-        <button mat-raised-button 
-            class="button"
-            (click)="onSwap()"
-            *ngIf="isAdminOnly() && !isDrillDownActive"
-        >
+        <button mat-raised-button class="button" (click)="onSwap()" *ngIf="isAdminOnly() && !isDrillDownActive">
             Admin ansicht wechseln
         </button>
     </div>

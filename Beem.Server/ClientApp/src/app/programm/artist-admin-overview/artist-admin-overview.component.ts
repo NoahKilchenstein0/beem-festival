@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, EventEmitter, Input, IterableDiffer, IterableDiffers, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { MatSort, Sort, MatSortable } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Artist } from 'src/app/models/artist';
 
@@ -16,10 +16,12 @@ export class ArtistAdminOverviewComponent implements OnInit, AfterViewInit {
   @Output("selectedArtist") selctedArtist: EventEmitter<Artist> = new EventEmitter();
   @Output("createArtist") createArtist: EventEmitter<Artist> = new EventEmitter();
   @Output("deleteArtist") deleteArtist: EventEmitter<Artist> = new EventEmitter();
-  
+
+  public sortedArtistData: Artist[] = this.artists.slice();
+
   public filter: FormControl = new FormControl();
 
-  public dataSource: MatTableDataSource<Artist> = new MatTableDataSource();  
+  public dataSource: MatTableDataSource<Artist> = new MatTableDataSource();
   public displayedColumns: string[] = ['id', 'name', 'genre', 'dayStartTime', 'playTime', 'isBooked'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -28,13 +30,14 @@ export class ArtistAdminOverviewComponent implements OnInit, AfterViewInit {
   public selectedRow: Artist | null = null;
 
   private iterableDiffer: IterableDiffer<Artist>;
-  
-  constructor(private iterableDiffers:IterableDiffers) { 
+
+  constructor(private iterableDiffers: IterableDiffers) {
     this.iterableDiffer = iterableDiffers.find([]).create<Artist>();
   }
 
   ngOnInit() {
-    this.dataSource = new MatTableDataSource(this.artists);
+    //this.dataSource = new MatTableDataSource(this.artists);
+    this.dataSource = new MatTableDataSource(this.sortedArtistData);
   }
 
   ngAfterViewInit() {
@@ -48,7 +51,7 @@ export class ArtistAdminOverviewComponent implements OnInit, AfterViewInit {
     if (changes) {
       this.dataSource = new MatTableDataSource(this.artists);
     }
-}
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -59,34 +62,50 @@ export class ArtistAdminOverviewComponent implements OnInit, AfterViewInit {
     }
   }
 
-  setSelected(row: Artist){
-    if(this.selectedRow === row){
+  setSelected(row: Artist) {
+    if (this.selectedRow === row) {
       this.selectedRow = null;
     }
-    else {   
+    else {
       this.selectedRow = row;
     }
   }
 
-  isSelected(row: Artist){
+  isSelected(row: Artist) {
     return this.selectedRow === row;
   }
 
-  onCreate(){
+  onCreate() {
     this.createArtist.emit(new Artist());
   }
 
-  onEdit(){
-    if(this.selectedRow !== null){
+  onEdit() {
+    if (this.selectedRow !== null) {
       this.selctedArtist.emit(this.selectedRow);
     }
   }
 
-  onDelete(){
-    if(this.selectedRow !== null){
+  onDelete() {
+    if (this.selectedRow !== null) {
       this.deleteArtist.emit(this.selectedRow);
       this.selectedRow = null;
     }
+  }
+
+  sortData(sort: Sort) {
+    const data = this.artists.slice();
+
+    if (!sort.active || sort.direction === '') {
+      this.sortedArtistData = data;
+    } else {
+      this.sortedArtistData = data.sort((a, b) => {
+        const aValue = (a as any)[sort.active];
+        const bValue = (b as any)[sort.active];
+        return (aValue < bValue ? -1 : 1) * (sort.direction === 'asc' ? 1 : -1);
+      })
+    }
+    this.dataSource = new MatTableDataSource(this.sortedArtistData);
+
   }
 
 }

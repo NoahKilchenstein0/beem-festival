@@ -1,34 +1,26 @@
 <div class="container" *ngIf="!isPreview">
-  <mat-form-field appearance="fill">
+  <mat-form-field appearance="fill" class="questionField">
     <mat-label>Frage?</mat-label>
-    <input matInput  [formControl]="title">
+    <input matInput [formControl]="title">
   </mat-form-field>
   <mat-label>Antwort</mat-label>
   <richtexteditor [control]="answer" class="formMargin"></richtexteditor>
-  
+
   <mat-expansion-panel>
-    <mat-expansion-panel-header> 
+    <mat-expansion-panel-header>
       <mat-panel-title>
         {{title.value}}
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <p>{{answer.value}}</p>
+    <div class="answerDiv" [innerHTML]="answer.value"></div>
   </mat-expansion-panel>
 
-<div class="buttonMargin">
-  <button mat-raised-button 
-    class="button"
-    (click)="onSave()"
-  >
-    Speichern
-  </button>
-  <button mat-raised-button 
-    class="button"
-    (click)="onBack()"
-    >
-  Abbrechen
-  </button>
+  <div class="buttonMargin">
+    <button mat-raised-button class="button" (click)="onSave()">
+      Speichern
+    </button>
+    <button mat-raised-button class="button" (click)="onBack()">
+      Abbrechen
+    </button>
+  </div>
 </div>
-</div>
-
-

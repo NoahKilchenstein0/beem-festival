@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace Beem.Server
     {
         public static void Main(string[] args)
         {
+            DirectoryInfo di = Directory.CreateDirectory(Directory.GetCurrentDirectory() + "/Resources");
             CreateHostBuilder(args).Build().Run();
         }
 

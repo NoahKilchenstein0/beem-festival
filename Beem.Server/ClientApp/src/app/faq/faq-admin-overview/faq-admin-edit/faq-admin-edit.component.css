@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100% !important;
+}
+
+.buttonMargin {
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 2rem;
+}
+
+.button {
+    margin: 1rem;
+}
+
+.questionField {
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.formMargin {
+    margin-bottom: 2rem;
+}

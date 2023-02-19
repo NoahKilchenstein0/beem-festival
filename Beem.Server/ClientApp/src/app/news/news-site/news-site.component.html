@@ -1,6 +1,9 @@
 <div class="container">
     <mat-card class="card" *ngIf="!isLoading">
-        <img class="background-image" *ngIf="news !== undefined" [src]="createImgPath()" alt="Photo of {{getNewsTitle()}}"/>
+        <div class="imageDiv">
+            <img class="background-image" *ngIf="news !== undefined" [src]="createImgPath()"
+                alt="Photo of {{getNewsTitle()}}" />
+        </div>
         <mat-card-content class="allignContent">
             <h2 class="artistName">{{getNewsTitle()}}</h2>
             <div class="description" [innerHTML]="getNewsText()"></div>

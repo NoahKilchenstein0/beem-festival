@@ -8,6 +8,7 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -31,7 +32,7 @@ namespace Beem.Server
             // For Entity Framework
             services.AddDbContext<BeemDbContext>(options => options.UseNpgsql(Configuration.GetConnectionString("MyConnection")));
 
-            services.AddCors(options => 
+            services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
                     builder => builder.AllowAnyOrigin()
@@ -44,7 +45,7 @@ namespace Beem.Server
                 .AddEntityFrameworkStores<BeemDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.Configure<FormOptions>(o => 
+            services.Configure<FormOptions>(o =>
             {
                 o.ValueLengthLimit = int.MaxValue;
                 o.MultipartBodyLengthLimit = int.MaxValue;
@@ -94,6 +95,7 @@ namespace Beem.Server
             app.UseStaticFiles();
             if (!env.IsDevelopment())
             {
+                app.UseHttpsRedirection();
                 app.UseSpaStaticFiles();
             }
 
@@ -103,8 +105,13 @@ namespace Beem.Server
                 RequestPath = new PathString("/Resources")
             });
 
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
+
             app.UseRouting();
-            
+
             app.UseAuthentication();
             app.UseAuthorization();
 

@@ -1,10 +1,10 @@
 <mat-form-field appearance="standard">
   <mat-label>Filter</mat-label>
-  <input matInput  [formControl]="filter" (keyup)="applyFilter($event)" >
+  <input matInput [formControl]="filter" (keyup)="applyFilter($event)">
 </mat-form-field>
 
 <div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource" matSort>
+  <table mat-table [dataSource]="dataSource" (matSortChange)="sortData($event)" matSort>
 
     <!-- ID Column -->
     <ng-container matColumnDef="id">
@@ -42,10 +42,8 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row 
-        *matRowDef="let row; columns: displayedColumns;"       
-        (click)="setSelected(row)"
-        [class.selectedRow]="isSelected(row)">
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="setSelected(row)"
+      [class.selectedRow]="isSelected(row)">
     </tr>
 
     <!-- Row shown when there is no matching data. -->
@@ -54,25 +52,17 @@
     </tr>
   </table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Wie viele Künstler sollen angezeigt werden"></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Wie viele Künstler sollen angezeigt werden"></mat-paginator>
 </div>
 <div class="rightButtons">
-  <button mat-raised-button 
-          class="button"
-          (click)="onCreate()"
-          *ngIf="this.selectedRow === null">
+  <button mat-raised-button class="button" (click)="onCreate()" *ngIf="this.selectedRow === null">
     Erstellen
   </button>
-  <button mat-raised-button 
-          class="button"
-          (click)="onEdit()"
-          *ngIf="this.selectedRow !== null">
+  <button mat-raised-button class="button" (click)="onEdit()" *ngIf="this.selectedRow !== null">
     Bearbeiten
   </button>
-  <button mat-raised-button
-          class="button"
-          (click)="onDelete()"
-          [disabled]="this.selectedRow === null">
+  <button mat-raised-button class="button" (click)="onDelete()" [disabled]="this.selectedRow === null">
     Löschen
   </button>
 </div>

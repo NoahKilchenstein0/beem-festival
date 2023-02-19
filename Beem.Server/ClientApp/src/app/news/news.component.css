@@ -1,36 +1,41 @@
-.columncontainer{
+.columncontainer {
     display: flex;
     flex-direction: column;
 }
 
-.topNavMargin{
+.topNavMargin {
     margin-top: 5.5vh;
 }
 
-.headerRow{
+.headerRow {
     display: flex;
     flex-direction: row;
     align-content: center;
-    justify-content: space-between;      
-    margin: 1rem; 
+    justify-content: space-between;
+    margin: 1rem;
 }
 
-.container{
-    display:flex;
+.container {
+    display: flex;
     align-items: row;
     flex-wrap: wrap;
     margin: 1rem;
 }
 
-.containerNonFlex{
+.containerNonFlex {
     display: block !important;
 }
 
-.item{
+/*.item{
     flex: 1;
-}
-.buttonMargin{
+}*/
+
+.buttonMargin {
     position: absolute;
     right: 2rem;
     bottom: 1rem;
+}
+
+.newsOverview {
+    justify-content: flex-start;
 }

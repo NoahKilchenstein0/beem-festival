@@ -1,22 +1,34 @@
-.container{
+.container {
     display: flex;
     flex-direction: column;
 }
 
-.background-image {
+.imageDiv {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    max-height: 400px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    border: 1px solid white;
 }
 
-.artistName{
+.background-image {
+    width: 100%;
+}
+
+.artistName {
     font-size: 3em !important;
 }
 
-.logos{
+.logos {
     max-width: 24px;
     max-height: 24px;
     margin-right: 5px;
+    cursor: pointer;
 }
 
-.columns{
+.columns {
     display: flex;
     flex-direction: column;
 }
@@ -25,19 +37,21 @@
     display: flex;
     flex-direction: row;
 }
-.backButton{
+
+.backButton {
     bottom: 1rem;
     right: 1rem;
     width: 10%;
     position: absolute;
 }
 
-.card{
+.card {
     margin: 1rem;
     display: flex;
     flex-direction: column;
 }
 
-.marginBottom { 
+.marginBottom {
+    height: 152px;
     margin-bottom: 1rem;
 }

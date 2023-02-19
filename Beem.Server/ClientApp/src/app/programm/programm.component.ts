@@ -27,19 +27,20 @@ export class ProgrammComponent implements OnInit {
   public isEdit: boolean = false;
 
   constructor(public router: Router,
-              public userService: UserService,
-              public artistsService: ArtistService,
-              public authenticationService: AuthService,
-              public globalsService: GlobalService) {
+    public userService: UserService,
+    public artistsService: ArtistService,
+    public authenticationService: AuthService,
+    public globalsService: GlobalService) {
     this.user = this.authenticationService.userValue;
   }
 
   ngOnInit(): void {
-    if(this.isAdminOnly()){
+    if (this.isAdminOnly()) {
       this.isAdminView = true;
       this.artistsService.getArtists().subscribe(x => {
         this.artists = x;
         this.filteredArtist = this.artists;
+        this.sortArtistsByName();
       })
     }
     else {
@@ -47,6 +48,7 @@ export class ProgrammComponent implements OnInit {
       this.artistsService.getArtistsActive().subscribe(x => {
         this.artists = x;
         this.filteredArtist = this.artists;
+        this.sortArtistsByName();
       })
     }
     this.globalsService.isArtistDrillDown.subscribe(x => {
@@ -54,13 +56,13 @@ export class ProgrammComponent implements OnInit {
     });
   }
 
-  navigateToArtistPage(artist:Artist): void{
+  navigateToArtistPage(artist: Artist): void {
     this.selectedArtist = artist;
     this.globalsService.setArtistDrillDownActive();
   }
 
   onSwap(): void {
-    if(this.isAdminView){
+    if (this.isAdminView) {
       this.isAdminView = false;
       this.filteredArtist = this.artists.filter(x => x.isBooked === true);
     }
@@ -75,22 +77,22 @@ export class ProgrammComponent implements OnInit {
   }
 
   isAdmin(): boolean {
-    if(this.user === null){
+    if (this.user === null) {
       return false;
     }
     return this.user.role === Roles.Admin && this.isAdminView;
   }
 
   isAdminOnly(): boolean {
-    if(this.user === null){
+    if (this.user === null) {
       return false;
     }
     return this.user.role === Roles.Admin;
   }
 
-  navigateToEditArtist(artist:Artist): void {
+  navigateToEditArtist(artist: Artist): void {
     this.globalsService.setArtistDrillDownActive();
-    if(artist.id !== 0){
+    if (artist.id !== 0) {
       this.isEdit = true;
     }
     else {
@@ -99,8 +101,8 @@ export class ProgrammComponent implements OnInit {
     this.selectedArtist = artist;
   }
 
-  updateArtist(artist:Artist){
-    if(this.isEdit){
+  updateArtist(artist: Artist) {
+    if (this.isEdit) {
       this.artistsService.updateArtist(artist).subscribe(x => {
         let index = this.artists.findIndex(x => x.id === artist.id);
         this.artists.splice(index, 1);
@@ -116,9 +118,17 @@ export class ProgrammComponent implements OnInit {
     }
   }
 
-  deleteArtist(artist:Artist): void {
+  deleteArtist(artist: Artist): void {
     this.artistsService.deleteArtist(artist.id).subscribe(x => {
-      this.artists.splice(this.artists.findIndex(x => x === artist),1);
+      this.artists.splice(this.artists.findIndex(x => x === artist), 1);
+    });
+  }
+
+  sortArtistsByName() {
+    this.filteredArtist.sort(function (a, b) {
+      var textA = a.name.toUpperCase();
+      var textB = b.name.toUpperCase();
+      return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
     });
   }
 
