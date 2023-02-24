@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
     "moment": "^2.29.4",
+    "ngx-cookieconsent": "^4.0.1",
     "ngx-quill": "^19.0.1",
     "quill-delta": "^3.6.2",
     "rxjs": "~7.5.0",

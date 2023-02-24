@@ -1554,19 +1554,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Tobi\\.nuget\\packages\\": {}
+    "C:\\Users\\Noah\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Tobi\\Projekte\\Beemsite_full\\beem-festival\\Beem.Server\\Beem.Server.csproj",
+      "projectUniqueName": "C:\\data\\beem\\beem-festival\\Beem.Server\\Beem.Server.csproj",
       "projectName": "Beem.Server",
-      "projectPath": "C:\\Users\\Tobi\\Projekte\\Beemsite_full\\beem-festival\\Beem.Server\\Beem.Server.csproj",
-      "packagesPath": "C:\\Users\\Tobi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Tobi\\Projekte\\Beemsite_full\\beem-festival\\Beem.Server\\obj\\",
+      "projectPath": "C:\\data\\beem\\beem-festival\\Beem.Server\\Beem.Server.csproj",
+      "packagesPath": "C:\\Users\\Noah\\.nuget\\packages\\",
+      "outputPath": "C:\\data\\beem\\beem-festival\\Beem.Server\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Tobi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Noah\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

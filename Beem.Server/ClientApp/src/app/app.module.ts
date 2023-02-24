@@ -49,6 +49,22 @@ import { NewsStartpageComponent } from './news/news-startpage/news-startpage.com
 import { FaqComponent } from './faq/faq.component';
 import { FaqAdminEditComponent } from './faq/faq-admin-overview/faq-admin-edit/faq-admin-edit.component';
 import { FaqAdminOverviewComponent } from './faq/faq-admin-overview/faq-admin-overview.component';
+import {NgcCookieConsentModule, NgcCookieConsentConfig} from 'ngx-cookieconsent';
+const cookieConfig:NgcCookieConsentConfig = {
+  cookie: {
+    domain: 'beem-festival.de' // or 'your.domain.com' // it is mandatory to set a domain, for cookies to work properly (see https://goo.gl/S2Hy2A)
+  },
+  palette: {
+    popup: {
+      background: '#000'
+    },
+    button: {
+      background: '#f1d600'
+    }
+  },
+  theme: 'edgeless',
+  type: 'info'
+};
 
 const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
   parse: {
@@ -110,7 +126,8 @@ const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
     MatSelectModule,
     ImageUploadModule,
     MatExpansionModule,
-    MatSortModule
+    MatSortModule,
+    NgcCookieConsentModule.forRoot(cookieConfig),
   ],
   providers: [UrlbypassPipe,
     UserService,
