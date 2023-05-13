@@ -1,15 +1,31 @@
-<mat-drawer-container autosize class="general" *ngIf="globalService.isLoaded">
-  <mat-drawer #drawer mode="side" opened *ngIf="!globalService.isTopNav">
-      <img class="logo" src="../assets/logo-transparent.png" alt="beem-banner" (click)="onNavigateHome()">
-      <div *ngFor="let navItem of navItems" class="menu-buttons">
-        <button mat-button routerLink="{{navItem.route}}" class="button">{{navItem.name}}</button>
-      </div>
-      <button mat-button *ngIf="this.authoritheService.isLoggedIn()" class="logoutButton" (click)="onLogout()"><mat-icon>logout</mat-icon>Ausloggen</button>
+<mat-drawer-container class="general" [hasBackdrop]="true" *ngIf="globalService.isLoaded">
+
+  <mat-drawer #drawer [mode]="'over'">
+      
+    <img class="logo" src="../assets/logo-transparent.png" alt="beem-banner" (click)="onNavigateHome()">
+    <div *ngFor="let navItem of navItems" class="menu-buttons">
+      <button mat-button routerLink="{{navItem.route}}" class="button">{{navItem.name}}</button>
+    </div>
+    <button mat-button *ngIf="this.authoritheService.isLoggedIn()" class="logoutButton" (click)="onLogout()"><mat-icon>logout</mat-icon>Ausloggen</button>
+  
   </mat-drawer>
-  <mat-drawer-content [class.contentWidth]="!globalService.isTopNav">   
-    <app-nav-bar  [navItems]="navItems" *ngIf="globalService.isTopNav"></app-nav-bar>
+
+  <mat-drawer-content>
+
+    <mat-toolbar class="sidenav" color="primary">
+      <button class="sidenav-button" mat-button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+    </mat-toolbar>
+
+    <mat-toolbar class="navbar">
+        <img class="logo" src="../assets/logo-transparent.png" alt="beem-banner" (click)="onNavigateHome()">
+        <button mat-button *ngFor="let navItem of navItems" class="topButton" routerLink="{{navItem.route}}">{{navItem.name}}</button>
+        <button mat-button *ngIf="this.authoritheService.isLoggedIn()" class="logoutButton" (click)="onLogout()"><mat-icon>logout</mat-icon>Ausloggen</button>
+    </mat-toolbar>
+
+    <!-- <app-nav-bar  [navItems]="navItems" *ngIf="globalService.isTopNav"></app-nav-bar> -->
     <div *ngIf="router.url === '/'" class="background-image" [ngClass]="{'topNavMargin':globalService.isTopNav}"></div>
-    <!--<div *ngIf="router.url === '/'" class="aftermovie"><iframe width="760" height="515" src="https://www.youtube.com/embed/aSv8SSgNe4A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>-->
     <router-outlet></router-outlet>
+
   </mat-drawer-content>
+
 </mat-drawer-container>

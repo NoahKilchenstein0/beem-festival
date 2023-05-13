@@ -29,7 +29,8 @@ export class AppComponent implements OnInit, OnDestroy {
   public navItems: NavItem[] = [new NavItem ("Künstler", "Künstlerseite","programm"), 
     new NavItem("Neuigkeiten", "Alle Neuigkeiten übers Beem Festival","news"), 
     new NavItem("Impressum", "Impressum Beem e.V.","impressum"),
-    new NavItem("FAQs", "Häufige Fragen", "faq")];
+    new NavItem("FAQs", "Häufige Fragen", "faq")
+  ];
 
   constructor(public globalService: GlobalService,
     public router: Router,

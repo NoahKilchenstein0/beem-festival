@@ -41,3 +41,55 @@
     display: flex;
     justify-content: center;
   }
+
+  .topButton{
+  height:5vh;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  line-height: 5vh;
+}
+
+.navBar {
+  height: 5vh !important;
+}
+
+.mat-toolbar{
+  background-color: #424242 !important;
+  z-index: 999;
+  position: fixed;
+}
+
+.logo{
+  max-width: 200px;
+  max-height: 5vh;
+  margin: 15px;
+}
+
+.logoutButton{
+  margin: 1rem;
+  height:auto;
+  width: auto;
+  align-self: flex-end;
+  justify-content: center;
+}
+
+@media only screen and (min-device-width: 600px) {
+  .navbar {
+    visibility: visible;
+  }
+
+  .sidenav {
+    visibility: hidden;
+  }
+}
+
+@media only screen  and (max-device-width: 599px) {
+  .navbar {
+    visibility: hidden;
+  }
+
+  .sidenav {
+    visibility: visible;
+  }
+}
