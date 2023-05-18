@@ -1,4 +1,4 @@
-<mat-card class="card" (click)="navigateToArtistPage()"  *ngIf="globalsService.isTopNav">
+<mat-card class="card pointer" (click)="navigateToArtistPage()"  *ngIf="globalsService.isTopNav">
   <mat-card-content class="rowFlex" >
     <img mat-card-image class="card-image" *ngIf="artist.img !== ''" [src]="createImgPath(artist.img)" alt="Photo of {{artist.name}}">
       <div class="colums">

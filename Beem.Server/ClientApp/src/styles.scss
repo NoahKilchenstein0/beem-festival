@@ -88,7 +88,6 @@ h1{
   font-style: normal !important;
 }
 .topButton{
-  height: 32px;
   width: auto !important;
   display: flex !important;
   justify-content: center !important;
@@ -101,19 +100,38 @@ h1{
   background-color: #000000 !important;
 }
 
-.container {
-  display: flex;
-  align-items: row;
-  flex-wrap: wrap;
-  margin: 1rem;
-  min-width: 250px;
-  margin-right: 5vh;
-  margin-left: 5vh;
-  border-radius: 15px;
-  background-color: rgba(113,48,117,0.7);
-  padding: 1rem;
-  justify-content: center;
-  flex-direction: column;
+@media screen and (max-width: 839px) {
+  .container {
+    display: flex;
+    align-items: row;
+    flex-wrap: wrap;
+    margin: 1rem;
+    min-width: 250px;
+    // margin: 0 .5vw 0 .5vw;
+    margin: 0 1vw 0 1vw;
+    border-radius: 15px;
+    background-color: rgba(113,48,117,0.7);
+    padding: 1rem;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 840px) {
+  .container {
+    display: flex;
+    align-items: row;
+    flex-wrap: wrap;
+    margin: 1rem;
+    min-width: 250px;
+    margin-right: 5vh;
+    margin-left: 5vh;
+    border-radius: 15px;
+    background-color: rgba(113,48,117,0.7);
+    padding: 1rem;
+    justify-content: center;
+    flex-direction: column;
+  }
 }
 
 .flexboxcards
@@ -139,10 +157,13 @@ h1{
 .card {
   max-width: 100%;
   padding: 1rem;
-  cursor: pointer;
   overflow: hidden;
   background-color: white;
   color: black !important;
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 .cardsmall {

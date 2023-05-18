@@ -13,6 +13,7 @@
 
 .artistName {
     font-size: 3em !important;
+    line-height: 1em;
 }
 
 .logos {

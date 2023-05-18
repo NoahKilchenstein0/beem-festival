@@ -34,7 +34,7 @@ export class ArtistCardComponent implements OnInit {
   }
 
   public getDescriptionText(artist:Artist){
-    return artist.description.substring(0, 255) + " ..."
+    return artist.description.substring(0, 255).replace(/<\/?[^>]+(>|$)/g, "")  + " ...";
   }
 
 

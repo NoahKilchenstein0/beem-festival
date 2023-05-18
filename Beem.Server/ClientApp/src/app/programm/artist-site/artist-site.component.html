@@ -11,7 +11,7 @@
                 <h3 *ngIf="artist.dayStartTime">Tag: {{artist.dayStartTime | date}}</h3> <span>&nbsp;&nbsp;</span>
                 <h3 *ngIf="artist.dayStartTime">Spielzeit: {{getStartTime()}} - {{getEndTime()}}</h3>
             </div>
-            <div class="description" [innerHTML]="artist.description"></div>
+            <div class="description" [innerHTML]="getArtistDescription()"></div>
             <iframe *ngIf="artist.spotify !== ''" [src]="embedURI" width="100%" height="350" class="marginBottom"
                 frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
             <div>

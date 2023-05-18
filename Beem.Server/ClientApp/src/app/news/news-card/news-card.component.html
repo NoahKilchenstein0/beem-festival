@@ -1,4 +1,4 @@
-<mat-card class="card" (click)="navigateToNewsPage()" *ngIf="globalService.isTopNav">
+<mat-card class="card pointer" (click)="navigateToNewsPage()" *ngIf="globalService.isTopNav">
   <mat-card-content class="rowFlex">
     <img mat-card-image class="card-image" *ngIf="news.img !== ''" [src]="createImgPath(news.img)" alt="Photo of {{news.title}}" >
       <div class="colums">

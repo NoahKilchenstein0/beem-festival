@@ -58,4 +58,8 @@ export class ArtistSiteComponent implements OnInit {
     return artist?.instagramm !== ""
   }
 
+  public getArtistDescription(){
+    return this.artist === undefined ? "" : this.artist.description;
+  }
+
 }
