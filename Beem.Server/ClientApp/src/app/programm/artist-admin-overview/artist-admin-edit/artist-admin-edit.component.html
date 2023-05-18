@@ -1,11 +1,11 @@
 <div class="container" *ngIf="!isPreview">
   <mat-form-field appearance="fill">
     <mat-label>Bandname</mat-label>
-    <input matInput  [formControl]="name">
+    <input matInput  [formControl]="name" maxlength="50">
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Genre</mat-label>
-    <input matInput  [formControl]="genre">
+    <input matInput  [formControl]="genre" maxlength="50">
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Startzeit</mat-label>

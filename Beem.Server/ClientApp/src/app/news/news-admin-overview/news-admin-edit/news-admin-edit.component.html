@@ -1,7 +1,7 @@
 <div class="container" *ngIf="!isPreview">
   <mat-form-field appearance="fill">
     <mat-label>News Title</mat-label>
-    <input matInput  [formControl]="title">
+    <input matInput  [formControl]="title" maxlength="50">
   </mat-form-field>
   <mat-label>News Inhalt</mat-label>
   <richtexteditor [control]="newsText" class="formMargin"></richtexteditor>
