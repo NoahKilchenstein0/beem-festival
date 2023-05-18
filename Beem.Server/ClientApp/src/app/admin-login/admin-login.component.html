@@ -1,6 +1,19 @@
-<div class="columncontainer">
-    <form [formGroup]="form">
-        <fieldset>
+
+<div class="wrapper">
+    <div class="topNavMargin background-image containerSub">
+      <div class="flex-container">
+        <img class="logo" src="../assets/logo-transparent.png" alt="beem-banner">
+      </div>
+  <div class="columncontainer  topNavMargin">
+    <div class="flexboxtop">
+        <div class="headerRow">
+            <h1 class="header">Admin</h1>
+        </div>
+    </div>
+    <div 
+      class="container">
+        <form [formGroup]="form">
+            <fieldset>
             <legend>Login</legend>
             <mat-form-field class="form-field" appearance="standard">
                 <mat-label>UserName:</mat-label>
@@ -11,10 +24,13 @@
                 <input matInput name="password" formControlName="password" 
                      type="password">
             </mat-form-field>
-        </fieldset>
-        <div class="form-buttons">
-            <button mat-raised-button class="button button-primary" 
+            </fieldset>
+            <div class="form-buttons">
+                <button mat-raised-button class="topButton" 
                   (click)="login()">Login</button>
+                </div>
+            </form>
+
         </div>
-    </form>
+    </div>
 </div>

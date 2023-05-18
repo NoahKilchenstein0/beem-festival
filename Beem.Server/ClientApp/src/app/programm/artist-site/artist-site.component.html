@@ -1,7 +1,7 @@
 <div class="container">
     <mat-card class="card">
         <div class="imageDiv">
-            <img class="background-image" *ngIf="artist.imgHeader !== ''" [src]="createImgPath(artist.imgHeader)"
+            <img class="background-image-drilldown" *ngIf="artist.imgHeader !== ''" [src]="createImgPath(artist.imgHeader)"
                 alt="Photo of {{artist.name}}" />
         </div>
         <mat-card-content class="allignContent">
@@ -15,10 +15,12 @@
             <iframe *ngIf="artist.spotify !== ''" [src]="embedURI" width="100%" height="350" class="marginBottom"
                 frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
             <div>
-                <img class="logos" src="../../../../assets/f_logo_RGB-Blue_1024.webp" (click)="onFacebook()">
-                <img class="logos" src="../../../../assets/ig-icon.webp" (click)="onInstagram()">
+                <img class="logos" src="../../../../assets/f_logo_RGB-Blue_1024.webp" (click)="onFacebook()" *ngIf="isFacebook(artist)">
+                <img class="logos" src="../../../../assets/ig-icon.webp" (click)="onInstagram()" *ngIf="isInstagram(artist)">
             </div>
-            <button mat-raised-button (click)="onBack()" class="backButton">Zurück</button>
         </mat-card-content>
-    </mat-card>
+        <mat-card-actions class="buttonMargin"> 
+            <button mat-raised-button (click)="onBack()" class="topButton">Zurück</button>
+        </mat-card-actions>
+        </mat-card>
 </div>

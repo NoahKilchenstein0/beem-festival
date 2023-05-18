@@ -1,11 +1,16 @@
-<mat-card class="card">
-  <img mat-card-image class="artist-image" *ngIf="news.img !== ''" [src]="createImgPath(news.img)" alt="Photo of {{news.title}}" (click)="navigateToNewsPage()">
-  <mat-card-content class="rowFlex">
+<mat-card class="card" (click)="navigateToNewsPage()">
+  <mat-card-content class="rowFlex" *ngIf="globalService.isTopNav">
+    <img mat-card-image class="card-image" *ngIf="news.img !== ''" [src]="createImgPath(news.img)" alt="Photo of {{news.title}}" >
       <div class="colums">
-          <div class="artist-name">{{news.title}}</div>
+          <div class="card-headline">{{news.title}}</div>
+          <div class="card-text">{{getNewsText(news)}}</div>
       </div>
   </mat-card-content>
-  <mat-card-actions>
 
-  </mat-card-actions>
+  <img mat-card-image class="card-image-mobile" *ngIf="isImageVisible(news)" [src]="createImgPath(news.img)" alt="Photo of {{news.title}}" >
+  <mat-card-content class="rowFlex" *ngIf="!globalService.isTopNav">
+      <div class="colums">
+          <div class="card-headline">{{news.title}}</div>
+      </div>
+  </mat-card-content>
 </mat-card>

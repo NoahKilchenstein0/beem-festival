@@ -23,18 +23,24 @@ export class GlobalService {
 
   constructor(breakpointObserver: BreakpointObserver) {    
     breakpointObserver.observe([
-    Breakpoints.Web
+    Breakpoints.Web,
+    Breakpoints.TabletLandscape,
+    Breakpoints.HandsetLandscape
     ]).subscribe(result => {
+      console.log(result);
       if (result.matches) {
         this.isTopNav = true;
+        console.log(this.isTopNav)
       }
     });
     breakpointObserver.observe([
-      Breakpoints.Tablet,
-      Breakpoints.Handset
+      Breakpoints.TabletPortrait,
+      Breakpoints.HandsetPortrait
     ]).subscribe(result => {
+      console.log(result);
       if(result.matches){
         this.isTopNav = false;
+        console.log(this.isTopNav)
       }
     });
   }

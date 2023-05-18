@@ -3,39 +3,8 @@
     flex-direction: column;
 }
 
-.topNavMargin {
-    margin-top: 5.5vh;
-}
 
-.headerRow {
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    justify-content: space-between;
-    margin: 1rem;
-}
-
-.container {
-    display: flex;
-    align-items: row;
-    flex-wrap: wrap;
-    margin: 1rem;
-    border: 1px solid white;
-    border-radius: 15px;
-    padding: 1rem;
-}
-
-.buttonMargin {
-    position: absolute;
-    right: 2rem;
-    bottom: 1rem;
-}
-
-.adminEditPanel {
-    width: 100%;
-}
 
 .expansionPanel {
-    width: 100%;
     margin: 1rem;
 }

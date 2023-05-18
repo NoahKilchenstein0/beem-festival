@@ -18,7 +18,7 @@ namespace Beem.Server.Controllers
 
         [HttpGet]
         public IActionResult Get() {
-            return Ok(this.dbContext.Questions);
+            return Ok(this.dbContext.Questions.ToList().OrderBy(x => x.Id));
         }
 
         [Authorize]

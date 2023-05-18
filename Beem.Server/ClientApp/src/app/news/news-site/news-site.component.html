@@ -1,13 +1,15 @@
 <div class="container">
     <mat-card class="card" *ngIf="!isLoading">
         <div class="imageDiv">
-            <img class="background-image" *ngIf="news !== undefined" [src]="createImgPath()"
+            <img class="background-image-drilldown" *ngIf="news !== undefined" [src]="createImgPath()"
                 alt="Photo of {{getNewsTitle()}}" />
         </div>
         <mat-card-content class="allignContent">
             <h2 class="artistName">{{getNewsTitle()}}</h2>
             <div class="description" [innerHTML]="getNewsText()"></div>
-            <button mat-raised-button (click)="onBack()" class="backButton">Zurück</button>
         </mat-card-content>
+        <mat-card-actions class="buttonMargin">
+            <button mat-raised-button (click)="onBack()" class="topButton">Zurück</button>
+        </mat-card-actions>
     </mat-card>
 </div>

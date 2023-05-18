@@ -1,6 +1,11 @@
 .columncontainer{
-    display: felx;
-    flex-direction: column;
+    display: flex;
+    align-items: row;
+    flex-wrap: wrap;
+    margin: 1rem;
+    border: 1px solid white;
+    border-radius: 15px;
+    padding: 1rem;
 }
 
 .topNavMargin{

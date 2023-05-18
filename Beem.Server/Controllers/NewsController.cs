@@ -17,13 +17,13 @@ namespace Beem.Server.Controllers
         [Authorize]
         [HttpGet]
         public IActionResult Get() {
-            return Ok(this.dbContext.News);
+            return Ok(this.dbContext.News.OrderBy(x => x.Id));
         }
 
         
         [HttpGet("GetActive")]
         public IActionResult GetActive() {
-            return Ok(this.dbContext.News.Where(x => x.PublicationDateTime <= DateTime.UtcNow));
+            return Ok(this.dbContext.News.Where(x => x.PublicationDateTime <= DateTime.UtcNow).OrderByDescending(x => x.PublicationDateTime));
         }
         
         [HttpGet("GetLatest")]

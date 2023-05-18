@@ -50,4 +50,12 @@ export class ArtistSiteComponent implements OnInit {
     return location.origin + "/" + serverPath; 
   }
 
+  public isFacebook(artist: Artist):boolean {
+    return artist?.website !== ""
+  }
+
+  public isInstagram(artist: Artist):boolean {
+    return artist?.instagramm !== ""
+  }
+
 }

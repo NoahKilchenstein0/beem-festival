@@ -1,6 +1,7 @@
 import { LocationStrategy } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { News } from 'src/app/models/news';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'news-card',
@@ -12,7 +13,7 @@ export class NewsCardComponent implements OnInit {
   @Input("news") news: News = new News();
   @Output("navigateToNews") navigateToNews: EventEmitter<News> = new EventEmitter<News>(); 
 
-  constructor(){
+  constructor(public globalService: GlobalService){
 
   }
 
@@ -26,6 +27,14 @@ export class NewsCardComponent implements OnInit {
 
   public createImgPath(serverPath: string) {
     return location.origin + "/" + serverPath; 
+  }
+
+  public getNewsText(news: News){
+    return news.newsText.substring(0, 255) + " ..."
+  }
+
+  public isImageVisible(news:News): boolean{
+    return news.img !== '' && !this.globalService.isTopNav;
   }
 
 }

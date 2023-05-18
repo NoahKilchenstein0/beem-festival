@@ -1,8 +1,16 @@
-<div class="columncontainer" [ngClass]="{'topNavMargin':globalsService.isTopNav}">
-  <div class="headerRow">
-    <h1>Frequently Asked Questions</h1>
+<div class="wrapper">
+  <div class="topNavMargin background-image containerSub">
+    <div class="flex-container">
+      <img class="logo" src="../assets/logo-transparent.png" alt="beem-banner">
+    </div>
+<div class="columncontainer  topNavMargin">
+  <div class="flexboxtop">
+      <div class="headerRow">
+          <h1 class="header">FAQs</h1>
+      </div>
   </div>
   <div class="container" *ngIf="!isAdmin()">
+    <div class="flexboxcards">
     <mat-expansion-panel *ngFor="let question of questions" class="expansionPanel">
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -11,8 +19,15 @@
       </mat-expansion-panel-header>
       <div class="answerDiv" [innerHTML]="question.answer"></div>
     </mat-expansion-panel>
+    <div class="buttonMargin">
+      <button mat-raised-button class="button" (click)="onSwap()" *ngIf="isAdminOnly() && !isDrillDownActive">
+          Admin ansicht wechseln
+      </button>
+  </div>
+    </div>
   </div>
   <div class="container" *ngIf="isAdmin()">
+    <div class="flexboxcards">
     <faq-admin-overview [questions]="questions" (selectedQuestion)="navigateToEditQuestion($event)"
       (createQuestion)="navigateToEditQuestion($event)" (deleteQuestion)="deleteQuestion($event)"
       *ngIf="!isDrillDownActive">
@@ -20,10 +35,12 @@
     <faq-admin-edit class="adminEditPanel" [question]="selectedQuestion" (onCreateUpdate)="updateQuestion($event)"
       (onBack)="onBack()" *ngIf="isDrillDownActive">
     </faq-admin-edit>
+    <div class="buttonMargin">
+      <button mat-raised-button class="button" (click)="onSwap()" *ngIf="isAdminOnly() && !isDrillDownActive">
+        Admin ansicht wechseln
+      </button>
+    </div>
+    </div>
   </div>
-  <div class="buttonMargin">
-    <button mat-raised-button class="button" (click)="onSwap()" *ngIf="isAdminOnly() && !isDrillDownActive">
-      Admin ansicht wechseln
-    </button>
-  </div>
+
 </div>

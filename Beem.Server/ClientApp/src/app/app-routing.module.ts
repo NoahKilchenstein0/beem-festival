@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: 'faq', component: FaqComponent},
   {path: 'admin-login', component: AdminLoginComponent},
   {path: 'impressum', component: ImpressumComponent},
-  {path: '', component: NewsStartpageComponent}
+  {path: '', component: NewsComponent}
 ];
 
 @NgModule({

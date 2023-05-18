@@ -1,68 +1,101 @@
+.wrapper{
+  height: 94.5vh;
+  //margin-top: 5.5vh;
+  width: 100%;  
+  background-color: #83c47f !important;
+}
 .background-image {
-    height: 35vh;
-    background-image: url('../assets/beem-banner.jpeg');
-    background-size: 100% 35vh;
-    background-position: center center;
-  }
-
-  .topNavMargin{
-    margin-top: 5.5vh;
+  background-image: url('../assets/tree-3979965.svg');
+  // height: inherit;
+  // width: inherit;
+  background-repeat: repeat-y;
+  // background-attachment: inherit;
+  // margin-top: 5.5vh;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
-  .general {
-    height: 100vh;
-  }
-  
-  .right-drawer {
-    left: 130px;
-    background-color: rgb(40, 40, 40);
-  }
-  
-  .example-spacer {
-      flex: 1 1 auto;
-    }
-  
-  .logo{
-    max-width: 200px;
-    max-height: 200px;
-    margin: 15px;
-  }
-  
-  .menu-buttons{
-    display: flex;
-    justify-content: center;
-  }
-  
-  .button{
-    width: 100%;
-  }
-  .aftermovie{
-    margin: 1rem;
-    display: flex;
-    justify-content: center;
+.background-element {
+  background-image: url('../assets/tree-3979965.svg');
+
+  background-repeat: repeat-y;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateZ(-1px) scale(2);
+}
+
+.content {
+  position: relative;
+}
+
+.general {
+  height: 100vh;
+}
+
+.right-drawer {
+  left: 130px;
+  background-color: rgba(113, 48, 117, 0.75)!important;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
   }
 
-  .topButton{
-  height:5vh;
-  width: auto;
+.logo{
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.menu-buttons{
   display: flex;
   justify-content: center;
-  line-height: 5vh;
 }
+.containerSub{
+  height:100%;
+  width: 100%;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 65px;
+}
+
+.button{
+  width: 100%;
+  height: 50%;
+  margin: 1;
+}
+
+.aftermovie{
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
 
 .navBar {
   height: 5vh !important;
 }
 
 .mat-toolbar{
-  background-color: #424242 !important;
+  background-color: rgba(113, 48, 117, 0.75) !important;
   z-index: 999;
   position: fixed;
 }
 
 .logo{
-  max-width: 200px;
+  max-width: 5vh;
   max-height: 5vh;
+  min-width: 200px;
+  min-height: 200px;
   margin: 15px;
 }
 
@@ -74,22 +107,14 @@
   justify-content: center;
 }
 
-@media only screen and (min-device-width: 600px) {
-  .navbar {
-    visibility: visible;
-  }
-
-  .sidenav {
-    visibility: hidden;
-  }
+.mat-drawer-content{
+  overflow: hidden !important;
 }
 
-@media only screen  and (max-device-width: 599px) {
-  .navbar {
-    visibility: hidden;
-  }
+.sidenav {
+  height: 64px !important;
+}
 
-  .sidenav {
-    visibility: visible;
-  }
+.activebutton{
+  background-color: rgb(51, 51, 51) !important;
 }

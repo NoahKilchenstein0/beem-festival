@@ -17,13 +17,13 @@ namespace Beem.Server.Controllers
         [Authorize]
         [HttpGet]
         public IActionResult Get() {
-            return Ok(this.dbContext.Artists);
+            return Ok(this.dbContext.Artists.OrderBy(x => x.Id));
         }
 
         
         [HttpGet("GetActive")]
         public IActionResult GetActive() {
-            return Ok(this.dbContext.Artists.Where(x => x.IsActivated == true));
+            return Ok(this.dbContext.Artists.Where(x => x.IsActivated == true).OrderBy(x => x.Name));
         }
         
         [Authorize]

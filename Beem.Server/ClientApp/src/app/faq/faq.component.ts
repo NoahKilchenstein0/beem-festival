@@ -30,7 +30,7 @@ export class FaqComponent implements OnInit {
       this.isAdminView = true;
     }
     this.faqService.getQuestions().subscribe(x => {
-      this.questions = x;
+      this.questions = x.sort(y => y.id);
       console.log(x);
     });
     this.globalsService.isQuestionDrillDown.subscribe(x => {

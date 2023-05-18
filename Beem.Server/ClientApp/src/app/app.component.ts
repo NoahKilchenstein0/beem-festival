@@ -26,8 +26,9 @@ export class AppComponent implements OnInit, OnDestroy {
     private noCookieLawSubscription!: Subscription;
 
   public isTopNav: boolean = true;
-  public navItems: NavItem[] = [new NavItem ("Künstler", "Künstlerseite","programm"), 
+  public navItems: NavItem[] = [   
     new NavItem("Neuigkeiten", "Alle Neuigkeiten übers Beem Festival","news"), 
+    new NavItem ("Künstler", "Künstlerseite","programm"), 
     new NavItem("Impressum", "Impressum Beem e.V.","impressum"),
     new NavItem("FAQs", "Häufige Fragen", "faq")
   ];
