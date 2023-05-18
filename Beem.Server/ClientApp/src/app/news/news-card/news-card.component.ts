@@ -30,7 +30,7 @@ export class NewsCardComponent implements OnInit {
   }
 
   public getNewsText(news: News){
-    return news.newsText.substring(0, 255) + " ..."
+    return news.newsText.substring(0, 255).replace(/<\/?[^>]+(>|$)/g, "")  + " ...";
   }
 
   public isImageVisible(news:News): boolean{
