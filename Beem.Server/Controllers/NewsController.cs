@@ -23,12 +23,12 @@ namespace Beem.Server.Controllers
         
         [HttpGet("GetActive")]
         public IActionResult GetActive() {
-            return Ok(this.dbContext.News.Where(x => x.PublicationDateTime <= DateTime.UtcNow).OrderByDescending(x => x.PublicationDateTime));
+            return Ok(this.dbContext.News.Where(x => x.PublicationDateTime <= DateTime.UtcNow).OrderBy(x => x.PublicationDateTime));
         }
         
         [HttpGet("GetLatest")]
         public IActionResult GetLatest() {
-            return Ok(this.dbContext.News.Where(x => x.PublicationDateTime <= DateTime.UtcNow).OrderByDescending(x => x.PublicationDateTime).Take(4));
+            return Ok(this.dbContext.News.Where(x => x.PublicationDateTime <= DateTime.UtcNow).OrderBy(x => x.PublicationDateTime).Take(4));
         }
 
         [HttpGet("GetSingle({id})")]

@@ -1,5 +1,5 @@
-<mat-card class="card" (click)="navigateToArtistPage()">
-  <mat-card-content class="rowFlex" *ngIf="globalsService.isTopNav">
+<mat-card class="card" (click)="navigateToArtistPage()"  *ngIf="globalsService.isTopNav">
+  <mat-card-content class="rowFlex" >
     <img mat-card-image class="card-image" *ngIf="artist.img !== ''" [src]="createImgPath(artist.img)" alt="Photo of {{artist.name}}">
       <div class="colums">
           <div class="card-headline">{{artist.name}}</div>
@@ -7,9 +7,12 @@
           <div class="card-text">{{getDescriptionText(artist)}}</div>
       </div>
   </mat-card-content>
+</mat-card>
+
+<mat-card class="cardsmall" (click)="navigateToArtistPage()" *ngIf="!globalsService.isTopNav">
 
   <img mat-card-image class="card-image-mobile" *ngIf="isImageVisible(artist)" [src]="createImgPath(artist.img)" alt="Photo of {{artist.name}}">
-  <mat-card-content class="rowFlex" *ngIf="!globalsService.isTopNav">
+  <mat-card-content class="rowFlex">
       <div class="colums">
           <div class="card-headline">{{artist.name}}</div>
       </div>
