@@ -5,7 +5,7 @@ import * as moment from 'moment';
 import { UrlbypassPipe } from 'src/app/pipes/Urlbypass.pipe';
 import { LocationStrategy } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subscriber } from 'rxjs';
+import { Subscriber, fromEvent } from 'rxjs';
 import { NewsService } from 'src/app/services/news.service';
 
 @Component({
@@ -26,7 +26,12 @@ export class NewsSiteComponent implements OnInit {
     
   }
 
-  ngOnInit(): void {       
+  ngOnInit(): void {     
+    
+    fromEvent(window, 'popstate').subscribe((e) => {
+      console.log(e, 'back button');
+    });
+    
     if(this.news === undefined){
       this.route.params.subscribe(params => {
         this.id = params['id'];

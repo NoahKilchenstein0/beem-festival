@@ -20,7 +20,7 @@
                 </button>
             </div>
         </div>
-        <div class="flexboxcards allignCenter" *ngIf="!globalsService.isTopNav">
+        <!-- <div class="flexboxcards allignCenter" *ngIf="!globalsService.isTopNav">
             <news-card *ngFor="let News of filteredNews" class="itemsmall" [news]="News"
                 (navigateToNews)="navigateToNewsPage($event)">
             </news-card>
@@ -29,7 +29,19 @@
                     Admin ansicht wechseln
                 </button>
             </div>
+        </div> -->
+
+        <div class="cardcontainer" *ngIf="!globalsService.isTopNav">
+            <news-card class="carditem" *ngFor="let News of filteredNews" [news]="News"
+                (navigateToNews)="navigateToNewsPage($event)">
+            </news-card>
+            <div class="buttonMargin">
+                <button mat-raised-button class="button" (click)="onSwap()" *ngIf="isAdminOnly() && !isDrillDownActive">
+                    Admin ansicht wechseln
+                </button>
+            </div>
         </div>
+
     </div>
     <news-site *ngIf="isDrillDownActive && !isAdmin()" [news]="selectedNews" (onBack)="onBack()">
     </news-site>

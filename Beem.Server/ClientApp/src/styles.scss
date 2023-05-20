@@ -333,3 +333,18 @@ table.mat-table {
   background-color: rgba(113, 48, 117, 0.75) !important;
   color: white !important;
 }
+
+.cardcontainer {
+  width: 90vw;
+  // border: solid red;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 250px);
+  justify-content: space-evenly;
+  grid-gap: 20px;
+}
+
+.carditem {
+  width: 272px;
+  height: auto;
+  // border: solid;
+}

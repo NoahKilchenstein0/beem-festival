@@ -20,8 +20,8 @@
                 </button>
             </div>
         </div>
-        <div class="flexboxcards allignCenter" *ngIf="!globalsService.isTopNav">
-            <artist-card *ngFor="let artist of filteredArtist" class="itemsmall" [artist]="artist"
+        <div class="cardcontainer" *ngIf="!globalsService.isTopNav">
+            <artist-card class="carditem"  *ngFor="let artist of filteredArtist"[artist]="artist"
                 (navigateToArtist)="navigateToArtistPage($event)">
             </artist-card>
             <div class="buttonMargin">
