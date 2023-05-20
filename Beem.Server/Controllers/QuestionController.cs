@@ -2,6 +2,8 @@ using Beem.Server.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using System.Linq;
+
 
 namespace Beem.Server.Controllers
 {

@@ -2,6 +2,7 @@ using Beem.Server.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using System.Linq;
 
 namespace Beem.Server.Controllers
 {
@@ -17,13 +18,13 @@ namespace Beem.Server.Controllers
         [Authorize]
         [HttpGet]
         public IActionResult Get() {
-            return Ok(this.dbContext.News.OrderBy(x => x.Id));
+            return Ok(this.dbContext.News.OrderByDescending(x => x.Id));
         }
 
         
         [HttpGet("GetActive")]
         public IActionResult GetActive() {
-            return Ok(this.dbContext.News.Where(x => x.PublicationDateTime <= DateTime.UtcNow).OrderBy(x => x.PublicationDateTime));
+            return Ok(this.dbContext.News.Where(x => x.PublicationDateTime <= DateTime.UtcNow).OrderByDescending(x => x.PublicationDateTime));
         }
         
         [HttpGet("GetLatest")]
