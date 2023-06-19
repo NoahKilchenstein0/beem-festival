@@ -50,6 +50,8 @@ import { FaqComponent } from './faq/faq.component';
 import { FaqAdminEditComponent } from './faq/faq-admin-overview/faq-admin-edit/faq-admin-edit.component';
 import { FaqAdminOverviewComponent } from './faq/faq-admin-overview/faq-admin-overview.component';
 import {NgcCookieConsentModule, NgcCookieConsentConfig} from 'ngx-cookieconsent';
+import { TimetableComponent } from './timetable/timetable.component';
+import { TicketInfoComponent } from './ticket-info/ticket-info.component';
 const cookieConfig:NgcCookieConsentConfig = {
   cookie: {
     domain: 'beem-festival.de' // or 'your.domain.com' // it is mandatory to set a domain, for cookies to work properly (see https://goo.gl/S2Hy2A)
@@ -97,7 +99,9 @@ const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
     NewsStartpageComponent,
     FaqComponent,
     FaqAdminEditComponent,
-    FaqAdminOverviewComponent
+    FaqAdminOverviewComponent,
+    TimetableComponent,
+    TicketInfoComponent
   ],
   imports: [
     BrowserModule,

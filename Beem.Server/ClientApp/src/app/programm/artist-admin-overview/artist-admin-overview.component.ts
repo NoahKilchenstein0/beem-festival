@@ -94,7 +94,7 @@ export class ArtistAdminOverviewComponent implements OnInit, AfterViewInit {
 
   sortData(sort: Sort) {
     const data = this.artists.slice();
-
+    
     if (!sort.active || sort.direction === '') {
       this.sortedArtistData = data;
     } else {

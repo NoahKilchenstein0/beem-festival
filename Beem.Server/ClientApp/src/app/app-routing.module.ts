@@ -7,6 +7,8 @@ import { NewsSiteComponent } from './news/news-site/news-site.component';
 import { NewsStartpageComponent } from './news/news-startpage/news-startpage.component';
 import { NewsComponent } from './news/news.component';
 import { ProgrammComponent } from './programm/programm.component';
+import { TimetableComponent } from './timetable/timetable.component';
+import { TicketInfoComponent } from './ticket-info/ticket-info.component';
 
 const routes: Routes = [
   {path: 'programm', component: ProgrammComponent},
@@ -15,6 +17,8 @@ const routes: Routes = [
   {path: 'faq', component: FaqComponent},
   {path: 'admin-login', component: AdminLoginComponent},
   {path: 'impressum', component: ImpressumComponent},
+  {path: 'timetable', component: TimetableComponent},
+  {path: 'ticket-info', component: TicketInfoComponent},
   {path: '', component: NewsComponent}
 ];
 

@@ -28,9 +28,11 @@ export class AppComponent implements OnInit, OnDestroy {
   public isTopNav: boolean = true;
   public navItems: NavItem[] = [   
     new NavItem("Neuigkeiten", "Alle Neuigkeiten übers Beem Festival","news"), 
-    new NavItem ("Künstler", "Künstlerseite","programm"), 
+    new NavItem("Artists", "Überblick über die spielenden Künstler:innen","programm"), 
+    new NavItem("Timetable", "Spielplan der Bands", "timetable"), 
+    new NavItem("Ticket-Info", "Alle Informationen rund um den Ticketkauf!", "ticket-info"),
     new NavItem("Impressum", "Impressum Beem e.V.","impressum"),
-    new NavItem("FAQs", "Häufige Fragen", "faq")
+    new NavItem("FAQs", "Häufig gestellte Fragen", "faq")
   ];
 
   constructor(public globalService: GlobalService,

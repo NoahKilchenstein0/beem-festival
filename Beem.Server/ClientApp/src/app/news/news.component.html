@@ -6,7 +6,7 @@
 <div class="columncontainer  topNavMargin">
     <div class="flexboxtop">
         <div class="headerRow" *ngIf="!isDrillDownActive">
-            <h1 class="header">NEWS</h1>
+            <h1 class="header" (click)="testFunc()">NEWS</h1>
         </div>
     </div>
     <div class="container newsOverview" *ngIf="!isDrillDownActive && !isAdmin()">
