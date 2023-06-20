@@ -124,18 +124,4 @@ export class NewsComponent implements OnInit {
       this.news.splice(this.news.findIndex(x => x === news),1);
     });
   }
-
-  testFunc(): void{
-    console.log("testiiiing");
-    console.log(this.filteredNews);
-    this.testSort();
-  }
-
-  testSort() {
-    console.log("sorting!");
-    this.filteredNews.sort((a, b) => {
-      return <any>new Date(b.publicationDateTime) - <any>new Date(a.publicationDateTime);
-    });
-  }
-
 }
