@@ -6,6 +6,7 @@ import { AuthService } from '../services/auth.service';
 import { GlobalService } from '../services/global.service';
 import { NewsService } from '../services/news.service';
 import { UserService } from '../services/user.service';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-news',
@@ -53,6 +54,8 @@ export class NewsComponent implements OnInit {
       this.isDrillDownActive = x;
     });
   }
+
+  
 
   navigateToNewsPage(news:News): void{
     this.selectedNews = news;
@@ -121,5 +124,4 @@ export class NewsComponent implements OnInit {
       this.news.splice(this.news.findIndex(x => x === news),1);
     });
   }
-
 }

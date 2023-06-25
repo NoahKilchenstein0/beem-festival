@@ -1,0 +1,10 @@
+.timetableWrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+:host .container{
+    margin: 5vh;
+}
