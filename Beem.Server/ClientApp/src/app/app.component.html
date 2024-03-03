@@ -1,8 +1,74 @@
-<mat-drawer-container class="general" [hasBackdrop]="true" *ngIf="globalService.isLoaded">
+<img src="../assets/banner.png" alt="Banner" class="banner">
+
+<mat-toolbar class="header-toolbar">
+  <button routerLink="news">NEWS</button>
+  <button>LINEUP</button>
+  <button>TICKETS</button>
+  <button>TIMETABLE</button>
+  <button>INFO</button>
+  <button>MEDIEN</button>
+</mat-toolbar>
+
+<div class="router-outlet">
+  <router-outlet></router-outlet>
+</div>
+
+<div class="footer">
+  <div>
+    <mat-icon>mail_outline</mat-icon>
+    <a href="https://www.instagram.com/beemfestival/" target="_blank">
+      <img class="ig-logo" src="../assets/ig-icon.png" alt="instagramm-logo">
+    </a>
+  </div>
+  <div>
+    BEEM Festival und Freizeit e.V.
+  </div>
+  <div>
+    <div>
+      DATENSCHUTZ
+    </div>
+    <div>
+      IMPRESSUM
+    </div>
+    <div>
+      KONTAKT
+    </div>
+  </div>
+</div>
+
+
+<!-- <mat-drawer-container class="general" [hasBackdrop]="true" *ngIf="globalService.isLoaded">
 
   <mat-drawer #drawer [mode]="'over'" color="primary">
       
-    <!--img class="logo" src="../assets/logo-transparent.png" alt="beem-banner" (click)="onNavigateHome()"-->
+    <div *ngFor="let navItem of navItems" class="menu-buttons">
+      <button mat-raised-button routerLink="{{navItem.route}}" class="topButton" routerLinkActive="activebutton">{{navItem.name}}</button>
+    </div>
+    <button mat-raised-button *ngIf="this.authoritheService.isLoggedIn()" class="logoutButton" (click)="onLogout()"><mat-icon>logout</mat-icon>Ausloggen</button>
+  
+  </mat-drawer>
+
+  <mat-drawer-content>
+
+    <mat-toolbar class="sidenav" color="primary" *ngIf="!globalService.isTopNav">
+      <button class="sidenav-button" mat-button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+    </mat-toolbar>
+
+    <mat-toolbar *ngIf="globalService.isTopNav">
+      <button *ngFor="let navItem of navItems" routerLink="{{navItem.route}}" routerLinkActive="activebutton">{{navItem.name}}</button>
+      <button *ngIf="this.authoritheService.isLoggedIn()" (click)="onLogout()"><mat-icon>logout</mat-icon>Ausloggen</button>
+    </mat-toolbar>
+
+        <router-outlet></router-outlet>
+  </mat-drawer-content>
+
+</mat-drawer-container> -->
+
+<!-- ################################################## Altes Design ################################################## -->
+<!-- <mat-drawer-container class="general" [hasBackdrop]="true" *ngIf="globalService.isLoaded">
+
+  <mat-drawer #drawer [mode]="'over'" color="primary">
+      
     <div *ngFor="let navItem of navItems" class="menu-buttons">
       <button mat-raised-button routerLink="{{navItem.route}}" class="topButton" routerLinkActive="activebutton">{{navItem.name}}</button>
     </div>
@@ -17,15 +83,11 @@
     </mat-toolbar>
 
     <mat-toolbar class="navbar" *ngIf="globalService.isTopNav">
-      <!--img class="logo" src="../assets/logo-transparent.png" alt="beem-banner" (click)="onNavigateHome()"-->
       <button mat-raised-button *ngFor="let navItem of navItems" class="topButton" routerLink="{{navItem.route}}" routerLinkActive="activebutton">{{navItem.name}}</button>
       <button mat-raised-button *ngIf="this.authoritheService.isLoggedIn()" class="logoutButton" (click)="onLogout()"><mat-icon>logout</mat-icon>Ausloggen</button>
     </mat-toolbar>
 
-    <!-- <app-nav-bar  [navItems]="navItems" *ngIf="globalService.isTopNav"></app-nav-bar> -->
-    <!-- div *ngIf="router.url === '/'" class="background-image" [ngClass]="{'topNavMargin':globalService.isTopNav}"></div-->
-
         <router-outlet></router-outlet>
   </mat-drawer-content>
 
-</mat-drawer-container>
+</mat-drawer-container> -->

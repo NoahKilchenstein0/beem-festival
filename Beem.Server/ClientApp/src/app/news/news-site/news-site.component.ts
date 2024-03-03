@@ -29,7 +29,7 @@ export class NewsSiteComponent implements OnInit {
   ngOnInit(): void {     
     
     fromEvent(window, 'popstate').subscribe((e) => {
-      console.log(e, 'back button');
+      // console.log(e, 'back button');
     });
     
     if(this.news === undefined){

@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { News } from '../models/news';
 import { Roles, User } from '../models/user';
 import { AuthService } from '../services/auth.service';
 import { GlobalService } from '../services/global.service';
 import { NewsService } from '../services/news.service';
 import { UserService } from '../services/user.service';
+import { PlatformLocation } from '@angular/common';
 
 @Component({
   selector: 'app-news',
@@ -26,15 +27,25 @@ export class NewsComponent implements OnInit {
 
   public isEdit: boolean = false;
 
-  constructor(public router: Router,
-              public userService: UserService,
-              public newsService: NewsService,
-              public authenticationService: AuthService,
-              public globalsService: GlobalService) {
+  constructor(
+    public router: Router,
+    public userService: UserService,
+    public newsService: NewsService,
+    public authenticationService: AuthService,
+    public globalsService: GlobalService,
+    private route: ActivatedRoute,
+    private location: PlatformLocation
+  ){
     this.user = this.authenticationService.userValue;
   }
 
   ngOnInit(): void {
+    history.pushState(null, '', location.href);
+    this.location.onPopState(() => {
+      history.pushState(null, '', location.href);
+      this.onBack();
+    });
+
     if(this.isAdminOnly()){
       this.isAdminView = true;
       this.newsService.getNews().subscribe(x => {
@@ -54,8 +65,26 @@ export class NewsComponent implements OnInit {
     });
   }
 
+  ngOnDestroy() {
+    this.location.onPopState(() => {});
+  }
+
+  setRouteParams(news:News): void {
+    this.router.navigate(['/news'], {
+      relativeTo: this.route,
+      queryParams: {
+        isAdminView: this.isAdminView,
+        isEdit: this.isEdit,
+        newsId: news.id
+      },
+      queryParamsHandling: 'merge', // preserve the current query params
+    });
+
+  }
+  
   navigateToNewsPage(news:News): void{
     this.selectedNews = news;
+    // this.setRouteParams(news);
     this.globalsService.setNewsDrillDownActive();
   }
 

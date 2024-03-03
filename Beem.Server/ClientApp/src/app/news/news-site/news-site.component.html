@@ -1,4 +1,20 @@
-<div class="container">
+<div class="news-site">
+    <mat-card class="inner-news-site" *ngIf="!isLoading">
+        <div class="imageDiv">
+            <img style="width: 100%;" *ngIf="news !== undefined" [src]="createImgPath()" alt="Photo of {{getNewsTitle()}}" />
+        </div>
+        <mat-card-content>
+            <h2>{{getNewsTitle()}}</h2>
+            <div [innerHTML]="getNewsText()"></div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button (click)="onBack()">Zurück</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+
+<!-- Altes Design -->
+<!-- <div class="container">
     <mat-card class="card" *ngIf="!isLoading">
         <div class="imageDiv">
             <img class="background-image-drilldown" *ngIf="news !== undefined" [src]="createImgPath()"
@@ -12,4 +28,4 @@
             <button mat-raised-button (click)="onBack()" class="topButton">Zurück</button>
         </mat-card-actions>
     </mat-card>
-</div>
+</div> -->

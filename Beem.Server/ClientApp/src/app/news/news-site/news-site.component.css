@@ -48,3 +48,15 @@
 .marginBottom {
     margin-bottom: 1rem;
 }
+
+.news-site {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.inner-news-site {
+    margin: 30px 0;
+    width: 80%;
+    border: 2px solid #ff66c4;
+}

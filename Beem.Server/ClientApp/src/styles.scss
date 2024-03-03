@@ -38,7 +38,79 @@ body {
   font-family: 'Century Gothic' !important;
   font-style: normal !important;
   color: black;
+  font-family: 'Monserrat', fallback, sans-serif !important;
+  background-color: #e7e0c6;
 }
+
+@font-face {
+  font-family: 'Birma';
+  src: url('./assets/fonts/brima/Brima.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Monserrat';
+  src: url('./assets/fonts/monserrat/Montserrat-Regular.ttf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Journey';
+  src: url('./assets/fonts/journeyhandwritingfont/JourneyHandwritingFon-Rg.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'HappyMonkey';
+  src: url('./assets/fonts/HappyMonkey-Regular.ttf') format('opentype');
+}
+
+// ##################################################################################################################
+
+.router-outlet {
+  padding-top: 64px;
+}
+
+.footer {
+  min-height: 75px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: white;
+  background-color: #258c68;
+}
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+button {
+  background-color: #258c68 !important;
+  border: 0;
+  height: 100%;
+  padding: 0 30px 0 30px;
+  font-family: 'HappyMonkey', fallback, sans-serif !important;
+  font-size: 25pt;
+}
+
+button:hover {
+  background-color: #ff66c4 !important;
+  cursor: pointer;
+}
+
+.component-header {
+  display: flex;
+  justify-content: center;
+}
+
+h1{
+  font-weight: 400 !important;
+  font-size: 5em !important;
+  line-height: 120px !important;
+  font-family: 'HappyMonkey', fallback, sans-serif !important;
+  font-style: normal !important;
+}
+
+// ##################################################################################################################
 
 /* width */
 ::-webkit-scrollbar {
@@ -79,14 +151,14 @@ body {
   justify-content: center;
 }
 
-h1{
-  color: #83C47F;
-  font-weight: 400 !important;
-  font-size: 5em !important;
-  line-height: 120px !important;
-  font-family: 'Century Gothic' !important;
-  font-style: normal !important;
-}
+// h1{
+//   color: #83C47F;
+//   font-weight: 400 !important;
+//   font-size: 5em !important;
+//   line-height: 120px !important;
+//   font-family: 'Century Gothic' !important;
+//   font-style: normal !important;
+// }
 .topButton{
   width: auto !important;
   display: flex !important;
@@ -228,33 +300,34 @@ h1{
   height: 94.5vh;
   //margin-top: 5.5vh;
   width: 100%;  
-  background-color: #83c47f !important;
+  background-color: #e7e0c6 !important;
+  // background-color: #83c47f !important;
 }
-.background-image {
-  background-image: url('/assets/tree-3979965.svg');
-  // height: inherit;
-  // width: inherit;
-  background-repeat: repeat-y;
-  // background-attachment: inherit;
-  // margin-top: 5.5vh;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
+// .background-image {
+//   background-image: url('/assets/tree-3979965.svg');
+//   // height: inherit;
+//   // width: inherit;
+//   background-repeat: repeat-y;
+//   // background-attachment: inherit;
+//   // margin-top: 5.5vh;
+//   -webkit-background-size: cover;
+//   -moz-background-size: cover;
+//   -o-background-size: cover;
+//   background-size: cover;
+// }
 
-.background-element {
-  background-image: url('/assets/tree-3979965.svg');
+// .background-element {
+//   background-image: url('/assets/tree-3979965.svg');
 
-  background-repeat: repeat-y;
-  background-size: cover;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  transform: translateZ(-1px) scale(2);
-}
+//   background-repeat: repeat-y;
+//   background-size: cover;
+//   position: absolute;
+//   top: 0;
+//   right: 0;
+//   bottom: 0;
+//   left: 0;
+//   transform: translateZ(-1px) scale(2);
+// }
 
 .containerSub{
   height:100%;

@@ -1,34 +1,48 @@
+.header-toolbar {
+  display: flex;
+  justify-content: center;
+}
+
+.banner {
+  max-height: 286px;
+  width: 100%;
+  margin-bottom: -5px;
+}
+
+
+
+// ---------------------------------------------------
 .wrapper{
   height: 94.5vh;
   //margin-top: 5.5vh;
   width: 100%;  
   background-color: #83c47f !important;
 }
-.background-image {
-  background-image: url('../assets/tree-3979965.svg');
-  // height: inherit;
-  // width: inherit;
-  background-repeat: repeat-y;
-  // background-attachment: inherit;
-  // margin-top: 5.5vh;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
+// .background-image {
+//   background-image: url('../assets/tree-3979965.svg');
+//   // height: inherit;
+//   // width: inherit;
+//   background-repeat: repeat-y;
+//   // background-attachment: inherit;
+//   // margin-top: 5.5vh;
+//   -webkit-background-size: cover;
+//   -moz-background-size: cover;
+//   -o-background-size: cover;
+//   background-size: cover;
+// }
 
-.background-element {
-  background-image: url('../assets/tree-3979965.svg');
+// .background-element {
+//   background-image: url('../assets/tree-3979965.svg');
 
-  background-repeat: repeat-y;
-  background-size: cover;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  transform: translateZ(-1px) scale(2);
-}
+//   background-repeat: repeat-y;
+//   background-size: cover;
+//   position: absolute;
+//   top: 0;
+//   right: 0;
+//   bottom: 0;
+//   left: 0;
+//   transform: translateZ(-1px) scale(2);
+// }
 
 .content {
   position: relative;
@@ -86,9 +100,10 @@
 }
 
 .mat-toolbar{
-  background-color: rgba(113, 48, 117, 0.75) !important;
+  background-color: #258c68 !important;
   z-index: 999;
-  position: fixed;
+  position: sticky;
+  top: 0;
 }
 
 .logo{
@@ -116,5 +131,12 @@
 }
 
 .activebutton{
-  background-color: rgb(51, 51, 51) !important;
+  background-color: #ff66c4 !important;
+}
+
+.ig-logo {
+  margin: 3px;
+  height: 18px;
+  position: relative;
+  // bottom: 3px;
 }
