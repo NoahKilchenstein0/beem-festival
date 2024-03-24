@@ -54,7 +54,6 @@ import { TimetableComponent } from './timetable/timetable.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { ErrorPageComponent } from './error-page/error-page.component';
 
-
 const cookieConfig:NgcCookieConsentConfig = {
   cookie: {
     domain: 'beem-festival.de' // or 'your.domain.com' // it is mandatory to set a domain, for cookies to work properly (see https://goo.gl/S2Hy2A)

@@ -90,15 +90,41 @@ app-root {
   width: 100%;
 }
 
-button, .mat-menu-item {
+// @media screen and (min-width: 601px) {
+  button, .mat-menu-item {
+    background-color: #258c68 !important;
+    border: 0 !important;
+    height: 100%;
+    padding: 0 30px 0 30px;
+    font-family: 'HappyMonkey', fallback, sans-serif !important;
+    font-size: 25pt !important;
+    color: black !important;
+  }
+// }
+
+// @media screen and (max-width: 600px) {
+//   button, .mat-menu-item {
+//     background-color: #258c68 !important;
+//     border: 0 !important;
+//     /* padding: 0 30px 0 30px; */
+//     font-family: "HappyMonkey", fallback, sans-serif !important;
+//     font-size: 25pt !important;
+//     color: black !important;
+//     width: 100%;
+//   }
+// }
+
+.drawer-button {
   background-color: #258c68 !important;
   border: 0 !important;
-  height: 100%;
-  padding: 0 30px 0 30px;
-  font-family: 'HappyMonkey', fallback, sans-serif !important;
+  padding: 0;
+  font-family: "HappyMonkey", fallback, sans-serif !important;
   font-size: 25pt !important;
   color: black !important;
+  height: 40px;
+  width: 100%;
 }
+
 
 button:hover {
   background-color: #ff66c4 !important;

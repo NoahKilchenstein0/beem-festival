@@ -1,4 +1,5 @@
-<div class="content">
+<!-- Desktop View -->
+<div *ngIf="!(isHandset$ | async)" class="content">
   <img src="../assets/banner.png" alt="Banner" class="banner">
   
   <mat-toolbar class="header-toolbar">
@@ -22,7 +23,7 @@
   </div>
 </div>
 
-<div class="footer">
+<div *ngIf="!(isHandset$ | async)" class="footer">
   <div>
     <mat-icon (click)="sendEmail()" class="footer-link">mail_outline</mat-icon>
     <a href="https://www.instagram.com/beemfestival/" target="_blank">
@@ -44,6 +45,60 @@
     </div>
   </div>
 </div>
+
+<!-- Mobile View -->
+<mat-drawer-container *ngIf="isHandset$ | async" [hasBackdrop]="true">
+  <mat-drawer class="drawer" #drawer [mode]="'over'">
+
+    <button class="drawer-button" routerLink="news" routerLinkActive="active">NEWS</button>
+    <button class="drawer-button" routerLink="lineup" routerLinkActive="active">LINEUP</button>
+    <button class="drawer-button" disabled routerLinkActive="active">TICKETS</button>
+    <button class="drawer-button" routerLink="timetable" routerLinkActive="active">TIMETABLE</button>
+    <!-- <button routerLink="faq">INFO</button> -->
+    <button class="drawer-button" mat-button [matMenuTriggerFor]="menu">INFO</button>
+    <mat-menu #menu="matMenu">
+      <button class="drawer-button" mat-menu-item routerLink="faq" routerLinkActive="active">FAQ</button>
+      <button class="drawer-button" mat-menu-item routerLinkActive="active">SPONSOREN</button>
+      <button class="drawer-button" mat-menu-item routerLink="impressum" routerLinkActive="active">IMPRESSUM</button>
+    </mat-menu>
+    <button class="drawer-button" disabled routerLinkActive="active">MEDIEN</button>
+    <button class="drawer-button" *ngIf="this.authoritheService.isLoggedIn()" (click)="onLogout()"><mat-icon>logout</mat-icon>Ausloggen</button>
+
+  </mat-drawer>
+  <mat-drawer-content>
+
+    <div class="mobile-toolbar">
+      <button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+      <div>{{currentUrl}}</div>
+    </div>
+
+    <router-outlet></router-outlet>
+
+    <div class="footer">
+      <div>
+        <mat-icon (click)="sendEmail()" class="footer-link">mail_outline</mat-icon>
+        <a href="https://www.instagram.com/beemfestival/" target="_blank">
+          <img class="ig-logo" src="../assets/ig-icon.png" alt="instagramm-logo">
+        </a>
+      </div>
+      <div>
+        BEEM Festival und Freizeit e.V.
+      </div>
+      <div>
+        <div class="footer-link" routerLink="impressum">
+          DATENSCHUTZ
+        </div>
+        <div class="footer-link" routerLink="impressum">
+          IMPRESSUM
+        </div>
+        <div class="footer-link" routerLink="impressum">
+          KONTAKT
+        </div>
+      </div>
+    </div>
+
+  </mat-drawer-content>
+</mat-drawer-container>
 
 
 <!-- <mat-drawer-container class="general" [hasBackdrop]="true" *ngIf="globalService.isLoaded">
