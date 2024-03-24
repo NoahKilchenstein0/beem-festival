@@ -4,7 +4,7 @@
 }
 
 .banner {
-  max-height: 286px;
+  // max-height: 500px;
   width: 100%;
   margin-bottom: -5px;
 }
@@ -45,7 +45,8 @@
 // }
 
 .content {
-  position: relative;
+  // flex: 1 0 auto;
+  min-height: calc(100vh - 75px);
 }
 
 .general {
@@ -139,4 +140,8 @@
   height: 18px;
   position: relative;
   // bottom: 3px;
+}
+
+.footer-link {
+  cursor: pointer;
 }

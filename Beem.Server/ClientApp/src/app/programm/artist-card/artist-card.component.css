@@ -1,0 +1,9 @@
+.band-image {
+    max-width: 350px;
+}
+
+.band-text {
+    text-align: center;
+    font-size: x-large;
+    font-family: 'Century Gothic' !important;
+}

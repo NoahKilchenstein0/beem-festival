@@ -1,21 +1,30 @@
-<img src="../assets/banner.png" alt="Banner" class="banner">
-
-<mat-toolbar class="header-toolbar">
-  <button routerLink="news">NEWS</button>
-  <button>LINEUP</button>
-  <button>TICKETS</button>
-  <button>TIMETABLE</button>
-  <button>INFO</button>
-  <button>MEDIEN</button>
-</mat-toolbar>
-
-<div class="router-outlet">
-  <router-outlet></router-outlet>
+<div class="content">
+  <img src="../assets/banner.png" alt="Banner" class="banner">
+  
+  <mat-toolbar class="header-toolbar">
+    <button routerLink="news" routerLinkActive="active">NEWS</button>
+    <button routerLink="lineup" routerLinkActive="active">LINEUP</button>
+    <button disabled routerLinkActive="active">TICKETS</button>
+    <button routerLink="timetable" routerLinkActive="active">TIMETABLE</button>
+    <!-- <button routerLink="faq">INFO</button> -->
+    <button mat-button [matMenuTriggerFor]="menu">INFO</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="faq" routerLinkActive="active">FAQ</button>
+      <button mat-menu-item routerLinkActive="active">SPONSOREN</button>
+      <button mat-menu-item routerLink="impressum" routerLinkActive="active">IMPRESSUM</button>
+    </mat-menu>
+    <button disabled routerLinkActive="active">MEDIEN</button>
+    <button *ngIf="this.authoritheService.isLoggedIn()" (click)="onLogout()"><mat-icon>logout</mat-icon>Ausloggen</button>
+  </mat-toolbar>
+  
+  <div class="router-outlet">
+    <router-outlet></router-outlet>
+  </div>
 </div>
 
 <div class="footer">
   <div>
-    <mat-icon>mail_outline</mat-icon>
+    <mat-icon (click)="sendEmail()" class="footer-link">mail_outline</mat-icon>
     <a href="https://www.instagram.com/beemfestival/" target="_blank">
       <img class="ig-logo" src="../assets/ig-icon.png" alt="instagramm-logo">
     </a>
@@ -24,13 +33,13 @@
     BEEM Festival und Freizeit e.V.
   </div>
   <div>
-    <div>
+    <div class="footer-link" routerLink="impressum">
       DATENSCHUTZ
     </div>
-    <div>
+    <div class="footer-link" routerLink="impressum">
       IMPRESSUM
     </div>
-    <div>
+    <div class="footer-link" routerLink="impressum">
       KONTAKT
     </div>
   </div>

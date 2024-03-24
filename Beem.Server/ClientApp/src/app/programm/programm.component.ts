@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Artist } from '../models/artist';
 import { Roles, User } from '../models/user';
 import { ArtistService } from '../services/artist.service';
 import { AuthService } from '../services/auth.service';
 import { GlobalService } from '../services/global.service';
 import { UserService } from '../services/user.service';
+import { PlatformLocation } from '@angular/common';
 
 @Component({
   selector: 'app-programm',
@@ -30,11 +31,20 @@ export class ProgrammComponent implements OnInit {
     public userService: UserService,
     public artistsService: ArtistService,
     public authenticationService: AuthService,
-    public globalsService: GlobalService) {
+    public globalsService: GlobalService,
+    private route: ActivatedRoute,
+    private location: PlatformLocation
+    ) {
     this.user = this.authenticationService.userValue;
   }
 
   ngOnInit(): void {
+    history.pushState(null, '', location.href);
+    this.location.onPopState(() => {
+      history.pushState(null, '', location.href);
+      this.onBack();
+    });
+
     if (this.isAdminOnly()) {
       this.isAdminView = true;
       this.artistsService.getArtists().subscribe(x => {
@@ -54,6 +64,10 @@ export class ProgrammComponent implements OnInit {
     this.globalsService.isArtistDrillDown.subscribe(x => {
       this.isDrillDownActive = x;
     });
+  }
+
+  ngOnDestroy() {
+    this.location.onPopState(() => {});
   }
 
   navigateToArtistPage(artist: Artist): void {

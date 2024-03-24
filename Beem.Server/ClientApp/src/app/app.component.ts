@@ -113,4 +113,8 @@ export class AppComponent implements OnInit, OnDestroy {
     this.authoritheService.logout();
   }
 
+  sendEmail(): void {
+    window.location.href = 'mailto:beem.festival@gmail.com';
+  }
+
 }

@@ -32,7 +32,7 @@ $beem-theme: mat.define-dark-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+html { height: 100vh !important; }
 body { 
   margin: 0;
   font-family: 'Century Gothic' !important;
@@ -40,6 +40,12 @@ body {
   color: black;
   font-family: 'Monserrat', fallback, sans-serif !important;
   background-color: #e7e0c6;
+  min-height: 100vh !important;
+}
+
+app-root {
+  height: 100vh !important;
+  display: block;
 }
 
 @font-face {
@@ -69,6 +75,7 @@ body {
 }
 
 .footer {
+  width: 100%;
   min-height: 75px;
   display: flex;
   justify-content: space-evenly;
@@ -83,18 +90,27 @@ body {
   width: 100%;
 }
 
-button {
+button, .mat-menu-item {
   background-color: #258c68 !important;
-  border: 0;
+  border: 0 !important;
   height: 100%;
   padding: 0 30px 0 30px;
   font-family: 'HappyMonkey', fallback, sans-serif !important;
-  font-size: 25pt;
+  font-size: 25pt !important;
+  color: black !important;
 }
 
 button:hover {
   background-color: #ff66c4 !important;
   cursor: pointer;
+}
+
+.active {
+  background-color: #ff66c4 !important;
+}
+
+.mat-menu-content {
+  padding: 0 !important;
 }
 
 .component-header {
@@ -108,6 +124,23 @@ h1{
   line-height: 120px !important;
   font-family: 'HappyMonkey', fallback, sans-serif !important;
   font-style: normal !important;
+}
+
+h2{
+  font-weight: 200 !important;
+  font-size: 3em !important;
+  line-height: 50px !important;
+  font-family: "HappyMonkey", fallback, sans-serif !important;
+  font-style: normal !important;
+}
+
+h3{
+  font-weight: 100 !important;
+  font-size: 1.5em !important;
+  line-height: 25px !important;
+  font-family: "HappyMonkey", fallback, sans-serif !important;
+  font-style: normal !important;
+
 }
 
 // ##################################################################################################################
@@ -227,7 +260,7 @@ h1{
 }
 
 .card {
-  max-width: 100%;
+  width: 100%;
   padding: 1rem;
   overflow: hidden;
   background-color: white;

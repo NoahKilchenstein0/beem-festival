@@ -1,10 +1,10 @@
 <div class="news-site">
     <mat-card class="inner-news-site" *ngIf="!isLoading">
-        <div class="imageDiv">
-            <img style="width: 100%;" *ngIf="news !== undefined" [src]="createImgPath()" alt="Photo of {{getNewsTitle()}}" />
+        <div class="news-header">
+            <img class="news-image" *ngIf="news !== undefined" [src]="createImgPath()" alt="Photo of {{getNewsTitle()}}" />
+            <h2>{{getNewsTitle()}}</h2>
         </div>
         <mat-card-content>
-            <h2>{{getNewsTitle()}}</h2>
             <div [innerHTML]="getNewsText()"></div>
         </mat-card-content>
         <mat-card-actions>
