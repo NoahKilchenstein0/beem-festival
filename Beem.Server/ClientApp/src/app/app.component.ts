@@ -77,9 +77,14 @@ export class AppComponent implements OnInit, OnDestroy {
         // It's now safe to use methods on NgcCookieConsentService that require it, like `hasAnswered()` for eg...
     });
 
-    this.isHandset$ = this.breakpointObserver.observe(Breakpoints.Handset)
+    const customBreakpoint = '(max-width: 960px)';
+
+    this.isHandset$ = this.breakpointObserver.observe(customBreakpoint)
       .pipe(
-        map(result => result.matches)
+      map(result => {
+        console.log(result.matches);
+        return result.matches;
+      })
       );
 
     this.router.events.subscribe((event: any) => {

@@ -64,13 +64,31 @@
     color: black;
 }
 
-.news-header {
-    display: flex;
-    flex-direction: row;
-    align-items: start;
+@media only screen and (max-width: 960px) {
+    .news-image {
+        margin: 15px 0;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .news-header {
+        max-width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
 }
 
-.news-image {
-    width: 600px;
-    margin: 0 25px 25px 0;
+@media screen and (min-width: 960px) {
+    .news-image {
+        width: 600px;
+        margin: 0 25px 25px 0;
+    }
+
+    .news-header {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
 }

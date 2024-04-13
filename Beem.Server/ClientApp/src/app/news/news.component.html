@@ -12,7 +12,7 @@
 
 </div> -->
 
-<div class="toolbar-spacer">
+<div class="background">
     
     <div class="component-header" *ngIf="!isDrillDownActive">
         <h1>NEWS</h1>
@@ -32,7 +32,7 @@
             </div>
         </div>
 
-        <div *ngIf="!globalsService.isTopNav">
+        <div class="news-card-wrapper" *ngIf="!globalsService.isTopNav">
             <news-card *ngFor="let News of filteredNews" [news]="News"
                 (navigateToNews)="navigateToNewsPage($event)">
             </news-card>

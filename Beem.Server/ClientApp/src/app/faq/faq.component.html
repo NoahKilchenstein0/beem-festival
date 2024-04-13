@@ -1,46 +1,43 @@
-<div class="wrapper">
-  <div class="topNavMargin background-image containerSub">
-    <div class="flex-container">
-      <img class="logo" src="../assets/logo-transparent.png" alt="beem-banner">
-    </div>
-<div class="columncontainer  topNavMargin">
-  <div class="flexboxtop">
-      <div class="headerRow">
-          <h1 class="header">FAQs</h1>
-      </div>
+<div class="background">
+    
+  <div class="component-header" *ngIf="!isDrillDownActive">
+      <h1>FAQs</h1>
   </div>
+
   <div class="container" *ngIf="!isAdmin()">
     <div class="flexboxcards">
-    <mat-expansion-panel *ngFor="let question of questions" class="expansionPanel">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          {{question.title}}
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <div class="answerDiv" [innerHTML]="question.answer"></div>
-    </mat-expansion-panel>
-    <div class="buttonMargin">
-      <button mat-raised-button class="button" (click)="onSwap()" *ngIf="isAdminOnly() && !isDrillDownActive">
-          Admin ansicht wechseln
-      </button>
-  </div>
+      <mat-accordion class="questionsAccordion">
+        <mat-expansion-panel *ngFor="let question of questions" class="questionPanel">
+          <mat-expansion-panel-header [collapsedHeight]="'6rem'" [expandedHeight]="'6rem'">
+            <mat-panel-title class="questionTitle">
+              {{question.title}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="answerDiv" [innerHTML]="question.answer"></div>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <div class="buttonMargin">
+        <button mat-raised-button class="button" (click)="onSwap()" *ngIf="isAdminOnly() && !isDrillDownActive">
+            Admin ansicht wechseln
+        </button>
+      </div>
     </div>
   </div>
   <div class="container" *ngIf="isAdmin()">
-    <div class="flexboxcards">
-    <faq-admin-overview [questions]="questions" (selectedQuestion)="navigateToEditQuestion($event)"
-      (createQuestion)="navigateToEditQuestion($event)" (deleteQuestion)="deleteQuestion($event)"
-      *ngIf="!isDrillDownActive">
-    </faq-admin-overview>
-    <faq-admin-edit class="adminEditPanel" [question]="selectedQuestion" (onCreateUpdate)="updateQuestion($event)"
-      (onBack)="onBack()" *ngIf="isDrillDownActive">
-    </faq-admin-edit>
-    <div class="buttonMargin">
-      <button mat-raised-button class="button" (click)="onSwap()" *ngIf="isAdminOnly() && !isDrillDownActive">
-        Admin ansicht wechseln
-      </button>
+      <div class="flexboxcards">
+        <faq-admin-overview [questions]="questions" (selectedQuestion)="navigateToEditQuestion($event)"
+          (createQuestion)="navigateToEditQuestion($event)" (deleteQuestion)="deleteQuestion($event)"
+          *ngIf="!isDrillDownActive">
+        </faq-admin-overview>
+        <faq-admin-edit class="adminEditPanel" [question]="selectedQuestion" (onCreateUpdate)="updateQuestion($event)"
+          (onBack)="onBack()" *ngIf="isDrillDownActive">
+        </faq-admin-edit>
+      </div>
+      <div class="buttonMargin">
+        <button mat-raised-button class="button" (click)="onSwap()" *ngIf="isAdminOnly() && !isDrillDownActive">
+          Admin ansicht wechseln
+        </button>
+      </div>
     </div>
-    </div>
-  </div>
 
 </div>

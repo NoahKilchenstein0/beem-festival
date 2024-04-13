@@ -55,12 +55,12 @@
     <button class="drawer-button" disabled routerLinkActive="active">TICKETS</button>
     <button class="drawer-button" routerLink="timetable" routerLinkActive="active">TIMETABLE</button>
     <!-- <button routerLink="faq">INFO</button> -->
-    <button class="drawer-button" mat-button [matMenuTriggerFor]="menu">INFO</button>
-    <mat-menu #menu="matMenu">
-      <button class="drawer-button" mat-menu-item routerLink="faq" routerLinkActive="active">FAQ</button>
-      <button class="drawer-button" mat-menu-item routerLinkActive="active">SPONSOREN</button>
-      <button class="drawer-button" mat-menu-item routerLink="impressum" routerLinkActive="active">IMPRESSUM</button>
-    </mat-menu>
+    <!-- <button class="drawer-button" mat-button [matMenuTriggerFor]="menu">INFO</button> -->
+    <!--mat-menu #menu="matMenu"-->
+    <button class="drawer-button" routerLink="faq" routerLinkActive="active">FAQ</button>
+    <button class="drawer-button" routerLinkActive="active">SPONSOREN</button>
+    <button class="drawer-button" routerLink="impressum" routerLinkActive="active">IMPRESSUM</button>
+    <!--/mat-menu-->
     <button class="drawer-button" disabled routerLinkActive="active">MEDIEN</button>
     <button class="drawer-button" *ngIf="this.authoritheService.isLoggedIn()" (click)="onLogout()"><mat-icon>logout</mat-icon>Ausloggen</button>
 

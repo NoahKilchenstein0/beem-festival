@@ -147,7 +147,10 @@
 }
 
 .drawer {
-  max-width: 45%;
+   width: min-content;
+   max-width: 80%;
+   padding: 0.5rem;
+   background-color: #258c68;
 }
 
 .mobile-toolbar {

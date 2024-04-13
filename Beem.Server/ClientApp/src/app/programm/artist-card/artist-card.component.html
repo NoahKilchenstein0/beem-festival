@@ -1,20 +1,24 @@
-<div class="card pointer" (click)="navigateToArtistPage()"  *ngIf="globalsService.isTopNav">
+<!-- <div class="card pointer" (click)="navigateToArtistPage()"  *ngIf="globalsService.isTopNav">
   <div class="rowFlex" >
 
-    <div class="">
-      <img mat-card-image class="band-image" *ngIf="artist.img !== ''" [src]="createImgPath(artist.img)" alt="Photo of {{artist.name}}">
+    <div class="matcard">
+      <img class="band-image" *ngIf="artist.img !== ''" [src]="createImgPath(artist.img)" alt="Photo of {{artist.name}}">
       <div class="band-text">{{artist.name}}</div>
     </div>
 
   </div>
-</div>
+</div> -->
 
-<mat-card class="cardsmall" (click)="navigateToArtistPage()" *ngIf="!globalsService.isTopNav">
+<mat-card class="cardsmall" (click)="navigateToArtistPage()">
 
-  <img mat-card-image class="card-image-mobile" *ngIf="isImageVisible(artist)" [src]="createImgPath(artist.img)" alt="Photo of {{artist.name}}">
+  <img mat-card-image class="band-image" [src]="createImgPath(artist.img)" alt="Photo of {{artist.name}}">
   <mat-card-content class="rowFlex">
       <div class="colums">
           <div class="card-headline">{{artist.name}}</div>
+      </div>
+      <div class="band-info genre-text">
+        <div>{{artist.genre}}</div>
+        <div>...mehr lesen</div>
       </div>
   </mat-card-content>
 </mat-card>

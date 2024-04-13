@@ -57,6 +57,7 @@
 }
 
 .artist-site {
+    max-width: 100vw;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -79,10 +80,34 @@
 .band-image {
     width: 350px;
     margin: 0 25px 25px 0;
+    max-width: 100%;
+    height: auto;
 }
 
 .band-header {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: start;
+}
+
+/* make media querys for over and under 960px screen width */
+@media only screen and (max-width: 960px) {
+    .band-image {
+        width: 100%;
+        margin: 15px 0;
+        height: auto;
+    }
+
+    .band-header {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+}
+
+@media screen and (min-width: 960px) {
+    .band-image {
+        width: 600px;
+        margin: 0 25px 25px 0;
+    }
 }

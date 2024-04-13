@@ -1,0 +1,8 @@
+mat-card {
+    box-shadow: none !important;
+    padding: 50px 50px 25px 50px;
+    font-family: 'HappyMonkey', fallback, sans-serif !important;
+    font-size: 25pt !important;
+    color: black !important;
+    text-transform: uppercase;
+}
