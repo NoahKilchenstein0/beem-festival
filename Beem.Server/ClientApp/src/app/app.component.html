@@ -5,13 +5,13 @@
   <mat-toolbar class="header-toolbar">
     <button routerLink="news" routerLinkActive="active">NEWS</button>
     <button routerLink="lineup" routerLinkActive="active">LINEUP</button>
-    <button disabled routerLinkActive="active">TICKETS</button>
+    <button routerLink="tickets" routerLinkActive="active">TICKETS</button>
     <button routerLink="timetable" routerLinkActive="active">TIMETABLE</button>
     <!-- <button routerLink="faq">INFO</button> -->
     <button mat-button [matMenuTriggerFor]="menu">INFO</button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item routerLink="faq" routerLinkActive="active">FAQ</button>
-      <button mat-menu-item routerLinkActive="active">SPONSOREN</button>
+      <button mat-menu-item routerLink="sponsoring" routerLinkActive="active">SPONSOREN</button>
       <button mat-menu-item routerLink="impressum" routerLinkActive="active">IMPRESSUM</button>
     </mat-menu>
     <button disabled routerLinkActive="active">MEDIEN</button>
@@ -52,13 +52,13 @@
 
     <button class="drawer-button" routerLink="news" routerLinkActive="active">NEWS</button>
     <button class="drawer-button" routerLink="lineup" routerLinkActive="active">LINEUP</button>
-    <button class="drawer-button" disabled routerLinkActive="active">TICKETS</button>
+    <button class="drawer-button" routerLink="tickets" routerLinkActive="active">TICKETS</button>
     <button class="drawer-button" routerLink="timetable" routerLinkActive="active">TIMETABLE</button>
     <!-- <button routerLink="faq">INFO</button> -->
     <!-- <button class="drawer-button" mat-button [matMenuTriggerFor]="menu">INFO</button> -->
     <!--mat-menu #menu="matMenu"-->
     <button class="drawer-button" routerLink="faq" routerLinkActive="active">FAQ</button>
-    <button class="drawer-button" routerLinkActive="active">SPONSOREN</button>
+    <button class="drawer-button" routerLink="sponsoring" routerLinkActive="active">SPONSOREN</button>
     <button class="drawer-button" routerLink="impressum" routerLinkActive="active">IMPRESSUM</button>
     <!--/mat-menu-->
     <button class="drawer-button" disabled routerLinkActive="active">MEDIEN</button>

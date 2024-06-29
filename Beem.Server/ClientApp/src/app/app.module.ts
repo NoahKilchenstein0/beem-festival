@@ -53,6 +53,8 @@ import {NgcCookieConsentModule, NgcCookieConsentConfig} from 'ngx-cookieconsent'
 import { TimetableComponent } from './timetable/timetable.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { SponsoringComponent } from './sponsoring/sponsoring.component';
+import { TicketsComponent } from './tickets/tickets.component';
 
 const cookieConfig:NgcCookieConsentConfig = {
   cookie: {
@@ -103,7 +105,9 @@ const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
     FaqAdminEditComponent,
     FaqAdminOverviewComponent,
     TimetableComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    SponsoringComponent,
+    TicketsComponent
   ],
   imports: [
     BrowserModule,
