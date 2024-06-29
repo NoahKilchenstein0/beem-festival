@@ -1,0 +1,38 @@
+
+.background{
+    background-color: #e7e0c6;
+    color: black;
+}
+
+
+.impressumContainer{
+    display:flex;
+    flex-direction: column;
+    align-items: row;
+    flex-wrap: wrap;
+    padding: 1rem;
+    margin-left: 15%;
+    margin-right: 15%;
+    font-family: 'Century Gothic' !important;
+    font-size: 12pt;
+}
+
+h2{
+    font-family: 'Century Gothic' !important;
+}
+
+@media only screen and (max-width: 708px) {
+    .impressumContainer{
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    h2{
+        font-size: 24pt !important;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    h1{
+        font-size: 3em !important;
+    }
+}
