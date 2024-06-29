@@ -27,20 +27,20 @@ export class GlobalService {
     Breakpoints.TabletLandscape,
     Breakpoints.HandsetLandscape
     ]).subscribe(result => {
-      console.log(result);
+      // console.log(result);
       if (result.matches) {
         this.isTopNav = true;
-        console.log(this.isTopNav)
+        // console.log(this.isTopNav)
       }
     });
     breakpointObserver.observe([
       Breakpoints.TabletPortrait,
       Breakpoints.HandsetPortrait
     ]).subscribe(result => {
-      console.log(result);
+      // console.log(result);
       if(result.matches){
         this.isTopNav = false;
-        console.log(this.isTopNav)
+        // console.log(this.isTopNav)
       }
     });
   }

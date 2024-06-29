@@ -40,6 +40,7 @@
 }
 
 .card {
+    width: 100% !important;
     margin: 1rem;
     display: flex;
     flex-direction: column;
@@ -47,4 +48,47 @@
 
 .marginBottom {
     margin-bottom: 1rem;
+}
+
+.news-site {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.inner-news-site {
+    margin: 30px 0;
+    width: 80%;
+    border: 2px solid #ff66c4;
+    background-color: white;
+    color: black;
+}
+
+@media only screen and (max-width: 960px) {
+    .news-image {
+        margin: 15px 0;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .news-header {
+        max-width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+}
+
+@media screen and (min-width: 960px) {
+    .news-image {
+        width: 600px;
+        margin: 0 25px 25px 0;
+    }
+
+    .news-header {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
 }

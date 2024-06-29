@@ -3,8 +3,57 @@
     flex-direction: column;
 }
 
+.questionsAccordion{
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 2rem;
+}
 
+.questionPanel{
+    margin: 0;
+    border: 1px solid #ff66c4;
+}
+.questionTitle{
+    font-family: 'HappyMonkey', fallback, sans-serif !important;
+    font-size: 24pt;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 3.5rem;
+    text-transform: uppercase;
+}
 
-.expansionPanel {
-    margin: 1rem;
+.answerDiv{
+    font-family: 'Century Gothic' !important;
+    color: #5B5B5B;
+}
+
+.background{
+    background-color: #e7e0c6;
+    color: black;
+}
+
+@media only screen and (max-width: 960px) {
+    .questionTitle{
+        font-size: 16pt;
+    }
+    .background{
+        min-height: calc(100vh - 125px);
+    }
+}
+
+@media only screen and (max-width: 708px) {
+    .questionsAccordion{
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    .questionTitle{
+        min-height: 3rem;
+        text-transform: uppercase;
+    }
+}
+
+@media only screen and (min-width: 708px) {
+    .questionTitle{
+        line-height: 2.5rem;
+    }
 }

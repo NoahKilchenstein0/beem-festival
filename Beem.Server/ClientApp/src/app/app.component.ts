@@ -5,7 +5,7 @@ import { NavItem } from './models/navItem';
 import { AuthService } from './services/auth.service';
 import { GlobalService } from './services/global.service';
 import { NgcCookieConsentService, NgcInitializationErrorEvent, NgcInitializingEvent, NgcNoCookieLawEvent, NgcStatusChangeEvent } from 'ngx-cookieconsent';
-import { Subscription }   from 'rxjs';
+import { Observable, Subscription, map, shareReplay }   from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -15,28 +15,35 @@ import { Subscription }   from 'rxjs';
 export class AppComponent implements OnInit, OnDestroy {
   title = 'beem-site';
 
-    //keep refs to subscriptions to be able to unsubscribe later
-    private popupOpenSubscription!: Subscription;
-    private popupCloseSubscription!: Subscription;
-    private initializingSubscription!: Subscription;
-    private initializedSubscription!: Subscription;
-    private initializationErrorSubscription!: Subscription;
-    private statusChangeSubscription!: Subscription;
-    private revokeChoiceSubscription!: Subscription;
-    private noCookieLawSubscription!: Subscription;
+  //keep refs to subscriptions to be able to unsubscribe later
+  private popupOpenSubscription!: Subscription;
+  private popupCloseSubscription!: Subscription;
+  private initializingSubscription!: Subscription;
+  private initializedSubscription!: Subscription;
+  private initializationErrorSubscription!: Subscription;
+  private statusChangeSubscription!: Subscription;
+  private revokeChoiceSubscription!: Subscription;
+  private noCookieLawSubscription!: Subscription;
+
+  isHandset$: Observable<boolean> | undefined;
+  currentUrl: string = "";
 
   public isTopNav: boolean = true;
   public navItems: NavItem[] = [   
-    new NavItem("Neuigkeiten", "Alle Neuigkeiten übers Beem Festival","news"), 
-    new NavItem ("Künstler", "Künstlerseite","programm"), 
-    new NavItem("Impressum", "Impressum Beem e.V.","impressum"),
-    new NavItem("FAQs", "Häufige Fragen", "faq")
+    new NavItem("NEWS", "Alle Neuigkeiten übers Beem Festival","news"), 
+    new NavItem ("LINEUP", "Künstlerseite","programm"), 
+    new NavItem ("TICKETS", "Künstlerseite","programm"), 
+    new NavItem ("TIMETABLE", "Künstlerseite","programm"), 
+    new NavItem("IMPRESSUM", "Impressum Beem e.V.","impressum"),
+    new NavItem("FAQ", "Häufige Fragen", "faq")
   ];
 
   constructor(public globalService: GlobalService,
     public router: Router,
     public authoritheService: AuthService,
-    private ccService: NgcCookieConsentService){
+    private ccService: NgcCookieConsentService,
+    private breakpointObserver: BreakpointObserver
+  ){
       
     this.router.onSameUrlNavigation = "reload";
     this.router.events.subscribe(Event => {
@@ -52,43 +59,40 @@ export class AppComponent implements OnInit, OnDestroy {
     this.popupOpenSubscription = this.ccService.popupOpen$.subscribe(
       () => {
         // you can use this.ccService.getConfig() to do stuff...
-      });
+    });
 
     this.popupCloseSubscription = this.ccService.popupClose$.subscribe(
       () => {
         // you can use this.ccService.getConfig() to do stuff...
-      });
+    });
 
     this.initializingSubscription = this.ccService.initializing$.subscribe(
       (event: NgcInitializingEvent) => {
         // the cookieconsent is initilializing... Not yet safe to call methods like `NgcCookieConsentService.hasAnswered()`
-      });
+    });
     
     this.initializedSubscription = this.ccService.initialized$.subscribe(
       () => {
         // the cookieconsent has been successfully initialized.
         // It's now safe to use methods on NgcCookieConsentService that require it, like `hasAnswered()` for eg...
-      });
+    });
 
-    this.initializationErrorSubscription = this.ccService.initializationError$.subscribe(
-      (event: NgcInitializationErrorEvent) => {
-        // the cookieconsent has failed to initialize... 
-      });
+    const customBreakpoint = '(max-width: 960px)';
 
-    this.statusChangeSubscription = this.ccService.statusChange$.subscribe(
-      (event: NgcStatusChangeEvent) => {
-        // you can use this.ccService.getConfig() to do stuff...
-      });
+    this.isHandset$ = this.breakpointObserver.observe(customBreakpoint)
+      .pipe(
+      map(result => {
+        console.log(result.matches);
+        return result.matches;
+      })
+      );
 
-    this.revokeChoiceSubscription = this.ccService.revokeChoice$.subscribe(
-      () => {
-        // you can use this.ccService.getConfig() to do stuff...
-      });
-
-      this.noCookieLawSubscription = this.ccService.noCookieLaw$.subscribe(
-      (event: NgcNoCookieLawEvent) => {
-        // you can use this.ccService.getConfig() to do stuff...
-      });
+    this.router.events.subscribe((event: any) => {
+      if (event instanceof NavigationEnd) {
+      this.currentUrl = this.router.url.toUpperCase().replace("/", "");
+      console.log(this.currentUrl);
+      }
+    });
   }
 
   ngOnDestroy() {
@@ -109,6 +113,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public onLogout(): void {
     this.authoritheService.logout();
+  }
+
+  sendEmail(): void {
+    window.location.href = 'mailto:beem.festival@gmail.com';
   }
 
 }

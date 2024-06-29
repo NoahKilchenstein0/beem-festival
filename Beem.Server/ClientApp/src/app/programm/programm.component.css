@@ -12,3 +12,69 @@
 .newsOverview {
     justify-content: center;
 }
+
+.band-card-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.artist-card {
+    display: flex;
+    max-width: 350px;
+    /* margin: 10px; */
+}
+
+.background{
+    background-color: #e7e0c6;
+    color: black;
+}
+
+
+/* @media only screen and (max-width: 708px) {
+    .artist-card-wrapper {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center; 
+        gap: 50px;
+        background-color: white;
+        padding: 30px;
+    }
+
+    .band-card {
+        display: flex;
+        margin: 30px 0;
+    }
+} */
+
+@media screen and (min-width: 960px) {
+    .artist-card-wrapper {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center; 
+        gap: 50px;
+        background-color: white;
+        padding: 30px;
+    }
+
+    .band-card {
+        display: flex;
+        margin: 30px 0;
+        width: 80%;
+        border: 2px solid #ff66c4;
+    }
+}
+
+@media only screen and (max-width: 960px) {    
+    /* artist-card {
+        margin: 0 0 30px 0;
+        border: #ff66c4 2px solid;
+        background-color: white;
+    } */
+    .background{
+        min-height: calc(100vh - 125px);
+    }
+}

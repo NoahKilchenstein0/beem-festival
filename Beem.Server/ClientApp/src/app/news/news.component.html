@@ -1,66 +1,104 @@
-<div class="wrapper">
-    <div class="topNavMargin background-image containerSub">
-      <div class="flex-container">
-        <img class="logo" src="../assets/logo-transparent.png" alt="beem-banner">
-      </div>
-<div class="columncontainer  topNavMargin">
-    <div class="flexboxtop">
-        <div class="headerRow" *ngIf="!isDrillDownActive">
-            <h1 class="header">NEWS</h1>
+<!-- <div class="toolbar-spacer">
+    
+    <div class="component-header">
+        <h1>NEWS</h1>
+    </div>
+
+    <div *ngFor="let News of filteredNews" class="center-container">
+        <div class="news-card">
+            <news-card [news]="News" (navigateToNews)="navigateToNewsPage($event)"></news-card>
         </div>
     </div>
-    <div class="container newsOverview" *ngIf="!isDrillDownActive && !isAdmin()">
-        <div class="flexboxcards" *ngIf="globalsService.isTopNav">
-            <news-card *ngFor="let News of filteredNews" class="itembig" [news]="News"
-                (navigateToNews)="navigateToNewsPage($event)">
-            </news-card>
-            <div class="buttonMargin">
-                <button mat-raised-button class="button" (click)="onSwap()" *ngIf="isAdminOnly() && !isDrillDownActive">
-                    Admin ansicht wechseln
-                </button>
-            </div>
-        </div>
-        <!-- <div class="flexboxcards allignCenter" *ngIf="!globalsService.isTopNav">
-            <news-card *ngFor="let News of filteredNews" class="itemsmall" [news]="News"
-                (navigateToNews)="navigateToNewsPage($event)">
-            </news-card>
-            <div class="buttonMargin">
-                <button mat-raised-button class="button" (click)="onSwap()" *ngIf="isAdminOnly() && !isDrillDownActive">
-                    Admin ansicht wechseln
-                </button>
-            </div>
-        </div> -->
 
-        <div class="cardcontainer" *ngIf="!globalsService.isTopNav">
-            <news-card class="carditem" *ngFor="let News of filteredNews" [news]="News"
-                (navigateToNews)="navigateToNewsPage($event)">
-            </news-card>
-            <div class="buttonMargin">
-                <button mat-raised-button class="button" (click)="onSwap()" *ngIf="isAdminOnly() && !isDrillDownActive">
-                    Admin ansicht wechseln
-                </button>
+</div> -->
+
+<div class="background">
+    
+    <div class="component-header" *ngIf="!isDrillDownActive">
+        <h1>NEWS</h1>
+    </div>
+
+    <div *ngIf="!isDrillDownActive && !isAdmin()">
+        <div *ngIf="globalsService.isTopNav">
+            <div class="news-card-wrapper">
+                <news-card *ngFor="let News of filteredNews" class="news-card" [news]="News"
+                    (navigateToNews)="navigateToNewsPage($event)">
+                </news-card>
+                <div>
+                    <button mat-raised-button (click)="onSwap()" *ngIf="isAdminOnly() && !isDrillDownActive">
+                        Admin ansicht wechseln
+                    </button>
+                </div>
             </div>
         </div>
 
+        <div class="news-card-wrapper" *ngIf="!globalsService.isTopNav">
+            <news-card *ngFor="let News of filteredNews" [news]="News"
+                (navigateToNews)="navigateToNewsPage($event)">
+            </news-card>
+            <div>
+                <button mat-raised-button (click)="onSwap()" *ngIf="isAdminOnly() && !isDrillDownActive">
+                    Admin ansicht wechseln
+                </button>
+            </div>
+        </div>
     </div>
+
     <news-site *ngIf="isDrillDownActive && !isAdmin()" [news]="selectedNews" (onBack)="onBack()">
     </news-site>
-    <div class="container" [ngClass]="{'containerNonFlex':isDrillDownActive}" *ngIf="isAdmin()">
-        <div class="flexboxcards">
-        <news-admin-overview [news]="news" (selectedNews)="navigateToEditNews($event)"
-            (createNews)="navigateToEditNews($event)" (deleteNews)="deleteNews($event)" *ngIf="!isDrillDownActive">
-        </news-admin-overview>
-        <news-admin-edit [news]="selectedNews" (onCreateUpdate)="updateNews($event)" (onBack)="onBack()"
-            *ngIf="isDrillDownActive">
-        </news-admin-edit>
-        <div class="buttonMargin">
-            <button mat-raised-button class="button" (click)="onSwap()" *ngIf="isAdminOnly() && !isDrillDownActive">
-                Admin ansicht wechseln
-            </button>
+
+    <div [ngClass]="{'containerNonFlex':isDrillDownActive}" *ngIf="isAdmin()">
+        <div>
+            <news-admin-overview [news]="news" (selectedNews)="navigateToEditNews($event)"
+                (createNews)="navigateToEditNews($event)" (deleteNews)="deleteNews($event)" *ngIf="!isDrillDownActive">
+            </news-admin-overview>
+            <news-admin-edit [news]="selectedNews" (onCreateUpdate)="updateNews($event)" (onBack)="onBack()"
+                *ngIf="isDrillDownActive">
+            </news-admin-edit>
+            <div>
+                <button mat-raised-button (click)="onSwap()" *ngIf="isAdminOnly() && !isDrillDownActive">
+                    Admin ansicht wechseln
+                </button>
+            </div>
         </div>
+    </div>
+</div>
+
+<!-- <div class="toolbar-spacer">
+    
+    <div class="component-header">
+        <h1>NEWS</h1>
+    </div>
+
+    <div class="center-container">
+        <div class="news-card">
+            <div>
+                <news-card *ngFor="let News of filteredNews" [news]="News" (navigateToNews)="navigateToNewsPage($event)"></news-card>
+                <div>
+                    <button mat-raised-button (click)="onSwap()" *ngIf="isAdminOnly() && !isDrillDownActive">
+                        Admin ansicht wechseln
+                    </button>
+                </div>
+            </div>
+            <news-site *ngIf="isDrillDownActive && !isAdmin()" [news]="selectedNews" (onBack)="onBack()">
+            </news-site>
+
+            <div class="container" [ngClass]="{'containerNonFlex':isDrillDownActive}" *ngIf="isAdmin()">
+                <div class="flexboxcards">
+                    <news-admin-overview [news]="news" (selectedNews)="navigateToEditNews($event)"
+                        (createNews)="navigateToEditNews($event)" (deleteNews)="deleteNews($event)" *ngIf="!isDrillDownActive">
+                    </news-admin-overview>
+                    <news-admin-edit [news]="selectedNews" (onCreateUpdate)="updateNews($event)" (onBack)="onBack()"
+                        *ngIf="isDrillDownActive">
+                    </news-admin-edit>
+                    <div class="buttonMargin">
+                        <button mat-raised-button class="button" (click)="onSwap()" *ngIf="isAdminOnly() && !isDrillDownActive">
+                            Admin ansicht wechseln
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-</div>
-</div>
-</div>
+</div> -->

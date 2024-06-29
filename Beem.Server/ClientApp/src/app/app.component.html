@@ -1,8 +1,138 @@
-<mat-drawer-container class="general" [hasBackdrop]="true" *ngIf="globalService.isLoaded">
+<!-- Desktop View -->
+<div *ngIf="!(isHandset$ | async)" class="content">
+  <img src="../assets/banner.png" alt="Banner" class="banner">
+  
+  <mat-toolbar class="header-toolbar">
+    <button routerLink="news" routerLinkActive="active">NEWS</button>
+    <button routerLink="lineup" routerLinkActive="active">LINEUP</button>
+    <button disabled routerLinkActive="active">TICKETS</button>
+    <button routerLink="timetable" routerLinkActive="active">TIMETABLE</button>
+    <!-- <button routerLink="faq">INFO</button> -->
+    <button mat-button [matMenuTriggerFor]="menu">INFO</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="faq" routerLinkActive="active">FAQ</button>
+      <button mat-menu-item routerLinkActive="active">SPONSOREN</button>
+      <button mat-menu-item routerLink="impressum" routerLinkActive="active">IMPRESSUM</button>
+    </mat-menu>
+    <button disabled routerLinkActive="active">MEDIEN</button>
+    <button *ngIf="this.authoritheService.isLoggedIn()" (click)="onLogout()"><mat-icon>logout</mat-icon>Ausloggen</button>
+  </mat-toolbar>
+  
+  <div class="router-outlet">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<div *ngIf="!(isHandset$ | async)" class="footer">
+  <div>
+    <mat-icon (click)="sendEmail()" class="footer-link">mail_outline</mat-icon>
+    <a href="https://www.instagram.com/beemfestival/" target="_blank">
+      <img class="ig-logo" src="../assets/ig-icon.png" alt="instagramm-logo">
+    </a>
+  </div>
+  <div>
+    BEEM Festival und Freizeit e.V.
+  </div>
+  <div>
+    <div class="footer-link" routerLink="impressum">
+      DATENSCHUTZ
+    </div>
+    <div class="footer-link" routerLink="impressum">
+      IMPRESSUM
+    </div>
+    <div class="footer-link" routerLink="impressum">
+      KONTAKT
+    </div>
+  </div>
+</div>
+
+<!-- Mobile View -->
+<mat-drawer-container *ngIf="isHandset$ | async" [hasBackdrop]="true">
+  <mat-drawer class="drawer" #drawer [mode]="'over'">
+
+    <button class="drawer-button" routerLink="news" routerLinkActive="active">NEWS</button>
+    <button class="drawer-button" routerLink="lineup" routerLinkActive="active">LINEUP</button>
+    <button class="drawer-button" disabled routerLinkActive="active">TICKETS</button>
+    <button class="drawer-button" routerLink="timetable" routerLinkActive="active">TIMETABLE</button>
+    <!-- <button routerLink="faq">INFO</button> -->
+    <!-- <button class="drawer-button" mat-button [matMenuTriggerFor]="menu">INFO</button> -->
+    <!--mat-menu #menu="matMenu"-->
+    <button class="drawer-button" routerLink="faq" routerLinkActive="active">FAQ</button>
+    <button class="drawer-button" routerLinkActive="active">SPONSOREN</button>
+    <button class="drawer-button" routerLink="impressum" routerLinkActive="active">IMPRESSUM</button>
+    <!--/mat-menu-->
+    <button class="drawer-button" disabled routerLinkActive="active">MEDIEN</button>
+    <button class="drawer-button" *ngIf="this.authoritheService.isLoggedIn()" (click)="onLogout()"><mat-icon>logout</mat-icon>Ausloggen</button>
+
+  </mat-drawer>
+  <mat-drawer-content>
+
+    <div class="mobile-toolbar">
+      <button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+      <div>{{currentUrl}}</div>
+    </div>
+
+    <router-outlet></router-outlet>
+
+    <div class="footer">
+      <div>
+        <mat-icon (click)="sendEmail()" class="footer-link">mail_outline</mat-icon>
+        <a href="https://www.instagram.com/beemfestival/" target="_blank">
+          <img class="ig-logo" src="../assets/ig-icon.png" alt="instagramm-logo">
+        </a>
+      </div>
+      <div>
+        BEEM Festival und Freizeit e.V.
+      </div>
+      <div>
+        <div class="footer-link" routerLink="impressum">
+          DATENSCHUTZ
+        </div>
+        <div class="footer-link" routerLink="impressum">
+          IMPRESSUM
+        </div>
+        <div class="footer-link" routerLink="impressum">
+          KONTAKT
+        </div>
+      </div>
+    </div>
+
+  </mat-drawer-content>
+</mat-drawer-container>
+
+
+<!-- <mat-drawer-container class="general" [hasBackdrop]="true" *ngIf="globalService.isLoaded">
 
   <mat-drawer #drawer [mode]="'over'" color="primary">
       
-    <!--img class="logo" src="../assets/logo-transparent.png" alt="beem-banner" (click)="onNavigateHome()"-->
+    <div *ngFor="let navItem of navItems" class="menu-buttons">
+      <button mat-raised-button routerLink="{{navItem.route}}" class="topButton" routerLinkActive="activebutton">{{navItem.name}}</button>
+    </div>
+    <button mat-raised-button *ngIf="this.authoritheService.isLoggedIn()" class="logoutButton" (click)="onLogout()"><mat-icon>logout</mat-icon>Ausloggen</button>
+  
+  </mat-drawer>
+
+  <mat-drawer-content>
+
+    <mat-toolbar class="sidenav" color="primary" *ngIf="!globalService.isTopNav">
+      <button class="sidenav-button" mat-button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+    </mat-toolbar>
+
+    <mat-toolbar *ngIf="globalService.isTopNav">
+      <button *ngFor="let navItem of navItems" routerLink="{{navItem.route}}" routerLinkActive="activebutton">{{navItem.name}}</button>
+      <button *ngIf="this.authoritheService.isLoggedIn()" (click)="onLogout()"><mat-icon>logout</mat-icon>Ausloggen</button>
+    </mat-toolbar>
+
+        <router-outlet></router-outlet>
+  </mat-drawer-content>
+
+</mat-drawer-container> -->
+
+<!-- ################################################## Altes Design ################################################## -->
+<!-- <mat-drawer-container class="general" [hasBackdrop]="true" *ngIf="globalService.isLoaded">
+
+  <mat-drawer #drawer [mode]="'over'" color="primary">
+      
     <div *ngFor="let navItem of navItems" class="menu-buttons">
       <button mat-raised-button routerLink="{{navItem.route}}" class="topButton" routerLinkActive="activebutton">{{navItem.name}}</button>
     </div>
@@ -17,15 +147,11 @@
     </mat-toolbar>
 
     <mat-toolbar class="navbar" *ngIf="globalService.isTopNav">
-      <!--img class="logo" src="../assets/logo-transparent.png" alt="beem-banner" (click)="onNavigateHome()"-->
       <button mat-raised-button *ngFor="let navItem of navItems" class="topButton" routerLink="{{navItem.route}}" routerLinkActive="activebutton">{{navItem.name}}</button>
       <button mat-raised-button *ngIf="this.authoritheService.isLoggedIn()" class="logoutButton" (click)="onLogout()"><mat-icon>logout</mat-icon>Ausloggen</button>
     </mat-toolbar>
 
-    <!-- <app-nav-bar  [navItems]="navItems" *ngIf="globalService.isTopNav"></app-nav-bar> -->
-    <!-- div *ngIf="router.url === '/'" class="background-image" [ngClass]="{'topNavMargin':globalService.isTopNav}"></div-->
-
         <router-outlet></router-outlet>
   </mat-drawer-content>
 
-</mat-drawer-container>
+</mat-drawer-container> -->

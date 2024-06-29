@@ -1,0 +1,12 @@
+.timetable {
+    height: 100%;
+    background-color: #e7e0c6;
+    color: black;
+    padding: 2rem;
+}
+
+@media only screen and (max-width: 960px) {
+    .timetable{
+        min-height: calc(100vh - 125px - 4rem);
+    }
+}

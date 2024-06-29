@@ -32,13 +32,144 @@ $beem-theme: mat.define-dark-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+html { height: 100vh !important; }
 body { 
   margin: 0;
   font-family: 'Century Gothic' !important;
   font-style: normal !important;
   color: black;
+  font-family: 'Monserrat', fallback, sans-serif !important;
+  background-color: #e7e0c6 !important;
+  min-height: 100vh !important;
 }
+
+app-root {
+  height: 100vh !important;
+  display: block;
+}
+
+@font-face {
+  font-family: 'Birma';
+  src: url('./assets/fonts/brima/Brima.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Monserrat';
+  src: url('./assets/fonts/monserrat/Montserrat-Regular.ttf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Journey';
+  src: url('./assets/fonts/journeyhandwritingfont/JourneyHandwritingFon-Rg.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'HappyMonkey';
+  src: url('./assets/fonts/HappyMonkey-Regular.ttf') format('opentype');
+}
+
+// ##################################################################################################################
+
+.router-outlet {
+  padding-top: 64px;
+}
+
+.footer {
+  width: 100%;
+  min-height: 75px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: white;
+  background-color: #258c68;
+}
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+// @media screen and (min-width: 601px) {
+  button, .mat-menu-item {
+    background-color: #258c68 !important;
+    border: 0 !important;
+    height: 100%;
+    padding: 0 30px 0 30px;
+    font-family: 'HappyMonkey', fallback, sans-serif !important;
+    font-size: 25pt !important;
+    color: black !important;
+  }
+// }
+
+// @media screen and (max-width: 600px) {
+//   button, .mat-menu-item {
+//     background-color: #258c68 !important;
+//     border: 0 !important;
+//     /* padding: 0 30px 0 30px; */
+//     font-family: "HappyMonkey", fallback, sans-serif !important;
+//     font-size: 25pt !important;
+//     color: black !important;
+//     width: 100%;
+//   }
+// }
+
+.drawer-button {
+  background-color: #258c68 !important;
+  border: 0 !important;
+  padding: 0;
+  font-family: "HappyMonkey", fallback, sans-serif !important;
+  font-size: 25pt !important;
+  color: black !important;
+  height: 40px;
+  width: 100%;
+}
+
+
+button:hover {
+  background-color: #ff66c4 !important;
+  cursor: pointer;
+}
+
+.active {
+  background-color: #ff66c4 !important;
+}
+
+.mat-menu-content {
+  padding: 0 !important;
+}
+
+.component-header {
+  display: flex;
+  justify-content: center;
+}
+
+h1{
+  font-weight: 400 !important;
+  font-size: 5em !important;
+  line-height: 120px !important;
+  font-family: 'HappyMonkey', fallback, sans-serif !important;
+  font-style: normal !important;
+}
+
+h2{
+  font-weight: 200 !important;
+  font-size: 3em !important;
+  line-height: 50px !important;
+  font-family: "HappyMonkey", fallback, sans-serif !important;
+  font-style: normal !important;
+}
+
+h3{
+  font-weight: 100 !important;
+  font-size: 1.5em !important;
+  line-height: 25px !important;
+  font-family: "HappyMonkey", fallback, sans-serif !important;
+  font-style: normal !important;
+
+}
+
+// ##################################################################################################################
 
 /* width */
 ::-webkit-scrollbar {
@@ -79,14 +210,14 @@ body {
   justify-content: center;
 }
 
-h1{
-  color: #83C47F;
-  font-weight: 400 !important;
-  font-size: 5em !important;
-  line-height: 120px !important;
-  font-family: 'Century Gothic' !important;
-  font-style: normal !important;
-}
+// h1{
+//   color: #83C47F;
+//   font-weight: 400 !important;
+//   font-size: 5em !important;
+//   line-height: 120px !important;
+//   font-family: 'Century Gothic' !important;
+//   font-style: normal !important;
+// }
 .topButton{
   width: auto !important;
   display: flex !important;
@@ -100,39 +231,39 @@ h1{
   background-color: #000000 !important;
 }
 
-@media screen and (max-width: 839px) {
-  .container {
-    display: flex;
-    align-items: row;
-    flex-wrap: wrap;
-    margin: 1rem;
-    min-width: 250px;
-    // margin: 0 .5vw 0 .5vw;
-    margin: 0 1vw 0 1vw;
-    border-radius: 15px;
-    background-color: rgba(113,48,117,0.7);
-    padding: 1rem;
-    justify-content: center;
-    flex-direction: column;
-  }
-}
+// @media screen and (max-width: 839px) {
+//   .container {
+//     display: flex;
+//     align-items: row;
+//     flex-wrap: wrap;
+//     margin: 1rem;
+//     min-width: 250px;
+//     // margin: 0 .5vw 0 .5vw;
+//     margin: 0 1vw 0 1vw;
+//     border-radius: 15px;
+//     background-color: rgba(113,48,117,0.7);
+//     padding: 1rem;
+//     justify-content: center;
+//     flex-direction: column;
+//   }
+// }
 
-@media screen and (min-width: 840px) {
-  .container {
-    display: flex;
-    align-items: row;
-    flex-wrap: wrap;
-    margin: 1rem;
-    min-width: 250px;
-    margin-right: 5vh;
-    margin-left: 5vh;
-    border-radius: 15px;
-    background-color: rgba(113,48,117,0.7);
-    padding: 1rem;
-    justify-content: center;
-    flex-direction: column;
-  }
-}
+// @media screen and (min-width: 840px) {
+//   .container {
+//     display: flex;
+//     align-items: row;
+//     flex-wrap: wrap;
+//     margin: 1rem;
+//     min-width: 250px;
+//     margin-right: 5vh;
+//     margin-left: 5vh;
+//     border-radius: 15px;
+//     background-color: rgba(113,48,117,0.7);
+//     padding: 1rem;
+//     justify-content: center;
+//     flex-direction: column;
+//   }
+// }
 
 .flexboxcards
 {
@@ -155,7 +286,7 @@ h1{
 }
 
 .card {
-  max-width: 100%;
+  width: 100%;
   padding: 1rem;
   overflow: hidden;
   background-color: white;
@@ -167,16 +298,14 @@ h1{
 }
 
 .cardsmall {
-  max-width: 100%;
   cursor: pointer;
   overflow: hidden;
   background-color: white;
   color: black !important;
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   align-items: center;
-  max-width: 240px;
-  min-width: 240px;
+  // justify-content: center;
 }
 
 
@@ -191,10 +320,22 @@ h1{
   flex-direction: column;
 }
 
-.card-headline {
-  font-size: 2rem;
-  padding-bottom: 1rem;
-  line-height: 1em;
+@media screen and (max-width: 839px) {
+  .card-headline {
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+    line-height: 1em;
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 840px) {
+  .card-headline {
+    font-size: 2rem;
+    padding-bottom: 1rem;
+    line-height: 1em;
+    text-align: start;
+  }
 }
 
 .card-subheadline {
@@ -228,33 +369,34 @@ h1{
   height: 94.5vh;
   //margin-top: 5.5vh;
   width: 100%;  
-  background-color: #83c47f !important;
+  background-color: #e7e0c6 !important;
+  // background-color: #83c47f !important;
 }
-.background-image {
-  background-image: url('/assets/tree-3979965.svg');
-  // height: inherit;
-  // width: inherit;
-  background-repeat: repeat-y;
-  // background-attachment: inherit;
-  // margin-top: 5.5vh;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
+// .background-image {
+//   background-image: url('/assets/tree-3979965.svg');
+//   // height: inherit;
+//   // width: inherit;
+//   background-repeat: repeat-y;
+//   // background-attachment: inherit;
+//   // margin-top: 5.5vh;
+//   -webkit-background-size: cover;
+//   -moz-background-size: cover;
+//   -o-background-size: cover;
+//   background-size: cover;
+// }
 
-.background-element {
-  background-image: url('/assets/tree-3979965.svg');
+// .background-element {
+//   background-image: url('/assets/tree-3979965.svg');
 
-  background-repeat: repeat-y;
-  background-size: cover;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  transform: translateZ(-1px) scale(2);
-}
+//   background-repeat: repeat-y;
+//   background-size: cover;
+//   position: absolute;
+//   top: 0;
+//   right: 0;
+//   bottom: 0;
+//   left: 0;
+//   transform: translateZ(-1px) scale(2);
+// }
 
 .containerSub{
   height:100%;
@@ -316,7 +458,7 @@ mat-panel-title{
 }
 
 .mat-drawer-inner-container{
-  background-color: rgba(113, 48, 117, 0.75) !important;  
+  background-color: #258c68;
 }
 
 .buttonMargin {
