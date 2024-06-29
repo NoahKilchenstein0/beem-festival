@@ -116,7 +116,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   sendEmail(): void {
-    window.location.href = 'mailto:beem.festival@gmail.com';
+    window.location.href = 'mailto:allgemein@beem-festival.de';
   }
 
 }
