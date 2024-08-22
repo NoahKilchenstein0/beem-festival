@@ -54,7 +54,7 @@ export class AppComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit() {
+  ngOnInit() {    
     // subscribe to cookieconsent observables to react to main events
     this.popupOpenSubscription = this.ccService.popupOpen$.subscribe(
       () => {
@@ -90,7 +90,9 @@ export class AppComponent implements OnInit, OnDestroy {
     this.router.events.subscribe((event: any) => {
       if (event instanceof NavigationEnd) {
       this.currentUrl = this.router.url.toUpperCase().replace("/", "");
-      console.log(this.currentUrl);
+      if (this.currentUrl.includes('?')) {
+        this.currentUrl = this.currentUrl.split('?')[0];
+      }
       }
     });
   }

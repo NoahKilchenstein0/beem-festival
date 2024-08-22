@@ -12,7 +12,7 @@
 
 .form-buttons{
     align-self: flex-end;
-    justify-content: end;
+    justify-content: flex-end;
     margin-top: 0.5rem;
     display: flex;
     right: 1rem !important;
