@@ -58,16 +58,16 @@ export class NewsSiteComponent implements OnInit {
   }
 
   public createImgPath() {
-    return location.origin + "/" + this.news?.imgHeader; 
+    return location.origin + "/" + this.news?.ImgHeader; 
   }
 
   public getNewsTitle(){
-    return this.news === undefined ? "" : this.news.title;
+    return this.news === undefined ? "" : this.news.Title;
   }
 
   
   public getNewsText(){
-    return this.news === undefined ? "" : this.news.newsText;
+    return this.news === undefined ? "" : this.news.NewsText;
   }
 
 }

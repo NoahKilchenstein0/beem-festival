@@ -12,10 +12,10 @@ export class UserService implements OnInit {
     console.log(userName);
     if(userName !== undefined && userName !== null){
       this.user = new User();
-      this.user.userName = userName;
+      this.user.UserName = userName;
       const jwtToken = localStorage.getItem("id_token");
-      this.user.jwtToken = jwtToken !== null ? jwtToken: "";
-      this.user.role = Roles.Admin;
+      this.user.JwtToken = jwtToken !== null ? jwtToken: "";
+      this.user.Role = Roles.Admin;
     }
 
   }
@@ -24,7 +24,7 @@ export class UserService implements OnInit {
     if(this.user === null){
       return false;
     }
-    return this.user.role === Roles.Admin;
+    return this.user.Role === Roles.Admin;
   }
 
 }

@@ -1,49 +1,61 @@
-<div class="container" *ngIf="!isPreview">
-  <mat-form-field appearance="fill">
-    <mat-label>News Title</mat-label>
-    <input matInput  [formControl]="title" maxlength="50">
-  </mat-form-field>
-  <mat-label>News Inhalt</mat-label>
-  <richtexteditor [control]="newsText" class="formMargin"></richtexteditor>
-  <mat-form-field appearance="fill">
-    <mat-label>Veröffentlichungs Zeitpunkt</mat-label>
-    <input matInput [ngxMatDatetimePicker]="picker" placeholder="Veröffentlichungs Zeitpunkt auswählen" 
-          [formControl]="publicationDateTime">
-    <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
-    <ngx-mat-datetime-picker #picker [showSpinners]="true" [showSeconds]="false"
-    [stepHour]="1" [stepMinute]="1" [stepSecond]="1"
-    [touchUi]="true" [enableMeridian]="false"
-    [disableMinute]="false" [hideTime]="false">
-    </ngx-mat-datetime-picker>
-  </mat-form-field>
-  
-  <mat-label>Vorschaubild</mat-label><span *ngIf="news">{{news.img}}</span>
-  <image-upload (onUploadFinished)="uploadImageFinished($event)"></image-upload>
-  <mat-label>Banner Bild</mat-label> <span *ngIf="news">{{news.imgHeader}}</span>
-  <image-upload (onUploadFinished)="uploadHeaderImageFinished($event)"></image-upload>
+<div class="admin-container" *ngIf="!isPreview">
+  <div class="admin-section">
+    <h2 class="admin-section-title">News bearbeiten</h2>
+    
+    <mat-form-field appearance="outline" class="admin-form-field">
+      <mat-label>News Title</mat-label>
+      <input matInput [formControl]="title" maxlength="50">
+    </mat-form-field>
 
-<div class="buttonMargin">
-  <button mat-raised-button 
-  class="button"
-  (click)="onPreview()"
->
-  Preview
-</button>
-  <button mat-raised-button 
-    class="button"
-    (click)="onSave()"
-  >
-    Speichern
-  </button>
-  <button mat-raised-button 
-    class="button"
-    (click)="onBack()"
-    >
-  Abbrechen
-  </button>
+    <div class="admin-rich-editor">
+      <div class="editor-label">News Inhalt</div>
+      <richtexteditor [control]="newsText"></richtexteditor>
+    </div>
+
+    <mat-form-field appearance="outline" class="admin-form-field">
+      <mat-label>Veröffentlichungs Zeitpunkt</mat-label>
+      <input matInput [matDatepicker]="picker" 
+             placeholder="Veröffentlichungs Zeitpunkt auswählen" 
+             [(ngModel)]="publicationDateTime.value" 
+             (dateChange)="onDateChange($event)" 
+             name="publishDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <div class="admin-image-upload">
+      <div class="upload-label">Vorschaubild</div>
+      <span *ngIf="news" class="image-preview">{{news.Img}}</span>
+      <image-upload (onUploadFinished)="uploadImageFinished($event)"></image-upload>
+    </div>
+
+    <div class="admin-image-upload">
+      <div class="upload-label">Banner Bild</div>
+      <span *ngIf="news" class="image-preview">{{news.ImgHeader}}</span>
+      <image-upload (onUploadFinished)="uploadHeaderImageFinished($event)"></image-upload>
+    </div>
+
+    <div class="admin-button-group">
+      <button mat-raised-button 
+              class="admin-button admin-button-secondary"
+              (click)="onPreview()">
+        Preview
+      </button>
+      <button mat-raised-button 
+              class="admin-button admin-button-primary"
+              (click)="onSave()">
+        Speichern
+      </button>
+      <button mat-raised-button 
+              class="admin-button admin-button-danger"
+              (click)="onBack()">
+        Abbrechen
+      </button>
+    </div>
+  </div>
 </div>
-</div>
-  <news-site
+
+<news-site
   *ngIf="isPreview"
   [news]="editedNews"
   (onBack)="onEndPrieview()">

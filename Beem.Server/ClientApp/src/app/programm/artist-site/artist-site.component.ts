@@ -20,25 +20,25 @@ export class ArtistSiteComponent implements OnInit {
   }
 
   ngOnInit(): void {       
-      this.embedURI = this.urlbypassPipe.transform(this.artist.spotify);
+      this.embedURI = this.urlbypassPipe.transform(this.artist.Spotify);
   }
 
 
   public getEndTime() : string {  
-      return moment(this.artist.dayStartTime).add(this.artist.playTime, 'minutes').format("HH:mm").toString();
+      return moment(this.artist.DayStartTime).add(this.artist.PlayTime, 'minutes').format("HH:mm").toString();
   }
 
   public getStartTime() : string {  
-    return moment(this.artist.dayStartTime).format("HH:mm").toString();
+    return moment(this.artist.DayStartTime).format("HH:mm").toString();
   }
 
   public onFacebook(): void {
-    let facebookLink = this.artist !== null && this.artist?.website !== "" ? this.artist.website : "https://www.facebook.com/";
+    let facebookLink = this.artist !== null && this.artist?.Website !== "" ? this.artist.Website : "https://www.facebook.com/";
     window.open(facebookLink, '_blank')?.focus();
   }
 
   public onInstagram(): void {
-      let instagramLink = this.artist !== null && this.artist?.instagramm !== "" ? this.artist.instagramm : "https://www.instagram.com/";
+      let instagramLink = this.artist !== null && this.artist?.Instagram !== "" ? this.artist.Instagram : "https://www.instagram.com/";
       window.open(instagramLink, '_blank')?.focus();
   }
 
@@ -51,15 +51,15 @@ export class ArtistSiteComponent implements OnInit {
   }
 
   public isFacebook(artist: Artist):boolean {
-    return artist?.website !== ""
+    return artist?.Website !== ""
   }
 
   public isInstagram(artist: Artist):boolean {
-    return artist?.instagramm !== ""
+    return artist?.Instagram !== ""
   }
 
   public getArtistDescription(){
-    return this.artist === undefined ? "" : this.artist.description;
+    return this.artist === undefined ? "" : this.artist.Description;
   }
 
 }

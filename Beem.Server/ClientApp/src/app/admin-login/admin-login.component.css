@@ -11,9 +11,15 @@
 }
 
 .form-buttons{
+    height: 5vh !important;
     align-self: flex-end;
     justify-content: flex-end;
     margin-top: 0.5rem;
     display: flex;
     right: 1rem !important;
 }
+
+.schwarze-farbe{
+    color: black !important;
+}
+

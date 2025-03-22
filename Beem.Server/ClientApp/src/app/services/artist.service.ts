@@ -27,7 +27,7 @@ export class ArtistService {
 
   public updateArtist(artist: Artist){ 
     console.log(artist)
-    return this.http.put<Artist>('/api/Artists/Update('+ artist.id + ')', artist);
+    return this.http.put<Artist>('/api/Artists/Update('+ artist.Id + ')', artist);
   }
 
   public deleteArtist(id: number){

@@ -10,6 +10,7 @@ import { TimetableComponent } from './timetable/timetable.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { TicketsComponent } from './tickets/tickets.component';
 import { SponsoringComponent } from './sponsoring/sponsoring.component';
+import { NewsAdminOverviewComponent } from './news/news-admin-overview/news-admin-overview.component';
 
 const routes: Routes = [
   {path: 'lineup', component: ProgrammComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'timetable', component: TimetableComponent},
   {path: 'tickets', component: TicketsComponent},
   {path: 'sponsoring', component: SponsoringComponent},
+  {path: 'news-admin-overview', component: NewsAdminOverviewComponent},
   {path: '', component: NewsComponent},
   { path: '**', component: ErrorPageComponent }
 ];

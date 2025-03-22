@@ -2,19 +2,19 @@ export class Artist {
     constructor(init?:Partial<Artist>){
         Object.assign(this, init);
     }
-    id: number = 0
-    name: string = "";
-    genre: string = "";
-    img: string = "";
-    imgHeader: string = "";
-    description: string = "";
-    spotify: string = "";
-    website: string = "";
-    instagramm: string = "";
-    stage: string = "";
-    dayStartTime: Date = new Date(); 
-    playTime: number = 0;
-    isActivated: boolean = false;
-    isBooked: boolean = false;
-    isLineUpPlaned: boolean = false;
+    Id: number = 0
+    Name: string = "";
+    Genre: string = "";
+    Img: string = "";
+    ImgHeader: string = "";
+    Description: string = "";
+    Spotify: string = "";
+    Website: string = "";
+    Instagram: string = "";
+    Stage: string = "";
+    DayStartTime: Date = new Date(); 
+    PlayTime: number = 0;
+    IsActivated: boolean = false;
+    IsBooked: boolean = false;
+    IsLineUpPlanned: boolean = false;
 }

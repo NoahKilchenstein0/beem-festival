@@ -21,7 +21,15 @@ namespace Beem.Server.Controllers
 
                 if(file.Length > 0)
                 {
-                    var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                    var contentDisposition = file.ContentDisposition;
+                    if (contentDisposition == null)
+                    {
+                        return BadRequest("ContentDisposition fehlt in der Datei");
+                    }
+                    
+                    var fileName = ContentDispositionHeaderValue.Parse(contentDisposition).FileName?.Trim('"') 
+                        ?? Path.GetRandomFileName(); // Fallback zu zufälligem Dateinamen, falls keiner vorhanden ist
+                    
                     var fullPath = Path.Combine(pathToSave, fileName);
                     var dbPath = Path.Combine(folderName, fileName);
 

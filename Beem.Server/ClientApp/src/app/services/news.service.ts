@@ -32,7 +32,7 @@ export class NewsService {
   }
 
   public updateNews(news: News){ 
-    return this.http.put<News>('/api/News/Update('+ news.id + ')', news);
+    return this.http.put<News>('/api/News/Update('+ news.Id + ')', news);
   }
 
   public deleteNews(id: number){

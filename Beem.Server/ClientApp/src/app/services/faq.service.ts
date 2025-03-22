@@ -18,7 +18,7 @@ public createQuestion(question: Question){
 }
 
 public updateQuestion(question: Question){ 
-  return this.http.put<Question>('/api/Question/Update('+ question.id + ')', question);
+  return this.http.put<Question>('/api/Question/Update('+ question.Id + ')', question);
 }
 
 public deleteQuestion(id: number){

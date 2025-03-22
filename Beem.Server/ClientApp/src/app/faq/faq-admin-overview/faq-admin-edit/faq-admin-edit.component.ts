@@ -12,8 +12,8 @@ export class FaqAdminEditComponent implements OnChanges {
   @Output("onBack") onBackCall: EventEmitter<void> = new EventEmitter<void>();
   @Output("onCreateUpdate") onCreateUpdate: EventEmitter<Question> = new EventEmitter<Question>();
 
-  public title: FormControl = new FormControl({value: this.question?.title, disabled: false});
-  public answer: FormControl = new FormControl({value: this.question?.answer, disabled: false});
+  public title: FormControl = new FormControl({value: this.question?.Title, disabled: false});
+  public answer: FormControl = new FormControl({value: this.question?.Answer, disabled: false});
 
   public isPreview: boolean = false;
   public editedQuestion: Question = new Question();
@@ -22,13 +22,13 @@ export class FaqAdminEditComponent implements OnChanges {
   constructor() { }
 
   ngOnChanges(): void {
-    this.title.setValue(this.question?.title);
-    this.answer.setValue(this.question?.answer);
+    this.title.setValue(this.question?.Title);
+    this.answer.setValue(this.question?.Answer);
   }
 
   onPreview(): void{
-    	this.editedQuestion.title = this.title.value;
-      this.editedQuestion.answer = this.answer.value;
+    	this.editedQuestion.Title = this.title.value;
+      this.editedQuestion.Answer = this.answer.value;
       this.isPreview = true;
   }
 
@@ -42,9 +42,9 @@ export class FaqAdminEditComponent implements OnChanges {
 
   onSave(): void{
     let updatedQuestion = new Question();
-    updatedQuestion.id = this.question !== null ? this.question.id : 0;
-    updatedQuestion.title = this.title.value;
-    updatedQuestion.answer = this.answer.value;
+    updatedQuestion.Id = this.question !== null ? this.question.Id : 0;
+    updatedQuestion.Title = this.title.value;
+    updatedQuestion.Answer = this.answer.value;
 
     this.onCreateUpdate.emit(updatedQuestion);
   }

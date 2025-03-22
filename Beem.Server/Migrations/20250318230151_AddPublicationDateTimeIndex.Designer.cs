@@ -3,6 +3,7 @@ using System;
 using Beem.Server.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Beem.Server.Migrations
 {
     [DbContext(typeof(BeemDbContext))]
-    partial class BeemDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250318230151_AddPublicationDateTimeIndex")]
+    partial class AddPublicationDateTimeIndex
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

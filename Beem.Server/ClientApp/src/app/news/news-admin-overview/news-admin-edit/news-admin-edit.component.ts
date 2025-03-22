@@ -1,21 +1,21 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Form, FormControl } from '@angular/forms';
 import { News } from 'src/app/models/news';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 @Component({
   selector: 'news-admin-edit',
   templateUrl: './news-admin-edit.component.html',
-  styleUrls: ['./news-admin-edit.component.css']
+  styleUrls: ['./news-admin-edit.component.scss']
 })
 export class NewsAdminEditComponent implements  OnChanges {
   @Input("news") news: News | null = null;
   @Output("onBack") onBackCall: EventEmitter<void> = new EventEmitter<void>();
   @Output("onCreateUpdate") onCreateUpdate: EventEmitter<News> = new EventEmitter<News>();
 
-  public title: FormControl = new FormControl({value: this.news?.title, disabled: false});
-  //Genre möglich noch auf Select Umstellen mit einem Enum???
-  public publicationDateTime: FormControl = new FormControl({value: this.news?.publicationDateTime, disabled: false});
-  public newsText: FormControl = new FormControl({value: this.news?.newsText, disabled: false});
+  public title: FormControl = new FormControl({value: this.news?.Title, disabled: false});
+  public publicationDateTime: FormControl = new FormControl({value: this.news?.PublicationDateTime ? new Date(this.news.PublicationDateTime) : null, disabled: false});
+  public newsText: FormControl = new FormControl({value: this.news?.NewsText, disabled: false});
   public img!: { dbPath: ''; };
   public imgHeader!: { dbPath: ''; };
 
@@ -23,38 +23,44 @@ export class NewsAdminEditComponent implements  OnChanges {
   public editedNews: News = new News();
 
   ngOnChanges(): void {
-      this.title.setValue(this.news?.title);
-      this.publicationDateTime.setValue(this.news?.publicationDateTime);
-      this.newsText.setValue(this.news?.newsText);
+    this.title.setValue(this.news?.Title);
+    this.publicationDateTime.setValue(this.news?.PublicationDateTime ? new Date(this.news.PublicationDateTime) : null);
+    this.newsText.setValue(this.news?.NewsText);
+  }
+
+  onDateChange(event: MatDatepickerInputEvent<Date>) {
+    if (event.value) {
+      this.publicationDateTime.setValue(event.value);
+    }
   }
 
   onPreview(): void {
-    this.editedNews.title = this.title.value;
-    this.editedNews.publicationDateTime = this.publicationDateTime.value;
-    this.editedNews.newsText = this.newsText.value;    
+    this.editedNews.Title = this.title.value;
+    this.editedNews.PublicationDateTime = this.publicationDateTime.value ? this.publicationDateTime.value.toISOString() : null;
+    this.editedNews.NewsText = this.newsText.value;    
     if(this.img !== undefined)
     {
-      this.editedNews.img = this.img.dbPath
+      this.editedNews.Img = this.img.dbPath
     }
     else if(this.news !== null)
     {
-      this.editedNews.img = this.news.img; 
+      this.editedNews.Img = this.news.Img; 
     }
     else 
     {
-      this.editedNews.img = "";
+      this.editedNews.Img = "";
     }
     if(this.imgHeader !== undefined)
     {
-      this.editedNews.imgHeader = this.imgHeader.dbPath
+      this.editedNews.ImgHeader = this.imgHeader.dbPath
     }
     else if(this.news !== null)
     {
-      this.editedNews.imgHeader = this.news.imgHeader; 
+      this.editedNews.ImgHeader = this.news.ImgHeader; 
     }
     else 
     {
-      this.editedNews.imgHeader = "";
+      this.editedNews.ImgHeader = "";
     }
     this.isPreview = true;
   }
@@ -69,33 +75,33 @@ export class NewsAdminEditComponent implements  OnChanges {
 
   onSave(): void {
     let updateNews = new News();
-    updateNews.id = this.news !== null ? this.news.id : 0;
-    updateNews.title = this.title.value;
-    updateNews.publicationDateTime = this.publicationDateTime.value;
-    updateNews.newsText = this.newsText.value;
+    updateNews.Id = this.news !== null ? this.news.Id : 0;
+    updateNews.Title = this.title.value;
+    updateNews.PublicationDateTime = this.publicationDateTime.value ? this.publicationDateTime.value.toISOString() : null;
+    updateNews.NewsText = this.newsText.value;
     if(this.img !== undefined)
     {
-      updateNews.img = this.img.dbPath
+      updateNews.Img = this.img.dbPath
     }
     else if(this.news !== null)
     {
-      updateNews.img = this.news.img; 
+      updateNews.Img = this.news.Img; 
     }
     else 
     {
-      updateNews.img = "";
+      updateNews.Img = "";
     }
     if(this.imgHeader !== undefined)
     {
-      updateNews.imgHeader = this.imgHeader.dbPath
+      updateNews.ImgHeader = this.imgHeader.dbPath
     }
     else if(this.news !== null)
     {
-      updateNews.imgHeader = this.news.imgHeader; 
+      updateNews.ImgHeader = this.news.ImgHeader; 
     }
     else 
     {
-      updateNews.imgHeader = "";
+      updateNews.ImgHeader = "";
     }
     this.onCreateUpdate.emit(updateNews);
   }

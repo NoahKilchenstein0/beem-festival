@@ -30,6 +30,11 @@ namespace Beem.Server.Controllers
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
+            if (model.Username == null || model.Password == null)
+            {
+                return BadRequest("Benutzername und Passwort sind erforderlich");
+            }
+
             var user = await _userManager.FindByNameAsync(model.Username);
             if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
             {
@@ -37,7 +42,7 @@ namespace Beem.Server.Controllers
 
                 var authClaims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, user.UserName),
+                    new Claim(ClaimTypes.Name, user.UserName ?? string.Empty),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 };
 
@@ -51,7 +56,7 @@ namespace Beem.Server.Controllers
                 return Ok(new User
                 {
                     UserName = user.UserName,
-                    Role = userRoles.First(),
+                    Role = userRoles.FirstOrDefault() ?? string.Empty,
                     JwtToken = new JwtSecurityTokenHandler().WriteToken(token),
                     Expiration = token.ValidTo
                 });
@@ -116,11 +121,15 @@ namespace Beem.Server.Controllers
 
         private JwtSecurityToken GetToken(List<Claim> authClaims)
         {
-            var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]));
+            var jwtSecret = _configuration["JWT:Secret"] ?? throw new InvalidOperationException("JWT:Secret ist nicht konfiguriert");
+            var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecret));
+
+            var validIssuer = _configuration["JWT:ValidIssuer"] ?? throw new InvalidOperationException("JWT:ValidIssuer ist nicht konfiguriert");
+            var validAudience = _configuration["JWT:ValidAudience"] ?? throw new InvalidOperationException("JWT:ValidAudience ist nicht konfiguriert");
 
             var token = new JwtSecurityToken(
-                issuer: _configuration["JWT:ValidIssuer"],
-                audience: _configuration["JWT:ValidAudience"],
+                issuer: validIssuer,
+                audience: validAudience,
                 expires: DateTime.Now.AddHours(12),
                 claims: authClaims,
                 signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)

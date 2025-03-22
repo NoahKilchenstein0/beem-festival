@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Form, FormControl } from '@angular/forms';
 import { Artist } from 'src/app/models/artist';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 @Component({
   selector: 'artist-admin-edit',
@@ -12,20 +13,20 @@ export class ArtistAdminEditComponent implements OnInit, OnChanges {
   @Output("onBack") onBackCall: EventEmitter<void> = new EventEmitter<void>();
   @Output("onCreateUpdate") onCreateUpdate: EventEmitter<Artist> = new EventEmitter<Artist>();
 
-  public name: FormControl = new FormControl({value: this.artist?.name, disabled: false});
+  public name: FormControl = new FormControl({value: this.artist?.Name, disabled: false});
   //Genre möglich noch auf Select Umstellen mit einem Enum???
-  public genre: FormControl = new FormControl({value: this.artist?.genre, disabled: false});
-  public startTime: FormControl = new FormControl({value: this.artist?.dayStartTime, disabled: false});
-  public playTime: FormControl = new FormControl({value: this.artist?.playTime, disabled: false});
-  public description: FormControl = new FormControl({value: this.artist?.description, disabled: false});
+  public genre: FormControl = new FormControl({value: this.artist?.Genre, disabled: false});
+  public startTime: FormControl = new FormControl({value: this.artist?.DayStartTime, disabled: false});
+  public playTime: FormControl = new FormControl({value: this.artist?.PlayTime, disabled: false});
+  public description: FormControl = new FormControl({value: this.artist?.Description, disabled: false});
   public img!: { dbPath: ''; };
-  public isBooked: FormControl = new FormControl({value: this.artist?.isBooked, disabled: false});
-  public isActive: FormControl = new FormControl({value: this.artist?.isActivated, disabled: false});
-  public isLineUpPlaned: FormControl = new FormControl({value: this.artist?.isLineUpPlaned, disabled: false});
-  public spotify: FormControl = new FormControl({value: this.artist?.spotify, disabled: false});
-  public website: FormControl = new FormControl({value: this.artist?.website, disabled: false});
-  public instagram: FormControl = new FormControl({value: this.artist?.instagramm, disabled: false});
-  public stage: FormControl = new FormControl({value: this.artist?.stage, disabled: false});
+  public isBooked: FormControl = new FormControl({value: this.artist?.IsBooked, disabled: false});
+  public isActive: FormControl = new FormControl({value: this.artist?.IsActivated, disabled: false});
+  public isLineUpPlaned: FormControl = new FormControl({value: this.artist?.IsLineUpPlanned, disabled: false});
+  public spotify: FormControl = new FormControl({value: this.artist?.Spotify, disabled: false});
+  public website: FormControl = new FormControl({value: this.artist?.Website, disabled: false});
+  public instagram: FormControl = new FormControl({value: this.artist?.Instagram, disabled: false});
+  public stage: FormControl = new FormControl({value: this.artist?.Stage, disabled: false});
   public imgHeader!: { dbPath: ''; };
 
   public stages = Stages;
@@ -36,59 +37,55 @@ export class ArtistAdminEditComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
-      this.name.setValue(this.artist?.name);
-      this.genre.setValue(this.artist?.genre);
-      this.startTime.setValue(this.artist?.dayStartTime);
-      this.playTime.setValue(this.artist?.playTime);
-      this.description.setValue(this.artist?.description);
-      this.isBooked.setValue(this.artist?.isBooked);
-      this.isActive.setValue(this.artist?.isActivated);
-      this.spotify.setValue(this.artist?.spotify);
-      this.website.setValue(this.artist?.website);
-      this.instagram.setValue(this.artist?.instagramm);
-      this.stage.setValue(this.artist?.stage);
-      this.isLineUpPlaned.setValue(this.artist?.isLineUpPlaned);
+    this.name.setValue(this.artist?.Name);
+    this.genre.setValue(this.artist?.Genre);
+    this.startTime.setValue(this.artist?.DayStartTime ? new Date(this.artist.DayStartTime) : null);
+    this.playTime.setValue(this.artist?.PlayTime);
+    this.description.setValue(this.artist?.Description);
+    this.isBooked.setValue(this.artist?.IsBooked);
+    this.isActive.setValue(this.artist?.IsActivated);
+    this.spotify.setValue(this.artist?.Spotify);
+    this.website.setValue(this.artist?.Website);
+    this.instagram.setValue(this.artist?.Instagram);
+    this.stage.setValue(this.artist?.Stage);
+    this.isLineUpPlaned.setValue(this.artist?.IsLineUpPlanned);
   }
 
   ngOnInit() {
+  }
 
+  onDateChange(event: MatDatepickerInputEvent<Date>) {
+    if (event.value) {
+      this.startTime.setValue(event.value);
+    }
   }
 
   onPreview(): void {
-    this.editedArtist.name = this.name.value;
-    this.editedArtist.dayStartTime = this.startTime.value;
-    this.editedArtist.genre = this.genre.value;
-    this.editedArtist.playTime = this.playTime.value;
-    this.editedArtist.description = this.description.value;
-    this.editedArtist.isBooked = this.isBooked.value;
-    this.editedArtist.isActivated = this.isActive.value;
-    this.editedArtist.spotify = this.spotify.value;
-    this.editedArtist.website = this.website.value;
-    this.editedArtist.instagramm = this.instagram.value;
-    this.editedArtist.isLineUpPlaned = this.isLineUpPlaned.value;
-    this.editedArtist.stage = this.stage.value;    if(this.img !== undefined)
-    {
-      this.editedArtist.img = this.img.dbPath
+    this.editedArtist.Name = this.name.value;
+    this.editedArtist.DayStartTime = this.startTime.value ? this.startTime.value.toISOString() : null;
+    this.editedArtist.Genre = this.genre.value;
+    this.editedArtist.PlayTime = this.playTime.value;
+    this.editedArtist.Description = this.description.value;
+    this.editedArtist.IsBooked = this.isBooked.value;
+    this.editedArtist.IsActivated = this.isActive.value;
+    this.editedArtist.Spotify = this.spotify.value;
+    this.editedArtist.Website = this.website.value;
+    this.editedArtist.Instagram = this.instagram.value;
+    this.editedArtist.IsLineUpPlanned = this.isLineUpPlaned.value;
+    this.editedArtist.Stage = this.stage.value;
+    if(this.img !== undefined) {
+      this.editedArtist.Img = this.img.dbPath;
+    } else if(this.artist !== null) {
+      this.editedArtist.Img = this.artist.Img; 
+    } else {
+      this.editedArtist.Img = "";
     }
-    else if(this.artist !== null)
-    {
-      this.editedArtist.img = this.artist.img; 
-    }
-    else 
-    {
-      this.editedArtist.img = "";
-    }
-    if(this.imgHeader !== undefined)
-    {
-      this.editedArtist.imgHeader = this.imgHeader.dbPath
-    }
-    else if(this.artist !== null)
-    {
-      this.editedArtist.imgHeader = this.artist.imgHeader; 
-    }
-    else 
-    {
-      this.editedArtist.imgHeader = "";
+    if(this.imgHeader !== undefined) {
+      this.editedArtist.ImgHeader = this.imgHeader.dbPath;
+    } else if(this.artist !== null) {
+      this.editedArtist.ImgHeader = this.artist.ImgHeader; 
+    } else {
+      this.editedArtist.ImgHeader = "";
     }
     this.isPreview = true;
   }
@@ -103,51 +100,41 @@ export class ArtistAdminEditComponent implements OnInit, OnChanges {
 
   onSave(): void {
     let updateArtist = new Artist();
-    updateArtist.id = this.artist !== null ? this.artist.id : 0;
-    updateArtist.name = this.name.value;
-    updateArtist.dayStartTime = this.startTime.value;
-    updateArtist.genre = this.genre.value;
-    updateArtist.playTime = this.playTime.value;
-    updateArtist.description = this.description.value;
-    updateArtist.isBooked = this.isBooked.value;
-    updateArtist.isActivated = this.isActive.value;
-    updateArtist.spotify = this.spotify.value;
-    updateArtist.website = this.website.value;
-    updateArtist.instagramm = this.instagram.value;
-    updateArtist.stage = this.stage.value;
-    updateArtist.isLineUpPlaned = this.isLineUpPlaned.value;
-    if(this.img !== undefined)
-    {
-      updateArtist.img = this.img.dbPath
+    updateArtist.Id = this.artist !== null ? this.artist.Id : 0;
+    updateArtist.Name = this.name.value;
+    updateArtist.DayStartTime = this.startTime.value ? this.startTime.value.toISOString() : null;
+    updateArtist.Genre = this.genre.value;
+    updateArtist.PlayTime = this.playTime.value;
+    updateArtist.Description = this.description.value;
+    updateArtist.IsBooked = this.isBooked.value;
+    updateArtist.IsActivated = this.isActive.value;
+    updateArtist.Spotify = this.spotify.value;
+    updateArtist.Website = this.website.value;
+    updateArtist.Instagram = this.instagram.value;
+    updateArtist.Stage = this.stage.value;
+    updateArtist.IsLineUpPlanned = this.isLineUpPlaned.value;
+    if(this.img !== undefined) {
+      updateArtist.Img = this.img.dbPath;
+    } else if(this.artist !== null) {
+      updateArtist.Img = this.artist.Img; 
+    } else {
+      updateArtist.Img = "";
     }
-    else if(this.artist !== null)
-    {
-      updateArtist.img = this.artist.img; 
-    }
-    else 
-    {
-      updateArtist.img = "";
-    }
-    if(this.imgHeader !== undefined)
-    {
-      updateArtist.imgHeader = this.imgHeader.dbPath
-    }
-    else if(this.artist !== null)
-    {
-      updateArtist.imgHeader = this.artist.imgHeader; 
-    }
-    else 
-    {
-      updateArtist.imgHeader = "";
+    if(this.imgHeader !== undefined) {
+      updateArtist.ImgHeader = this.imgHeader.dbPath;
+    } else if(this.artist !== null) {
+      updateArtist.ImgHeader = this.artist.ImgHeader; 
+    } else {
+      updateArtist.ImgHeader = "";
     }
     this.onCreateUpdate.emit(updateArtist);
   }
 
-  public uploadImageFinished(event: any){
+  public uploadImageFinished(event: any) {
     this.img = event;
   }
 
-  public uploadHeaderImageFinished(event: any){
+  public uploadHeaderImageFinished(event: any) {
     this.imgHeader = event;
   }
 }

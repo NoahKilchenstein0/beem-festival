@@ -52,7 +52,7 @@
 /* make a media query between 960px und 850px */
 @media only screen and (max-width: 960px) {
     mat-card {
-        border: 2px solid #ff66c4;
+        border: 2px solid #514eb5;
         margin: 40px!important;
         /* padding: 0; */
         box-shadow: none !important;

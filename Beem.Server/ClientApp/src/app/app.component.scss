@@ -150,12 +150,12 @@
    width: min-content;
    max-width: 80%;
    padding: 0.5rem;
-   background-color: #258c68;
+   background-color: #514eb5;
 }
 
 .mobile-toolbar {
   width: 100%;
-  height: 50px;
+  height: 40px;
   background-color: #258c68;
   display: flex;
   justify-content: space-between;
@@ -163,19 +163,21 @@
 }
 
 .mobile-toolbar button {
-  margin-left: 10px; /* Adjust as needed */
+  margin-left: 10px;
+  height: 32px;
+  line-height: 32px;
 }
 
 .mobile-toolbar div {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #ff66c4;
-  height: 50px;
+  background-color: #514eb5;
+  height: 40px;
   width: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: 'HappyMonkey', fallback, sans-serif !important;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }

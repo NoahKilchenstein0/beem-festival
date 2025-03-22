@@ -1,0 +1,193 @@
+:host ::ng-deep {
+  // Allgemeine Input-Styles
+  input.mat-mdc-input-element,
+  textarea.mat-mdc-input-element {
+    color: black !important;
+    -webkit-text-fill-color: black !important;
+  }
+
+  // Form Field Styles
+  .mat-mdc-form-field {
+    width: 100%;
+    margin-bottom: 16px;
+    
+    .mat-mdc-text-field-wrapper {
+      background-color: #f5f5f5 !important;
+    }
+
+    .mat-mdc-form-field-flex {
+      background-color: #f5f5f5 !important;
+    }
+
+    // Label und Placeholder
+    .mat-mdc-floating-label,
+    .mat-mdc-form-field-label {
+      color: rgba(0, 0, 0, 0.87) !important;
+    }
+
+    // Input Text
+    .mat-mdc-input-element {
+      color: black !important;
+      -webkit-text-fill-color: black !important;
+    }
+
+    // Outline
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__notch,
+    .mdc-notched-outline__trailing {
+      border-color: rgba(0, 0, 0, 0.87) !important;
+      border-width: 2px !important;
+    }
+
+    // Icons
+    .mat-mdc-form-field-icon-suffix {
+      color: rgba(0, 0, 0, 0.87) !important;
+    }
+
+    // Fokus-Zustand
+    &.mat-focused {
+      .mdc-notched-outline__leading,
+      .mdc-notched-outline__notch,
+      .mdc-notched-outline__trailing {
+        border-color: #258c68 !important;
+      }
+
+      .mat-mdc-floating-label {
+        color: #258c68 !important;
+      }
+    }
+  }
+
+  // Rich Text Editor
+  .richtexteditor {
+    .angular-editor-textarea {
+      background-color: #f5f5f5 !important;
+      color: black !important;
+      -webkit-text-fill-color: black !important;
+      border: 2px solid rgba(0, 0, 0, 0.87) !important;
+      min-height: 150px !important;
+      padding: 8px !important;
+    }
+
+    .angular-editor-toolbar {
+      background-color: #f5f5f5 !important;
+      border: 2px solid rgba(0, 0, 0, 0.87) !important;
+
+      .angular-editor-button {
+        color: black !important;
+        background-color: transparent !important;
+
+        &:hover {
+          background-color: rgba(37, 140, 104, 0.1) !important;
+        }
+
+        &.active {
+          background-color: rgba(37, 140, 104, 0.2) !important;
+        }
+      }
+    }
+  }
+
+  // Datepicker
+  .mat-datepicker-content {
+    background-color: #f5f5f5 !important;
+
+    .mat-calendar {
+      background-color: #f5f5f5 !important;
+
+      .mat-calendar-body-cell-content {
+        color: black !important;
+      }
+
+      .mat-calendar-body-selected {
+        background-color: #258c68 !important;
+        color: white !important;
+      }
+
+      .mat-calendar-body-today:not(.mat-calendar-body-selected) {
+        border-color: #258c68 !important;
+      }
+    }
+  }
+
+  .mat-datepicker-toggle {
+    color: rgba(0, 0, 0, 0.87) !important;
+  }
+}
+
+.admin-container {
+  padding: 20px;
+  
+  .admin-section {
+    background-color: white;
+    border-radius: 4px;
+    padding: 24px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    .admin-section-title {
+      margin: 0 0 24px 0;
+      font-size: 24px;
+      font-weight: 500;
+      color: black;
+    }
+
+    .admin-form-field {
+      width: 100%;
+      margin-bottom: 24px;
+    }
+
+    .admin-rich-editor {
+      margin-bottom: 24px;
+
+      .editor-label {
+        margin-bottom: 8px;
+        color: black;
+        font-size: 16px;
+      }
+    }
+
+    .admin-image-upload {
+      margin-bottom: 24px;
+
+      .upload-label {
+        margin-bottom: 8px;
+        color: black;
+        font-size: 16px;
+      }
+
+      .image-preview {
+        display: block;
+        margin-bottom: 8px;
+        color: black;
+      }
+    }
+
+    .admin-button-group {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 32px;
+
+      .admin-button {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        &.admin-button-primary {
+          background-color: #258c68;
+          color: white;
+        }
+
+        &.admin-button-secondary {
+          background-color: #f5f5f5;
+          color: black;
+        }
+
+        &.admin-button-danger {
+          background-color: #dc3545;
+          color: white;
+        }
+      }
+    }
+  }
+} 

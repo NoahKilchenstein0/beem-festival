@@ -1,0 +1,149 @@
+:host ::ng-deep {
+  .admin-filter {
+    .mat-mdc-form-field-subscript-wrapper {
+      display: none;
+    }
+
+    .mat-mdc-form-field-focus-overlay {
+      display: none;
+    }
+
+    .mdc-text-field--outlined {
+      --mdc-outlined-text-field-outline-color: rgba(0, 0, 0, 0.87);
+    }
+
+    .mat-mdc-form-field-flex {
+      background-color: white;
+    }
+
+    .mdc-notched-outline {
+      .mdc-notched-outline__leading,
+      .mdc-notched-outline__notch,
+      .mdc-notched-outline__trailing {
+        border-color: rgba(0, 0, 0, 0.87) !important;
+        border-width: 2px !important;
+      }
+    }
+
+    .mat-mdc-form-field-infix {
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+
+    .mdc-floating-label {
+      color: rgba(0, 0, 0, 0.87) !important;
+    }
+
+    .mat-mdc-input-element {
+      color: black !important;
+    }
+
+    .mat-mdc-form-field-icon-suffix {
+      color: rgba(0, 0, 0, 0.87) !important;
+    }
+
+    &.mat-focused {
+      .mdc-notched-outline {
+        .mdc-notched-outline__leading,
+        .mdc-notched-outline__notch,
+        .mdc-notched-outline__trailing {
+          border-color: #258c68 !important;
+        }
+      }
+
+      .mdc-floating-label {
+        color: #258c68 !important;
+      }
+
+      .mat-mdc-form-field-icon-suffix {
+        color: #258c68 !important;
+      }
+    }
+  }
+}
+
+.admin-container {
+  padding: 20px;
+  
+  .admin-section {
+    background-color: white;
+    border-radius: 4px;
+    padding: 24px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    .admin-section-title {
+      margin: 0 0 24px 0;
+      font-size: 24px;
+      font-weight: 500;
+    }
+
+    .admin-filter {
+      width: 100%;
+      margin-bottom: 24px;
+    }
+
+    .admin-table {
+      margin-bottom: 24px;
+      
+      .mat-mdc-table {
+        width: 100%;
+      }
+
+      .mat-mdc-row {
+        height: 56px;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.04);
+        }
+
+        &.selected-row {
+          background-color: rgba(37, 140, 104, 0.1);
+        }
+      }
+
+      .mat-mdc-header-row {
+        height: 56px;
+      }
+
+      .mat-mdc-cell,
+      .mat-mdc-header-cell {
+        padding: 0 16px;
+      }
+    }
+
+    .admin-button-group {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+
+      .admin-button {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        &.admin-button-primary {
+          background-color: #258c68;
+          color: white;
+        }
+
+        &.admin-button-secondary {
+          background-color: #f5f5f5;
+          color: rgba(0, 0, 0, 0.87);
+        }
+
+        &.admin-button-danger {
+          background-color: #dc3545;
+          color: white;
+        }
+
+        &[disabled] {
+          opacity: 0.5;
+        }
+
+        mat-icon {
+          margin-right: 4px;
+        }
+      }
+    }
+  }
+} 

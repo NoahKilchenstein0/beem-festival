@@ -78,7 +78,7 @@ export class ProgrammComponent implements OnInit {
   onSwap(): void {
     if (this.isAdminView) {
       this.isAdminView = false;
-      this.filteredArtist = this.artists.filter(x => x.isBooked === true);
+      this.filteredArtist = this.artists.filter(x => x.IsBooked === true);
     }
     else {
       this.isAdminView = true;
@@ -94,19 +94,19 @@ export class ProgrammComponent implements OnInit {
     if (this.user === null) {
       return false;
     }
-    return this.user.role === Roles.Admin && this.isAdminView;
+    return this.user.Role === Roles.Admin && this.isAdminView;
   }
 
   isAdminOnly(): boolean {
     if (this.user === null) {
       return false;
     }
-    return this.user.role === Roles.Admin;
+    return this.user.Role === Roles.Admin;
   }
 
   navigateToEditArtist(artist: Artist): void {
     this.globalsService.setArtistDrillDownActive();
-    if (artist.id !== 0) {
+    if (artist.Id !== 0) {
       this.isEdit = true;
     }
     else {
@@ -118,7 +118,7 @@ export class ProgrammComponent implements OnInit {
   updateArtist(artist: Artist) {
     if (this.isEdit) {
       this.artistsService.updateArtist(artist).subscribe(x => {
-        let index = this.artists.findIndex(x => x.id === artist.id);
+        let index = this.artists.findIndex(x => x.Id === artist.Id);
         this.artists.splice(index, 1);
         this.artists.push(x);
         this.globalsService.setArtistDrillDownDisabled();
@@ -133,16 +133,64 @@ export class ProgrammComponent implements OnInit {
   }
 
   deleteArtist(artist: Artist): void {
-    this.artistsService.deleteArtist(artist.id).subscribe(x => {
+    this.artistsService.deleteArtist(artist.Id).subscribe(x => {
       this.artists.splice(this.artists.findIndex(x => x === artist), 1);
     });
   }
 
   sortArtistsByName() {
     this.filteredArtist.sort(function (a, b) {
-      var textA = a.name.toUpperCase();
-      var textB = b.name.toUpperCase();
+      var textA = a.Name.toUpperCase();
+      var textB = b.Name.toUpperCase();
       return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+    });
+  }
+
+  onFilterFavorites() {
+    if (!this.favoriteFiltered) {
+      this.filteredArtist = this.artists.filter(x => x.IsBooked === true);
+      this.favoriteFiltered = true;
+    } else {
+      this.filteredArtist = this.artists;
+      this.favoriteFiltered = false;
+    }
+  }
+
+  onCreateUpdateArtist(artist: Artist) {
+    if (artist.Id !== 0) {
+      this.artistsService.updateArtist(artist).subscribe(x => {
+        this.isEdit = false;
+        this.getArtists();
+      });
+    } else {
+      this.artistsService.createArtist(artist).subscribe(x => {
+        let index = this.artists.findIndex(x => x.Id === artist.Id);
+        if (index !== -1) {
+          this.artists[index] = artist;
+        } else {
+          this.artists.push(artist);
+        }
+        this.isEdit = false;
+      });
+    }
+  }
+
+  onDeleteArtist(artist: Artist) {
+    this.artistsService.deleteArtist(artist.Id).subscribe(x => {
+      this.getArtists();
+    });
+  }
+
+  sortByName(a: Artist, b: Artist) {
+    var textA = a.Name.toUpperCase();
+    var textB = b.Name.toUpperCase();
+    return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+  }
+
+  getArtists() {
+    this.artistsService.getArtists().subscribe(artists => {
+      this.artists = artists;
+      this.filteredArtist = this.artists;
     });
   }
 

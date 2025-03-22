@@ -8,7 +8,7 @@ import { Question } from 'src/app/models/question';
 @Component({
   selector: 'faq-admin-overview',
   templateUrl: './faq-admin-overview.component.html',
-  styleUrls: ['./faq-admin-overview.component.css']
+  styleUrls: ['./faq-admin-overview.component.scss']
 })
 export class FaqAdminOverviewComponent implements OnInit {
   @Input("questions") questions: Question[] = [];

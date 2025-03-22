@@ -33,13 +33,13 @@ export class AuthService {
     }
         
       login(userName:string, password:string ) {
-        return this.http.post<User>('/api/Authenticate/login', {userName, password}).subscribe((res: User) => this.setSession(res,userName));
+        return this.http.post<User>('/api/Authenticate/login', {Username: userName, Password: password}).subscribe((res: User) => this.setSession(res,userName));
       }
 
       private setSession(authResult: User, userName: string) {
-        const expiresAt = moment(authResult.expiration).add('second');
+        const expiresAt = moment(authResult.Expiration).add('second');
 
-        localStorage.setItem('id_token', authResult.jwtToken);
+        localStorage.setItem('id_token', authResult.JwtToken);
         localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
         localStorage.setItem('user', JSON.stringify(authResult));
         if(this.userSubject === undefined){
@@ -49,7 +49,13 @@ export class AuthService {
         else {
           this.userSubject.next(authResult);
         }
-        this.router.navigateByUrl('/');
+        console.log(authResult);
+        // Prüfen der Benutzerrolle und entsprechende Weiterleitung
+        if (authResult.Role === 'Admin') {
+          this.router.navigateByUrl('/news-admin-overview');
+        } else {
+          this.router.navigateByUrl('/');
+        }
       }          
 
     logout() {

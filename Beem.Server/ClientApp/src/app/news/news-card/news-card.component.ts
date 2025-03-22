@@ -30,11 +30,12 @@ export class NewsCardComponent implements OnInit {
   }
 
   public getNewsText(news: News){
-    return news.newsText.substring(0, 255).replace(/<\/?[^>]+(>|$)/g, "")  + " ...";
+    console.log(news);
+    return news.NewsText.substring(0, 255).replace(/<\/?[^>]+(>|$)/g, "")  + " ...";
   }
 
   public isImageVisible(news:News): boolean{
-    return news.img !== '' && !this.globalService.isTopNav;
+    return news.Img !== '' && !this.globalService.isTopNav;
   }
 
 }

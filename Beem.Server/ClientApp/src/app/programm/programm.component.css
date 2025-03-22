@@ -3,11 +3,9 @@
     flex-direction: column;
 }
 
-
 .containerNonFlex {
     display: block !important;
 }
-
 
 .newsOverview {
     justify-content: center;
@@ -17,6 +15,13 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+
+.band-card {
+    display: flex;
+    margin: 30px 0;
+    width: 100vw;
+    background-color: white;
 }
 
 .artist-card {
@@ -29,7 +34,9 @@
     background-color: #e7e0c6;
     color: black;
 }
-
+.admin-container{
+    width: 100vw;
+}
 
 /* @media only screen and (max-width: 708px) {
     .artist-card-wrapper {
@@ -64,7 +71,7 @@
         display: flex;
         margin: 30px 0;
         width: 80%;
-        border: 2px solid #ff66c4;
+        border: 2px solid #514eb5;
     }
 }
 

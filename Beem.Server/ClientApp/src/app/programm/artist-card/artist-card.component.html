@@ -2,8 +2,8 @@
   <div class="rowFlex" >
 
     <div class="matcard">
-      <img class="band-image" *ngIf="artist.img !== ''" [src]="createImgPath(artist.img)" alt="Photo of {{artist.name}}">
-      <div class="band-text">{{artist.name}}</div>
+      <img class="band-image" *ngIf="artist.Img !== ''" [src]="createImgPath(artist.Img)" alt="Photo of {{artist.Name}}">
+      <div class="band-text">{{artist.Name}}</div>
     </div>
 
   </div>
@@ -11,13 +11,13 @@
 
 <mat-card class="cardsmall" (click)="navigateToArtistPage()">
 
-  <img mat-card-image class="band-image" [src]="createImgPath(artist.img)" alt="Photo of {{artist.name}}">
+  <img mat-card-image class="band-image" [src]="createImgPath(artist.Img)" alt="Photo of {{artist.Name}}">
   <mat-card-content class="rowFlex">
       <div class="colums">
-          <div class="card-headline">{{artist.name}}</div>
+          <div class="card-headline">{{artist.Name}}</div>
       </div>
       <div class="band-info genre-text">
-        <div>{{artist.genre}}</div>
+        <div>{{artist.Genre}}</div>
         <div>...mehr lesen</div>
       </div>
   </mat-card-content>
@@ -25,10 +25,10 @@
 
 <!-- <mat-card class="card pointer" (click)="navigateToArtistPage()"  *ngIf="globalsService.isTopNav">
   <mat-card-content class="rowFlex" >
-    <img mat-card-image class="card-image" *ngIf="artist.img !== ''" [src]="createImgPath(artist.img)" alt="Photo of {{artist.name}}">
+    <img mat-card-image class="card-image" *ngIf="artist.Img !== ''" [src]="createImgPath(artist.Img)" alt="Photo of {{artist.Name}}">
       <div class="colums">
-          <div class="card-headline">{{artist.name}}</div>
-          <div class="card-subheadline">{{artist.genre}}</div>
+          <div class="card-headline">{{artist.Name}}</div>
+          <div class="card-subheadline">{{artist.Genre}}</div>
           <div class="card-text">{{getDescriptionText(artist)}}</div>
       </div>
   </mat-card-content>
@@ -36,10 +36,10 @@
 
 <mat-card class="cardsmall" (click)="navigateToArtistPage()" *ngIf="!globalsService.isTopNav">
 
-  <img mat-card-image class="card-image-mobile" *ngIf="isImageVisible(artist)" [src]="createImgPath(artist.img)" alt="Photo of {{artist.name}}">
+  <img mat-card-image class="card-image-mobile" *ngIf="isImageVisible(artist)" [src]="createImgPath(artist.Img)" alt="Photo of {{artist.Name}}">
   <mat-card-content class="rowFlex">
       <div class="colums">
-          <div class="card-headline">{{artist.name}}</div>
+          <div class="card-headline">{{artist.Name}}</div>
       </div>
   </mat-card-content>
 </mat-card> -->

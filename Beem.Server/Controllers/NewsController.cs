@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Beem.Server.Controllers
 {
@@ -17,48 +18,55 @@ namespace Beem.Server.Controllers
 
         [Authorize]
         [HttpGet]
-        public IActionResult Get() {
-            return Ok(this.dbContext.News.OrderByDescending(x => x.Id));
+        public async Task<IActionResult> Get() {
+            return Ok(await dbContext.News.OrderByDescending(x => x.Id).ToListAsync());
         }
 
-        
         [HttpGet("GetActive")]
-        public IActionResult GetActive() {
-            return Ok(this.dbContext.News.Where(x => x.PublicationDateTime <= DateTime.UtcNow).OrderByDescending(x => x.PublicationDateTime));
+        public async Task<IActionResult> GetActive() {
+            var now = DateTime.UtcNow;
+            return Ok(await dbContext.News
+                .Where(x => x.PublicationDateTime <= now)
+                .OrderByDescending(x => x.PublicationDateTime)
+                .ToListAsync());
         }
         
         [HttpGet("GetLatest")]
-        public IActionResult GetLatest() {
-            return Ok(this.dbContext.News.Where(x => x.PublicationDateTime <= DateTime.UtcNow).OrderBy(x => x.PublicationDateTime).Take(4));
+        public async Task<IActionResult> GetLatest() {
+            var now = DateTime.UtcNow;
+            return Ok(await dbContext.News
+                .Where(x => x.PublicationDateTime <= now)
+                .OrderByDescending(x => x.PublicationDateTime)
+                .Take(4)
+                .ToListAsync());
         }
 
         [HttpGet("GetSingle({id})")]
-        public IActionResult GetSingle([FromRoute]int id) {
-            var filteredNews = this.dbContext.News.FirstOrDefault(x => x.Id == id);
+        public async Task<IActionResult> GetSingle([FromRoute]int id) {
+            var filteredNews = await dbContext.News.FirstOrDefaultAsync(x => x.Id == id);
             if(filteredNews == null){
                 return BadRequest("News konnte nicht gefunden werden");
             }
             return Ok(filteredNews);
         }
 
-
         [Authorize]   
         [HttpPost]
-        public IActionResult Post([FromBody]News news)
+        public async Task<IActionResult> Post([FromBody]News news)
         {
             if(news != null){
-                this.dbContext.News.Add(news);
-                this.dbContext.SaveChanges();
-                return Ok(this.dbContext.News.First(x => x.Title == news.Title));
+                dbContext.News.Add(news);
+                await dbContext.SaveChangesAsync();
+                return Ok(await dbContext.News.FirstAsync(x => x.Title == news.Title));
             }
             return BadRequest("News darf nicht NULL sein");
         }
 
         [Authorize]
         [HttpPut("Update({id})")]
-        public IActionResult Put([FromRoute]int id, [FromBody]News news)
+        public async Task<IActionResult> Put([FromRoute]int id, [FromBody]News news)
         {
-            var newsToUpdate = this.dbContext.News.FirstOrDefault(x => x.Id == id);
+            var newsToUpdate = await dbContext.News.FirstOrDefaultAsync(x => x.Id == id);
             if(newsToUpdate != null && news != null)
             {
                 newsToUpdate.Title = news.Title;
@@ -66,7 +74,7 @@ namespace Beem.Server.Controllers
                 newsToUpdate.ImgHeader = news.ImgHeader;
                 newsToUpdate.NewsText = news.NewsText;
                 newsToUpdate.PublicationDateTime = news.PublicationDateTime;
-                this.dbContext.SaveChanges();
+                await dbContext.SaveChangesAsync();
                 return Ok(newsToUpdate);
             }
             return BadRequest("News konnte nicht Gefunden werden");
@@ -74,14 +82,14 @@ namespace Beem.Server.Controllers
 
         [Authorize]
         [HttpDelete("Delete({id})")]
-        public IActionResult Delete([FromRoute]int id)
+        public async Task<IActionResult> Delete([FromRoute]int id)
         {
-            var newsToDelete = this.dbContext.News.FirstOrDefault(x => x.Id == id);
+            var newsToDelete = await dbContext.News.FirstOrDefaultAsync(x => x.Id == id);
             if(newsToDelete == null){
                 return BadRequest("News existiert nicht");
             }
-            this.dbContext.News.Remove(newsToDelete);
-            this.dbContext.SaveChanges();
+            dbContext.News.Remove(newsToDelete);
+            await dbContext.SaveChangesAsync();
             return Ok();
         }
     }

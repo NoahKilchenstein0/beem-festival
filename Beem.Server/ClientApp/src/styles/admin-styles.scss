@@ -1,0 +1,175 @@
+// Admin Panel Styles
+.admin-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    margin: 1rem;
+    padding: 1rem;
+  }
+}
+
+.admin-form-field {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.admin-section {
+  margin-bottom: 2rem;
+  
+  &-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+}
+
+.admin-button-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: flex-end;
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+    button {
+      width: 100%;
+    }
+  }
+}
+
+.admin-button {
+  min-width: 120px;
+  min-height: 45px;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem;
+  
+  &-primary {
+    background-color: #258c68 !important;
+    color: white !important;
+  }
+  
+  &-secondary {
+    background-color: #514eb5 !important;
+    color: white !important;
+  }
+  
+  &-danger {
+    background-color: #dc3545 !important;
+    color: white !important;
+  }
+
+  &-create {
+    min-height: 50px;
+    font-size: 1.1rem !important;
+  }
+
+  mat-icon {
+    margin-right: 4px;
+  }
+}
+
+.admin-table {
+  width: 100%;
+  margin-top: 1rem;
+  
+  .mat-header-cell {
+    font-weight: 600;
+    color: #333;
+    background-color: #f8f9fa;
+    padding: 0 1rem;
+  }
+  
+  .mat-cell {
+    padding: 0.5rem 1rem;
+  }
+
+  .mat-row {
+    &:hover {
+      background-color: #f8f9fa;
+      cursor: pointer;
+    }
+  }
+
+  .selected-row {
+    background-color: rgba(81, 78, 181, 0.1);
+  }
+}
+
+.admin-filter {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 1rem;
+
+  ::ng-deep {
+    .mat-mdc-text-field-wrapper {
+      background-color: white;
+    }
+
+    .mdc-text-field--outlined {
+      --mdc-outlined-text-field-outline-color: rgba(0, 0, 0, 0.87);
+      --mdc-outlined-text-field-hover-outline-color: black;
+      --mdc-outlined-text-field-focus-outline-color: #258c68;
+      border-width: 2px;
+    }
+
+    .mat-mdc-form-field-focus-overlay {
+      background-color: transparent;
+    }
+
+    .mdc-floating-label, .mdc-floating-label--float-above {
+      color: black !important;
+    }
+
+    .mat-mdc-form-field-input-control {
+      color: black !important;
+    }
+
+    .mat-mdc-form-field-icon-suffix {
+      color: black !important;
+    }
+
+    &.mat-focused {
+      .mdc-floating-label, .mdc-floating-label--float-above {
+        color: #258c68 !important;
+      }
+      
+      .mat-mdc-form-field-icon-suffix {
+        color: #258c68 !important;
+      }
+    }
+  }
+}
+
+.admin-image-upload {
+  margin: 1rem 0;
+  
+  .upload-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: rgba(0, 0, 0, 0.87);
+  }
+  
+  .image-preview {
+    margin-top: 0.5rem;
+    max-width: 200px;
+    border-radius: 4px;
+  }
+}
+
+.admin-rich-editor {
+  margin-bottom: 1.5rem;
+  
+  .editor-label {
+    margin-bottom: 0.5rem;
+    color: rgba(0, 0, 0, 0.87);
+  }
+} 

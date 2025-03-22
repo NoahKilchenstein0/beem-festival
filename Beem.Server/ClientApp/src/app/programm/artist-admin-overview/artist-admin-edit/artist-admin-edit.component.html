@@ -9,14 +9,9 @@
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Startzeit</mat-label>
-    <input matInput [ngxMatDatetimePicker]="picker" placeholder="Startzeit auswählen" 
-          [formControl]="startTime">
-    <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
-    <ngx-mat-datetime-picker #picker [showSpinners]="true" [showSeconds]="false"
-    [stepHour]="1" [stepMinute]="1" [stepSecond]="1"
-    [touchUi]="true" [enableMeridian]="false"
-    [disableMinute]="false" [hideTime]="false">
-    </ngx-mat-datetime-picker>
+    <input matInput [matDatepicker]="picker" placeholder="Startzeit auswählen" [(ngModel)]="startTime.value" (dateChange)="onDateChange($event)" name="startTime">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Spielzeit in Minuten</mat-label>
@@ -25,9 +20,13 @@
   <mat-label>Beschreibung</mat-label>
   <richtexteditor [control]="description" class="formMargin"></richtexteditor>
   
-  <mat-label>Vorschaubild</mat-label><span *ngIf="artist">{{artist.img}}</span>
+  <div class="admin-form-field">
+    <mat-label>Vorschaubild</mat-label><span *ngIf="artist">{{artist.Img}}</span>
+  </div>
   <image-upload (onUploadFinished)="uploadImageFinished($event)"></image-upload>
-  <mat-label>Banner Bild</mat-label> <span *ngIf="artist">{{artist.imgHeader}}</span>
+  <div class="admin-form-field">
+    <mat-label>Banner Bild</mat-label> <span *ngIf="artist">{{artist.ImgHeader}}</span>
+  </div>
   <image-upload (onUploadFinished)="uploadHeaderImageFinished($event)"></image-upload>
   <!--
   <mat-form-field appearance="fill">

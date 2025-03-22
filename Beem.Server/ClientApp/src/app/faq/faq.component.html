@@ -10,10 +10,10 @@
         <mat-expansion-panel *ngFor="let question of questions" class="questionPanel">
           <mat-expansion-panel-header [collapsedHeight]="'6rem'" [expandedHeight]="'6rem'">
             <mat-panel-title class="questionTitle">
-              {{question.title}}
+              {{question.Title}}
             </mat-panel-title>
           </mat-expansion-panel-header>
-          <div class="answerDiv" [innerHTML]="question.answer"></div>
+          <div class="answerDiv" [innerHTML]="question.Answer"></div>
         </mat-expansion-panel>
       </mat-accordion>
       <div class="buttonMargin">

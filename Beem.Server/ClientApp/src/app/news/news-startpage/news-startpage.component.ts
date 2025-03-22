@@ -39,6 +39,6 @@ export class NewsStartpageComponent implements OnInit {
 
   navigateToNewsPage(news:News): void{
     this.selectedNews = news;
-    this.router.navigateByUrl("/news-site/"+news.id);
+    this.router.navigateByUrl("/news-site/"+news.Id);
   }
 }

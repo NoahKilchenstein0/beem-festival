@@ -28,13 +28,13 @@ export class ArtistCardComponent implements OnInit {
   public createImgPath(serverPath: string) {
     return location.origin + "/" + serverPath; 
   }
-
+  
   public isImageVisible(artist:Artist){
-    return artist.img !== '' && !this.globalsService.isTopNav;
+    return artist.Img !== '' && !this.globalsService.isTopNav;
   }
 
   public getDescriptionText(artist:Artist){
-    return artist.description.substring(0, 255).replace(/<\/?[^>]+(>|$)/g, "")  + " ...";
+    return artist.Description.substring(0, 255).replace(/<\/?[^>]+(>|$)/g, "")  + " ...";
   }
 
 

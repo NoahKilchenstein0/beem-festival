@@ -16,15 +16,12 @@ import { PlatformLocation } from '@angular/common';
 export class NewsComponent implements OnInit {
 
   public news: News[] = [];
-
   public filteredNews: News[] = [];
   private favoriteFiltered: boolean = false;
   public selectedNews: News = new News();
   public isDrillDownActive: boolean = false;
   public user: User | null = null;
-
   public isAdminView: boolean = false;
-
   public isEdit: boolean = false;
 
   constructor(
@@ -60,6 +57,7 @@ export class NewsComponent implements OnInit {
         this.filteredNews = this.news;
       })
     }
+
     this.globalsService.isNewsDrillDown.subscribe(x => {
       this.isDrillDownActive = x;
     });
@@ -75,16 +73,14 @@ export class NewsComponent implements OnInit {
       queryParams: {
         isAdminView: this.isAdminView,
         isEdit: this.isEdit,
-        newsId: news.id
+        newsId: news.Id
       },
-      queryParamsHandling: 'merge', // preserve the current query params
+      queryParamsHandling: 'merge',
     });
-
   }
   
   navigateToNewsPage(news:News): void{
     this.selectedNews = news;
-    // this.setRouteParams(news);
     this.globalsService.setNewsDrillDownActive();
   }
 
@@ -107,19 +103,19 @@ export class NewsComponent implements OnInit {
     if(this.user === null){
       return false;
     }
-    return this.user.role === Roles.Admin && this.isAdminView;
+    return this.user.Role === Roles.Admin && this.isAdminView;
   }
 
   isAdminOnly(): boolean {
     if(this.user === null){
       return false;
     }
-    return this.user.role === Roles.Admin;
+    return this.user.Role === Roles.Admin;
   }
 
   navigateToEditNews(news:News): void {
     this.globalsService.setNewsDrillDownActive();
-    if(news.id !== 0){
+    if(news.Id !== 0){
       this.isEdit = true;
     }
     else {
@@ -131,7 +127,7 @@ export class NewsComponent implements OnInit {
   updateNews(news:News){
     if(this.isEdit){
       this.newsService.updateNews(news).subscribe(x => {
-        let index = this.news.findIndex(x => x.id === news.id);
+        let index = this.news.findIndex(x => x.Id === news.Id);
         this.news.splice(index, 1);
         this.news.push(x);
         this.globalsService.setNewsDrillDownDisabled();
@@ -146,9 +142,8 @@ export class NewsComponent implements OnInit {
   }
 
   deleteNews(news:News): void {
-    this.newsService.deleteNews(news.id).subscribe(x => {
+    this.newsService.deleteNews(news.Id).subscribe(x => {
       this.news.splice(this.news.findIndex(x => x === news),1);
     });
   }
-
 }

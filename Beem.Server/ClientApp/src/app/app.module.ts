@@ -24,14 +24,12 @@ import { UrlbypassPipe } from './pipes/Urlbypass.pipe';
 import { UserService } from './services/user.service';
 import { ArtistAdminOverviewComponent } from './programm/artist-admin-overview/artist-admin-overview.component';
 import { ArtistAdminEditComponent } from './programm/artist-admin-overview/artist-admin-edit/artist-admin-edit.component';
-import { NgxMatDateFormats, NgxMatDatetimePickerModule, NgxMatTimepickerModule, NGX_MAT_DATE_FORMATS } from '@angular-material-components/datetime-picker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { ArtistService } from './services/artist.service';
-import { AuthInterceptor } from './interceptor/auth.interceptor';
-import { NgxMatMomentModule } from '@angular-material-components/moment-adapter';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
@@ -49,16 +47,18 @@ import { NewsStartpageComponent } from './news/news-startpage/news-startpage.com
 import { FaqComponent } from './faq/faq.component';
 import { FaqAdminEditComponent } from './faq/faq-admin-overview/faq-admin-edit/faq-admin-edit.component';
 import { FaqAdminOverviewComponent } from './faq/faq-admin-overview/faq-admin-overview.component';
-import {NgcCookieConsentModule, NgcCookieConsentConfig} from 'ngx-cookieconsent';
+import { NgcCookieConsentModule, NgcCookieConsentConfig } from 'ngx-cookieconsent';
 import { TimetableComponent } from './timetable/timetable.component';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { SponsoringComponent } from './sponsoring/sponsoring.component';
 import { TicketsComponent } from './tickets/tickets.component';
+import { MAT_DATE_FORMATS, MAT_DATE_LOCALE, DateAdapter } from '@angular/material/core';
+import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
-const cookieConfig:NgcCookieConsentConfig = {
+const cookieConfig: NgcCookieConsentConfig = {
   cookie: {
-    domain: 'beem-festival.de' // or 'your.domain.com' // it is mandatory to set a domain, for cookies to work properly (see https://goo.gl/S2Hy2A)
+    domain: 'beem-festival.de'
   },
   palette: {
     popup: {
@@ -69,10 +69,18 @@ const cookieConfig:NgcCookieConsentConfig = {
     }
   },
   theme: 'edgeless',
-  type: 'info'
+  type: 'info',
+  position: 'bottom',
+  content: {
+    message: 'Diese Website verwendet Cookies, um Ihnen das beste Nutzererlebnis zu bieten.',
+    dismiss: 'Akzeptieren',
+    deny: 'Ablehnen',
+    link: 'Mehr erfahren',
+    href: '/impressum'
+  }
 };
 
-const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
+const CUSTOM_DATE_FORMATS = {
   parse: {
     dateInput: "l, LTS"
   },
@@ -124,9 +132,6 @@ const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
     MatCheckboxModule,
     MatMenuModule,
     MatInputModule,
-    NgxMatDatetimePickerModule,
-    NgxMatTimepickerModule,
-    NgxMatMomentModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -140,13 +145,27 @@ const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
     MatSortModule,
     NgcCookieConsentModule.forRoot(cookieConfig),
   ],
-  providers: [UrlbypassPipe,
+  providers: [
+    UrlbypassPipe,
     UserService,
     AuthService,
     ArtistService,
     GlobalService,
     NewsService,
-    { provide: NGX_MAT_DATE_FORMATS, useValue: CUSTOM_DATE_FORMATS },
+    { provide: MAT_DATE_LOCALE, useValue: 'de-DE' },
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
+    },
+    {
+      provide: MAT_DATE_FORMATS,
+      useValue: CUSTOM_DATE_FORMATS,
+    },
+    {
+      provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+      useValue: { strict: true }
+    },
     AuthInterceptor,
     {
       provide: HTTP_INTERCEPTORS,

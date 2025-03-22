@@ -8,7 +8,7 @@ import { Artist } from 'src/app/models/artist';
 @Component({
   selector: 'artist-admin-overview',
   templateUrl: './artist-admin-overview.component.html',
-  styleUrls: ['./artist-admin-overview.component.css']
+  styleUrls: ['./artist-admin-overview.component.scss']
 })
 export class ArtistAdminOverviewComponent implements OnInit, AfterViewInit {
 
@@ -22,7 +22,7 @@ export class ArtistAdminOverviewComponent implements OnInit, AfterViewInit {
   public filter: FormControl = new FormControl();
 
   public dataSource: MatTableDataSource<Artist> = new MatTableDataSource();
-  public displayedColumns: string[] = ['id', 'name', 'genre', 'dayStartTime', 'playTime', 'isBooked'];
+  public displayedColumns: string[] = ['Id', 'Name', 'Genre', 'DayStartTime', 'PlayTime', 'IsBooked'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -36,8 +36,9 @@ export class ArtistAdminOverviewComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    //this.dataSource = new MatTableDataSource(this.artists);
-    this.dataSource = new MatTableDataSource(this.sortedArtistData);
+    this.filter.valueChanges.subscribe(filterValue => {
+      this.applyFilter(filterValue);
+    });
   }
 
   ngAfterViewInit() {
@@ -45,28 +46,24 @@ export class ArtistAdminOverviewComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-
-  ngDoCheck() {
-    let changes = this.iterableDiffer.diff(this.artists);
+  ngDoCheck(): void {
+    const changes = this.iterableDiffer.diff(this.artists);
     if (changes) {
-      this.dataSource = new MatTableDataSource(this.artists);
+      this.dataSource.data = this.artists;
     }
   }
 
   applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+    let filterValue = (event.target as HTMLInputElement).value;
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
   }
 
   setSelected(row: Artist) {
     if (this.selectedRow === row) {
       this.selectedRow = null;
-    }
-    else {
+    } else {
       this.selectedRow = row;
     }
   }
@@ -75,20 +72,24 @@ export class ArtistAdminOverviewComponent implements OnInit, AfterViewInit {
     return this.selectedRow === row;
   }
 
-  onCreate() {
-    this.createArtist.emit(new Artist());
-  }
-
   onEdit() {
-    if (this.selectedRow !== null) {
+    if (this.selectedRow) {
       this.selctedArtist.emit(this.selectedRow);
     }
   }
 
+  onSelectRow(row: Artist) {
+    this.selectedRow = row;
+    this.selctedArtist.emit(row);
+  }
+
+  onCreate() {
+    this.createArtist.emit(new Artist());
+  }
+
   onDelete() {
-    if (this.selectedRow !== null) {
+    if (this.selectedRow) {
       this.deleteArtist.emit(this.selectedRow);
-      this.selectedRow = null;
     }
   }
 

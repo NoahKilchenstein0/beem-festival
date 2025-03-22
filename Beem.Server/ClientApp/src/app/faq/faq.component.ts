@@ -30,7 +30,7 @@ export class FaqComponent implements OnInit {
       this.isAdminView = true;
     }
     this.faqService.getQuestions().subscribe(x => {
-      this.questions = x.sort(y => y.id);
+      this.questions = x.sort(y => y.Id);
       console.log(x);
     });
     this.globalsService.isQuestionDrillDown.subscribe(x => {
@@ -51,19 +51,19 @@ export class FaqComponent implements OnInit {
     if (this.user === null) {
       return false;
     }
-    return this.user.role === Roles.Admin && this.isAdminView;
+    return this.user.Role === Roles.Admin && this.isAdminView;
   }
 
   isAdminOnly(): boolean {
     if (this.user === null) {
       return false;
     }
-    return this.user.role === Roles.Admin;
+    return this.user.Role === Roles.Admin;
   }
 
   navigateToEditQuestion(question: Question): void {
     this.globalsService.setQuestionsDrillDownActive();
-    if (question.id !== 0) {
+    if (question.Id !== 0) {
       this.isEdit = true;
     }
     else {
@@ -78,7 +78,7 @@ export class FaqComponent implements OnInit {
   updateQuestion(question: Question) {
     if (this.isEdit) {
       this.faqService.updateQuestion(question).subscribe(x => {
-        let index = this.questions.findIndex(x => x.id === question.id);
+        let index = this.questions.findIndex(x => x.Id === question.Id);
         this.questions.splice(index, 1);
         this.questions.push(x);
         this.globalsService.setQuestionsDrillDownDisabled();
@@ -93,7 +93,7 @@ export class FaqComponent implements OnInit {
   }
 
   deleteQuestion(question: Question): void {
-    this.faqService.deleteQuestion(question.id).subscribe(x => {
+    this.faqService.deleteQuestion(question.Id).subscribe(x => {
       this.questions.splice(this.questions.findIndex(x => x === question), 1);
     });
   }

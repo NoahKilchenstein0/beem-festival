@@ -8,7 +8,7 @@ import { News } from 'src/app/models/news';
 @Component({
   selector: 'news-admin-overview',
   templateUrl: './news-admin-overview.component.html',
-  styleUrls: ['./news-admin-overview.component.css']
+  styleUrls: ['./news-admin-overview.component.scss']
 })
 export class NewsAdminOverviewComponent implements OnInit, AfterViewInit {
 
@@ -18,7 +18,6 @@ export class NewsAdminOverviewComponent implements OnInit, AfterViewInit {
   @Output("deleteNews") deleteNews: EventEmitter<News> = new EventEmitter();
   
   public filter: FormControl = new FormControl();
-
   public dataSource: MatTableDataSource<News> = new MatTableDataSource();  
   public displayedColumns: string[] = ['id', 'title', 'publicationDateTime'];
 
@@ -26,7 +25,6 @@ export class NewsAdminOverviewComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   public selectedRow: News | null = null;
-
   private iterableDiffer: IterableDiffer<News>;
   
   constructor(private iterableDiffers:IterableDiffers) { 
@@ -42,13 +40,12 @@ export class NewsAdminOverviewComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-
   ngDoCheck() {
     let changes = this.iterableDiffer.diff(this.news);
     if (changes) {
       this.dataSource = new MatTableDataSource(this.news);
     }
-}
+  }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -76,17 +73,18 @@ export class NewsAdminOverviewComponent implements OnInit, AfterViewInit {
     this.createNews.emit(new News());
   }
 
-  onEdit(){
-    if(this.selectedRow !== null){
+  onEdit(): void {
+    if (this.selectedRow) {
       this.selctedNews.emit(this.selectedRow);
     }
   }
 
-  onDelete(){
-    if(this.selectedRow !== null){
+  onDelete(row?: News): void {
+    if (row) {
+      this.selectedRow = row;
+    }
+    if (this.selectedRow) {
       this.deleteNews.emit(this.selectedRow);
-      this.selectedRow = null;
     }
   }
-
 }

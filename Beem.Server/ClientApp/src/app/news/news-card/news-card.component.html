@@ -1,8 +1,8 @@
 <mat-card class="card pointer" (click)="navigateToNewsPage()" *ngIf="globalService.isTopNav">
   <mat-card-content class="rowFlex">
-    <img mat-card-image class="card-image" *ngIf="news.img !== ''" [src]="createImgPath(news.img)" alt="Photo of {{news.title}}" >
+    <img mat-card-image class="card-image" *ngIf="news.Img !== ''" [src]="createImgPath(news.Img)" alt="Photo of {{news.Title}}" >
       <div class="colums">
-          <div class="card-headline">{{news.title}}</div>
+          <div class="card-headline">{{news.Title}}</div>
           <div class="card-text">{{getNewsText(news)}}</div>
       </div>
   </mat-card-content>
@@ -11,10 +11,10 @@
 
 <mat-card class="cardsmall" (click)="navigateToNewsPage()" *ngIf="!globalService.isTopNav">
 
-  <img mat-card-image class="card-image-mobile" *ngIf="isImageVisible(news)" [src]="createImgPath(news.img)" alt="Photo of {{news.title}}" >
+  <img mat-card-image class="card-image-mobile" *ngIf="isImageVisible(news)" [src]="createImgPath(news.Img)" alt="Photo of {{news.Title}}" >
   <mat-card-content class="rowFlex">
       <div class="colums">
-          <div class="card-headline">{{news.title}}</div>
+          <div class="card-headline">{{news.Title}}</div>
       </div>
   </mat-card-content>
 </mat-card>

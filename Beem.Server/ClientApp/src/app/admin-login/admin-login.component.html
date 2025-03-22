@@ -13,20 +13,20 @@
     <div 
       class="container">
         <form [formGroup]="form">
-            <fieldset>
-            <legend>Login</legend>
-            <mat-form-field class="form-field" appearance="standard">
-                <mat-label>UserName:</mat-label>
-                <input matInput name="UserName" formControlName="userName">
+            <fieldset class="schwarze-farbe">
+            <legend class="schwarze-farbe">Login</legend>
+            <mat-form-field class="form-field" appearance="outline">
+                <mat-label class="schwarze-farbe">UserName:</mat-label>
+                <input matInput name="UserName schwarze-farbe" formControlName="userName">
             </mat-form-field>
-            <mat-form-field class="form-field" appearance="standard">
-                <mat-label>Password:</mat-label>
-                <input matInput name="password" formControlName="password" 
+            <mat-form-field class="form-field" appearance="outline">
+                <mat-label class="schwarze-farbe">Password:</mat-label>
+                <input matInput name="password schwarze-farbe" formControlName="password" 
                      type="password">
             </mat-form-field>
             </fieldset>
             <div class="form-buttons">
-                <button mat-raised-button class="topButton" 
+                <button mat-raised-button class="buttonstyle" 
                   (click)="login()">Login</button>
                 </div>
             </form>

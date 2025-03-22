@@ -1,21 +1,21 @@
 <div class="artist-site">
     <mat-card class="inner-artist-site">
         <div class="band-header">
-            <img class="band-image" *ngIf="artist.imgHeader !== ''" [src]="createImgPath(artist.imgHeader)" alt="Photo of {{artist.name}}" />
+            <img class="band-image" *ngIf="artist.ImgHeader !== ''" [src]="createImgPath(artist.ImgHeader)" alt="Photo of {{artist.Name}}" />
 
             <div>
-                <h2>{{artist.name}} </h2>
-                <h3>{{artist.genre}}</h3>
+                <h2>{{artist.Name}} </h2>
+                <h3>{{artist.Genre}}</h3>
             </div>
         </div>
         <mat-card-content>
-            <div *ngIf="artist.isLineUpPlaned">
-                <h3 *ngIf="artist.stage !== ''">Bühne: {{artist.stage}}</h3> <span>&nbsp;&nbsp;</span>
-                <h3 *ngIf="artist.dayStartTime">Tag: {{artist.dayStartTime | date}}</h3> <span>&nbsp;&nbsp;</span>
-                <h3 *ngIf="artist.dayStartTime">Spielzeit: {{getStartTime()}} - {{getEndTime()}}</h3>
+            <div *ngIf="artist.IsLineUpPlanned">
+                <h3 *ngIf="artist.Stage !== ''">Bühne: {{artist.Stage}}</h3> <span>&nbsp;&nbsp;</span>
+                <h3 *ngIf="artist.DayStartTime">Tag: {{artist.DayStartTime | date}}</h3> <span>&nbsp;&nbsp;</span>
+                <h3 *ngIf="artist.DayStartTime">Spielzeit: {{getStartTime()}} - {{getEndTime()}}</h3>
             </div>
             <div [innerHTML]="getArtistDescription()"></div>
-            <iframe *ngIf="artist.spotify !== ''" [src]="embedURI" width="100%" height="350"
+            <iframe *ngIf="artist.Spotify !== ''" [src]="embedURI" width="100%" height="350"
                 frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
             <div>
                 <img class="socials" src="../../../../assets/f_logo_RGB-Blue_1024.webp" (click)="onFacebook()" *ngIf="isFacebook(artist)">
