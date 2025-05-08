@@ -69,8 +69,8 @@ namespace Beem.Server.Controllers
                 artistToUpdate.Spotify = artist.Spotify != null ? artist.Spotify : null;
                 artistToUpdate.Stage = artist.Stage != null ? artist.Stage : null;
                 artistToUpdate.Website = artist.Website != null ? artist.Website : null;
-                artistToUpdate.Instagramm = artist.Instagramm != null ? artist.Instagramm : null;
-                artist.IsLineUpPlaned = artist.IsLineUpPlaned;
+                artistToUpdate.Instagram = artist.Instagram != null ? artist.Instagram : null;
+                // artist.IsLineUpPlaned = artist.IsLineUpPlaned;
                 this.dbContext.SaveChanges();
                 return Ok(artistToUpdate);
             }
