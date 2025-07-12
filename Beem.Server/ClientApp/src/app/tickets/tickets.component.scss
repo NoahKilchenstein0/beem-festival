@@ -1,39 +1,87 @@
-
-.background{
-    background-color: #e7e0c6;
-    color: black;
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #e7e0c6;
 }
 
-
-.impressumContainer{
-    display:flex;
-    min-height: 100vh;
-    flex-direction: column;
-    align-items: row;
-    flex-wrap: wrap;
-    padding: 1rem;
-    margin-left: 15%;
-    margin-right: 15%;
-    font-family: 'Century Gothic' !important;
-    font-size: 12pt;
+.background {
+  color: black;
 }
 
-h2{
-    font-family: 'Century Gothic' !important;
+.impressumContainer {
+  display: block;
+  overflow: visible;
+  margin: 0 auto;
+  padding: 1rem;
+  font-family: 'Century Gothic' !important;
+  font-size: 12pt;
+  max-width: 960px;
 }
 
-@media only screen and (max-width: 708px) {
-    .impressumContainer{
-        margin-left: 5%;
-        margin-right: 5%;
-    }
-    h2{
-        font-size: 24pt !important;
-    }
+iframe {
+  width: 100%;
+  min-height: 3600px;
+  border: none;
+  overflow: hidden;
 }
 
-@media only screen and (max-width: 450px) {
-    h1{
-        font-size: 3em !important;
-    }
+/* Tablets */
+@media (max-width: 1024px) {
+  iframe {
+    min-height: 3000px;
+  }
 }
+
+/* Smartphones */
+@media (max-width: 768px) {
+  iframe {
+    min-height: 3600px;
+  }
+}
+
+/* Kleine Smartphones */
+@media (max-width: 480px) {
+  iframe {
+    min-height: 4000px;
+  }
+}
+
+// .background{
+//     background-color: #e7e0c6;
+//     color: black;
+// }
+
+
+// .impressumContainer{
+//     display:flex;
+//     min-height: 100vh;
+//     flex-direction: column;
+//     align-items: row;
+//     flex-wrap: wrap;
+//     padding: 1rem;
+//     margin-left: 15%;
+//     margin-right: 15%;
+//     font-family: 'Century Gothic' !important;
+//     font-size: 12pt;
+// }
+
+// h2{
+//     font-family: 'Century Gothic' !important;
+// }
+
+// @media only screen and (max-width: 708px) {
+//     .impressumContainer{
+//         margin-left: 5%;
+//         margin-right: 5%;
+//     }
+//     h2{
+//         font-size: 24pt !important;
+//     }
+// }
+
+// @media only screen and (max-width: 450px) {
+//     h1{
+//         font-size: 3em !important;
+//     }
+// }
